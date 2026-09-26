@@ -60,10 +60,10 @@
 
   /* Portada: pase de fotos, pequeño y centrado sobre el fondo */
   .foto{
-    position:relative;width:min(52%,360px);aspect-ratio:4/5;margin:32px auto 0;
+    position:relative;width:min(52%,360px);aspect-ratio:3/4;margin:32px auto 0;
     box-shadow:0 10px 30px rgba(0,0,0,.12);background:var(--albariza);
   }
-  .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.2s ease}
+  .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
   .foto img.on{opacity:1}
   @media (prefers-reduced-motion:reduce){.foto img{transition:none}}
   /* Bloque de fecha, hora y lugar */
@@ -223,9 +223,11 @@
 <main id="inicio">
 
   <div class="foto" role="img" aria-label="Fotos de Male y Solís">
-    <img src="fotos/portada-pedida.jpg" alt="" class="on">
-    <img src="fotos/portada-jardin.jpg" alt="">
-    <img src="fotos/portada-playa.jpg" alt="">
+    <img src="fotos/01-anillo.jpg" alt="" class="on">
+    <img src="fotos/02-playa.jpg" alt="">
+    <img src="fotos/03-safari.jpg" alt="">
+    <img src="fotos/04-chiringuito.jpg" alt="">
+    <img src="fotos/05-jardin.jpg" alt="">
   </div>
 
   <div class="hero">
