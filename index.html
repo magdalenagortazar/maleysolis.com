@@ -286,7 +286,7 @@
           <p class="eyebrow">Ceremonia · 12:30</p>
           <h3>Parroquia de San Francisco</h3>
           <p class="dir">Calle San Francisco, 27 · El Puerto de Santa María (Cádiz)</p>
-          <p>La iglesia de los Jesuitas de El Puerto, en el centro del pueblo. Hay aparcamiento público a pocos minutos a pie.</p>
+          <p>La iglesia de los Jesuitas de El Puerto, en el centro del pueblo. Aparcamiento: <span class="pendiente">pendiente de mirar</span></p>
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Francisco+Jesuitas+Calle+San+Francisco+27+El+Puerto+de+Santa+Maria" target="_blank" rel="noopener">Ver en el mapa</a>
         </article>
         <article class="lugar">
@@ -310,11 +310,11 @@
       <div class="info">
         <div>
           <h3>Autobuses de la boda <span class="pendiente">horarios en breve</span></h3>
-          <p>Pondremos autobuses de ida desde El Puerto y Jerez a la iglesia, de la iglesia a las bodegas, y de vuelta por la noche. Al confirmar asistencia nos decís si los vais a usar.</p>
+          <p>Saldrán autobuses desde Jerez a la iglesia, de la iglesia a las bodegas, y de vuelta por la noche tanto a Jerez como a El Puerto. Al confirmar asistencia nos decís si los vais a usar.</p>
         </div>
         <div>
           <h3>En tren</h3>
-          <p>El AVE desde Madrid llega a Jerez de la Frontera en unas tres horas y media, y desde allí El Puerto está a diez minutos en Cercanías. Sevilla está a poco más de una hora en tren.</p>
+          <p>Hay AVE de Madrid a Jerez de la Frontera. Para los que duerman en El Puerto, hay también tren directo Madrid–El Puerto de Santa María. Otra opción es el AVE Madrid–Sevilla y seguir en coche (poco más de una hora).</p>
         </div>
         <div>
           <h3>En avión</h3>
@@ -322,7 +322,7 @@
         </div>
         <div>
           <h3>En coche</h3>
-          <p>Desde Madrid son unas seis horas por la A-4. Entre El Puerto y Jerez hay veinte minutos por la A-4 o la CA-32.</p>
+          <p>Desde Madrid son unas seis horas por la A-4. Jerez y El Puerto de Santa María están a unos 15 km, veinte minutos en coche.</p>
         </div>
         <div>
           <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
@@ -455,8 +455,9 @@
 
   if (inv) {
     var saludo = document.getElementById('saludo');
-    saludo.innerHTML = 'Querid' + (inv.genero === 'f' ? 'a' : inv.genero === 'p' ? 'os' : 'o') + ' <b>' + inv.nombre + '</b>' +
-      (plazas > 1 ? ', tenéis reservadas <b>' + plazas + ' plazas</b>.' : ', tienes reservada <b>1 plaza</b>.') +
+    var lista = (inv.nombres || []).filter(function(n){ return n; });
+    saludo.innerHTML = '<b>' + inv.nombre + '</b>' + (lista.length ? ' (' + lista.join(', ') + ')' : '') +
+      (plazas > 1 ? ': tenéis reservadas <b>' + plazas + ' plazas</b>.' : ': tienes reservada <b>1 plaza</b>.') +
       ' Nos haría mucha ilusión veros allí.';
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
