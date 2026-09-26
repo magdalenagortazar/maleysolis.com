@@ -201,6 +201,7 @@
     <a class="brand" href="#inicio">M <i>&amp;</i> S</a>
     <nav aria-label="Secciones">
       <ul>
+        <li id="nav-preboda" hidden><a href="#preboda">Preboda</a></li>
         <li><a href="#lugares">Lugares</a></li>
         <li><a href="#llegar">Cómo llegar</a></li>
         <li><a href="#confirmar">Confirmar</a></li>
@@ -231,6 +232,30 @@
     <p class="saludo" id="saludo" hidden></p>
   </div>
 
+
+  <section id="preboda" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">La víspera</p>
+        <h2>Preboda</h2>
+        <p class="lead">El viernes 28 de mayo, la tarde antes de la boda, nos juntamos con los que venís de fuera para empezar a celebrarlo con calma. Sin protocolo: ropa cómoda, una copa y ganas de vernos. <span class="pendiente">detalles en breve</span></p>
+      </div>
+      <div class="info">
+        <div>
+          <h3>Cuándo</h3>
+          <p>Viernes 28 de mayo de 2027, a partir de las 20:30. <span class="pendiente">hora por confirmar</span></p>
+        </div>
+        <div>
+          <h3>Dónde</h3>
+          <p>En El Puerto de Santa María. Os diremos el sitio exacto en cuanto lo cerremos. <span class="pendiente">lugar por confirmar</span></p>
+        </div>
+        <div>
+          <h3>Confirmar</h3>
+          <p>Al confirmar la asistencia a la boda, más abajo, os preguntamos también si venís a la preboda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="lugares">
     <div class="wrap wrap-wide">
@@ -309,6 +334,14 @@
           <label>Quiénes venís</label>
           <div class="acomp" id="acompanantes"></div>
           <p class="aviso" id="aviso-plazas"></p>
+        </div>
+
+        <div class="campo" id="bloque-preboda" hidden>
+          <label for="preboda-si">Preboda del viernes</label>
+          <div class="opciones">
+            <label><input type="radio" name="preboda" id="preboda-si" value="si"> Sí, también vamos</label>
+            <label><input type="radio" name="preboda" id="preboda-no" value="no"> Solo a la boda</label>
+          </div>
         </div>
 
         <div class="campo" id="bloque-bus">
@@ -406,6 +439,11 @@
       ' Nos haría mucha ilusión veros allí.';
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
+    if (inv.preboda) {
+      document.getElementById('preboda').hidden = false;
+      document.getElementById('nav-preboda').hidden = false;
+      document.getElementById('bloque-preboda').hidden = false;
+    }
   }
 
   // Campos de nombre: uno por plaza
@@ -430,6 +468,7 @@
     var no = document.getElementById('asistencia-no').checked;
     document.getElementById('bloque-bus').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
+    if (inv && inv.preboda) document.getElementById('bloque-preboda').hidden = no;
   }
   for (var r = 0; r < radios.length; r++) radios[r].addEventListener('change', refrescar);
 
@@ -447,7 +486,8 @@
 
     var datos = { codigo: codigo, asistencia: asis.value, personas: [], bus: document.getElementById('bus').value,
       alergias: document.getElementById('alergias').value.trim(), telefono: document.getElementById('telefono').value.trim(),
-      mensaje: document.getElementById('mensaje').value.trim() };
+      mensaje: document.getElementById('mensaje').value.trim(),
+      preboda: (form.querySelector('input[name=preboda]:checked') || {}).value || '' };
     for (var i = 1; i <= plazas; i++) {
       var v = document.getElementById('persona-' + i).value.trim();
       if (v) datos.personas.push(v);
