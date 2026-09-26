@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Male &amp; Solís</title>
+<meta name="description" content="Boda de Magdalena y Solís. Sábado 29 de mayo de 2027, El Puerto de Santa María y Jerez.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Karla:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --albariza:#F4F2EC;
+    --albariza-2:#EAE6DC;
+    --tinta:#1B211D;
+    --tinta-2:#4A524C;
+    --verde:#1F3A2E;
+    --verde-2:#2E5242;
+    --fino:#B8862B;
+    --fino-2:#D9B25E;
+    --linea:#CFC9BB;
+    --display:"Bodoni Moda", "Didot", "Playfair Display", Georgia, serif;
+    --body:"Karla", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html,body{margin:0}
+  body{
+    background:var(--albariza);
+    color:var(--tinta);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--verde);text-underline-offset:3px}
+  a:hover{color:var(--fino)}
+  :focus-visible{outline:2px solid var(--fino);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+  p{margin:0}
+
+  /* Cabecera fija */
+  .nav{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:color-mix(in srgb,var(--albariza) 88%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-inner{
+    max-width:1040px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{font-family:var(--display);font-size:22px;letter-spacing:.02em;text-decoration:none;color:var(--verde)}
+  .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+  .nav li a{text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+  .nav li a:hover{color:var(--fino)}
+  @media (max-width:640px){.nav ul{display:none}}
+
+  /* Portada */
+  .hero{
+    text-align:center;
+    padding:72px 20px 56px;
+    max-width:760px;margin:0 auto;
+    display:grid;gap:22px;justify-items:center;
+  }
+  .eyebrow{
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--fino);font-weight:600;
+  }
+  .names{
+    font-size:clamp(56px,11vw,112px);
+    line-height:.95;color:var(--verde);
+    font-variation-settings:"opsz" 96;
+  }
+  .names .amp{font-style:italic;color:var(--fino);font-size:.62em;vertical-align:.12em;padding:0 .08em}
+  .date{
+    font-family:var(--display);font-size:clamp(22px,3.4vw,30px);color:var(--tinta);
+  }
+  .place{color:var(--tinta-2);font-size:16px;letter-spacing:.04em}
+  .rule{
+    width:64px;height:1px;background:var(--fino);
+  }
+  .countdown{
+    display:flex;gap:26px;justify-content:center;flex-wrap:wrap;
+    margin-top:8px;font-variant-numeric:tabular-nums;
+  }
+  .countdown div{display:grid;gap:2px;min-width:64px}
+  .countdown b{font-family:var(--display);font-weight:400;font-size:40px;line-height:1;color:var(--verde)}
+  .countdown span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+  .saludo{
+    background:var(--verde);color:var(--albariza);
+    padding:14px 20px;border-radius:2px;max-width:560px;
+    font-size:16px;
+  }
+  .saludo b{color:var(--fino-2);font-weight:600}
+
+  /* Franja de fino */
+  .franja{
+    background:var(--verde);color:var(--albariza);
+    padding:22px 20px;text-align:center;
+    font-family:var(--display);font-style:italic;font-size:clamp(18px,2.6vw,24px);
+  }
+  .franja span{color:var(--fino-2)}
+
+  /* Secciones */
+  section{padding:64px 20px;border-bottom:1px solid var(--linea)}
+  section:last-of-type{border-bottom:0}
+  .wrap{max-width:720px;margin:0 auto;display:grid;gap:28px}
+  .wrap-wide{max-width:1040px}
+  .sec-head{display:grid;gap:10px}
+  .sec-head h2{font-size:clamp(34px,5vw,48px);color:var(--verde)}
+  .lead{font-size:18px;color:var(--tinta-2);max-width:60ch}
+
+  /* Programa del día */
+  .programa{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+  .programa li{
+    display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start;
+    padding:18px 0;border-top:1px solid var(--linea);
+  }
+  .programa li:last-child{border-bottom:1px solid var(--linea)}
+  .hora{font-family:var(--display);font-size:26px;color:var(--fino);line-height:1.2;font-variant-numeric:tabular-nums}
+  .programa h3{font-size:22px;color:var(--tinta)}
+  .programa p{color:var(--tinta-2);font-size:16px;margin-top:4px}
+  .pc{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fino);margin-left:8px;white-space:nowrap}
+  @media (max-width:480px){.programa li{grid-template-columns:70px 1fr;gap:12px}.hora{font-size:22px}}
+
+  /* Lugares */
+  .lugares{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .lugar{
+    border:1px solid var(--linea);padding:28px 26px;display:grid;gap:12px;background:#FBFAF6;
+    align-content:start;
+  }
+  .lugar .eyebrow{color:var(--verde-2)}
+  .lugar h3{font-size:28px;color:var(--verde)}
+  .lugar p{color:var(--tinta-2);font-size:16px}
+  .lugar .dir{color:var(--tinta);font-weight:500}
+  .btn{
+    display:inline-block;justify-self:start;
+    padding:10px 18px;border:1px solid var(--verde);color:var(--verde);
+    text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    transition:background .15s,color .15s;
+  }
+  .btn:hover{background:var(--verde);color:var(--albariza)}
+  .btn-solid{background:var(--verde);color:var(--albariza)}
+  .btn-solid:hover{background:var(--verde-2);color:var(--albariza)}
+
+  /* Listas de información */
+  .info{display:grid;gap:22px}
+  .info h3{font-size:22px;color:var(--verde)}
+  .info p{color:var(--tinta-2);font-size:16px;max-width:60ch}
+  .pendiente{
+    display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--fino);border:1px dashed var(--fino);padding:2px 8px;margin-left:6px;vertical-align:middle;
+  }
+
+  /* Formulario */
+  form{display:grid;gap:18px}
+  .campo{display:grid;gap:6px}
+  label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--tinta-2)}
+  input[type=text],input[type=tel],textarea,select{
+    font:inherit;padding:12px 14px;border:1px solid var(--linea);background:#FBFAF6;color:var(--tinta);
+    border-radius:0;width:100%;
+  }
+  textarea{min-height:96px;resize:vertical}
+  .opciones{display:flex;gap:12px;flex-wrap:wrap}
+  .opciones label{
+    text-transform:none;letter-spacing:0;font-weight:500;font-size:16px;color:var(--tinta);
+    border:1px solid var(--linea);padding:10px 16px;background:#FBFAF6;cursor:pointer;
+    display:flex;align-items:center;gap:8px;
+  }
+  .opciones input{accent-color:var(--verde)}
+  .opciones label:has(input:checked){border-color:var(--verde);background:var(--verde);color:var(--albariza)}
+  .acomp{display:grid;gap:10px}
+  .aviso{
+    font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
+  }
+  .ok{
+    background:var(--verde);color:var(--albariza);padding:22px 24px;display:grid;gap:8px;
+  }
+  .ok b{font-family:var(--display);font-weight:400;font-size:26px}
+  button.btn{font-family:var(--body);cursor:pointer;background:var(--verde);color:var(--albariza)}
+  button.btn:hover{background:var(--verde-2)}
+
+  /* Pie */
+  footer{
+    text-align:center;padding:48px 20px 40px;color:var(--tinta-2);font-size:14px;
+    display:grid;gap:10px;justify-items:center;
+  }
+  footer .brand{font-size:28px}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio">M <i>&amp;</i> S</a>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#el-dia">El día</a></li>
+        <li><a href="#lugares">Lugares</a></li>
+        <li><a href="#llegar">Cómo llegar</a></li>
+        <li><a href="#confirmar">Confirmar</a></li>
+        <li><a href="#regalos">Regalos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <div class="hero">
+    <p class="eyebrow">Nos casamos</p>
+    <h1 class="names">Male<span class="amp">&amp;</span>Solís</h1>
+    <div class="rule" aria-hidden="true"></div>
+    <p class="date">Sábado, 29 de mayo de 2027</p>
+    <p class="place">El Puerto de Santa María · Jerez de la Frontera</p>
+    <div class="countdown" id="countdown" aria-label="Cuenta atrás">
+      <div><b id="cd-d">—</b><span>días</span></div>
+      <div><b id="cd-h">—</b><span>horas</span></div>
+      <div><b id="cd-m">—</b><span>minutos</span></div>
+    </div>
+    <p class="saludo" id="saludo" hidden></p>
+  </div>
+
+  <div class="franja">Una boda entre <span>el mar de El Puerto</span> y <span>las bodegas de Jerez</span></div>
+
+  <section id="el-dia">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">El día</p>
+        <h2>Así será el sábado</h2>
+        <p class="lead">La ceremonia es en El Puerto de Santa María y la celebración en Jerez, a veinte minutos. Iremos actualizando las horas conforme las cerremos.</p>
+      </div>
+      <ol class="programa">
+        <li>
+          <div class="hora">12:30</div>
+          <div>
+            <h3>Ceremonia</h3>
+            <p>Parroquia de San Francisco (los Jesuitas), El Puerto de Santa María. Os pedimos puntualidad: la misa empieza en punto.</p>
+          </div>
+        </li>
+        <li>
+          <div class="hora">14:00</div>
+          <div>
+            <h3>Camino de Jerez <span class="pc">hora por confirmar</span></h3>
+            <p>Autobuses desde la iglesia hasta las bodegas para quien no vaya en coche.</p>
+          </div>
+        </li>
+        <li>
+          <div class="hora">14:30</div>
+          <div>
+            <h3>Cóctel en los jardines <span class="pc">hora por confirmar</span></h3>
+            <p>Bodegas Tío Pepe, González Byass. Con una copa de fino como manda el sitio.</p>
+          </div>
+        </li>
+        <li>
+          <div class="hora">16:00</div>
+          <div>
+            <h3>Comida en la Bodega Los Gigantes <span class="pc">hora por confirmar</span></h3>
+            <p>Comida sentada dentro de la bodega, entre las botas.</p>
+          </div>
+        </li>
+        <li>
+          <div class="hora">19:00</div>
+          <div>
+            <h3>Baile <span class="pc">hora por confirmar</span></h3>
+            <p>Hasta que el cuerpo aguante. La fiesta acaba a las 2:00.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="lugares">
+    <div class="wrap wrap-wide">
+      <div class="sec-head">
+        <p class="eyebrow">Lugares</p>
+        <h2>Dónde nos vemos</h2>
+      </div>
+      <div class="lugares">
+        <article class="lugar">
+          <p class="eyebrow">Ceremonia · 12:30</p>
+          <h3>Parroquia de San Francisco</h3>
+          <p class="dir">Calle San Francisco, 27 · El Puerto de Santa María (Cádiz)</p>
+          <p>La iglesia de los Jesuitas de El Puerto, en el centro del pueblo. Hay aparcamiento público a pocos minutos a pie.</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Francisco+Jesuitas+Calle+San+Francisco+27+El+Puerto+de+Santa+Maria" target="_blank" rel="noopener">Ver en el mapa</a>
+        </article>
+        <article class="lugar">
+          <p class="eyebrow">Celebración · desde las 14:30</p>
+          <h3>Bodegas Tío Pepe · Los Gigantes</h3>
+          <p class="dir">Calle Manuel María González, 12 · Jerez de la Frontera (Cádiz)</p>
+          <p>Las bodegas de González Byass, en pleno centro de Jerez, junto a la catedral. El cóctel en los jardines y la comida en la Bodega Los Gigantes.</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Bodegas+Tio+Pepe+Gonzalez+Byass+Jerez+de+la+Frontera" target="_blank" rel="noopener">Ver en el mapa</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="llegar">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo llegar</p>
+        <h2>Trenes, aviones y autobuses</h2>
+      </div>
+      <div class="info">
+        <div>
+          <h3>Autobuses de la boda <span class="pendiente">horarios en breve</span></h3>
+          <p>Pondremos autobuses de ida desde El Puerto y Jerez a la iglesia, de la iglesia a las bodegas, y de vuelta por la noche. Al confirmar asistencia nos decís si los vais a usar.</p>
+        </div>
+        <div>
+          <h3>En tren</h3>
+          <p>El AVE desde Madrid llega a Jerez de la Frontera en unas tres horas y media, y desde allí El Puerto está a diez minutos en Cercanías. Sevilla está a poco más de una hora en tren.</p>
+        </div>
+        <div>
+          <h3>En avión</h3>
+          <p>El aeropuerto de Jerez está a quince minutos de la ciudad y tiene vuelos directos desde Madrid y Barcelona. Sevilla es la alternativa, a una hora y cuarto por autopista.</p>
+        </div>
+        <div>
+          <h3>En coche</h3>
+          <p>Desde Madrid son unas seis horas por la A-4. Entre El Puerto y Jerez hay veinte minutos por la A-4 o la CA-32.</p>
+        </div>
+        <div>
+          <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
+          <p>Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="confirmar">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Confirmar asistencia</p>
+        <h2 id="rsvp-titulo">¿Contamos contigo?</h2>
+        <p class="lead" id="rsvp-lead">Dinos si vienes, con quién y si vas a usar los autobuses. Puedes cambiar la respuesta más adelante volviendo a esta página.</p>
+      </div>
+
+      <form id="rsvp" novalidate>
+        <div class="campo">
+          <label for="asistencia-si">Asistencia</label>
+          <div class="opciones" role="radiogroup" aria-labelledby="rsvp-titulo">
+            <label><input type="radio" name="asistencia" id="asistencia-si" value="si" required> Sí, allí estaré</label>
+            <label><input type="radio" name="asistencia" id="asistencia-no" value="no"> No podré ir</label>
+          </div>
+        </div>
+
+        <div class="campo" id="bloque-nombres">
+          <label>Quiénes venís</label>
+          <div class="acomp" id="acompanantes"></div>
+          <p class="aviso" id="aviso-plazas"></p>
+        </div>
+
+        <div class="campo" id="bloque-bus">
+          <label for="bus">Autobús</label>
+          <select id="bus" name="bus">
+            <option value="">Todavía no lo sé</option>
+            <option value="ida-vuelta">Ida y vuelta</option>
+            <option value="ida">Solo ida (iglesia → bodegas)</option>
+            <option value="vuelta">Solo vuelta (bodegas → El Puerto / Jerez)</option>
+            <option value="no">No, voy por mi cuenta</option>
+          </select>
+        </div>
+
+        <div class="campo" id="bloque-alergias">
+          <label for="alergias">Alergias o intolerancias</label>
+          <input type="text" id="alergias" name="alergias" placeholder="Si no hay ninguna, déjalo en blanco">
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Un teléfono de contacto</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Por si tenemos que avisaros de algo">
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">¿Algo más que debamos saber?</label>
+          <textarea id="mensaje" name="mensaje"></textarea>
+        </div>
+
+        <p class="aviso" id="rsvp-error" hidden></p>
+        <button class="btn btn-solid" type="submit">Enviar confirmación</button>
+      </form>
+
+      <div class="ok" id="rsvp-ok" hidden>
+        <b id="ok-titulo">¡Gracias!</b>
+        <p id="ok-texto"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="regalos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Regalos</p>
+        <h2>Lo que más nos hace ilusión es que vengáis</h2>
+        <p class="lead">Si además queréis tener un detalle con nosotros, os dejaremos aquí un número de cuenta. <span class="pendiente">próximamente</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Dudas</p>
+        <h2>Si os falta algo, preguntadnos</h2>
+        <p class="lead">Escribidnos a los novios, o el mismo día llamad al teléfono de contacto que publicaremos aquí para no tener que sacar a la novia de la peluquería. <span class="pendiente">teléfono en breve</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="brand">M <i>&amp;</i> S</span>
+  <p>29 · 05 · 2027</p>
+  <p>maleysolis.com</p>
+</footer>
+
+<script src="invitados.js"></script>
+<script>
+(function(){
+  // ---------- Cuenta atrás ----------
+  var boda = new Date(2027, 4, 29, 12, 30, 0); // 29 de mayo de 2027, 12:30
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var ms = boda - new Date();
+    if (ms < 0) { document.getElementById('countdown').hidden = true; return; }
+    var d = Math.floor(ms/864e5), h = Math.floor(ms%864e5/36e5), m = Math.floor(ms%36e5/6e4);
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+  }
+  tick(); setInterval(tick, 30000);
+
+  // ---------- Invitación personalizada ----------
+  // El enlace de cada invitación lleva ?i=codigo. Los códigos viven en invitados.js.
+  var params = new URLSearchParams(location.search);
+  var codigo = (params.get('i') || '').toLowerCase();
+  var inv = (window.INVITADOS && window.INVITADOS[codigo]) || null;
+  var plazas = inv ? inv.plazas : 1;
+
+  if (inv) {
+    var saludo = document.getElementById('saludo');
+    saludo.innerHTML = 'Querid' + (inv.genero === 'f' ? 'a' : inv.genero === 'p' ? 'os' : 'o') + ' <b>' + inv.nombre + '</b>' +
+      (plazas > 1 ? ', tenéis reservadas <b>' + plazas + ' plazas</b>.' : ', tienes reservada <b>1 plaza</b>.') +
+      ' Nos haría mucha ilusión veros allí.';
+    saludo.hidden = false;
+    document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
+  }
+
+  // Campos de nombre: uno por plaza
+  var cont = document.getElementById('acompanantes');
+  var nombres = inv && inv.nombres ? inv.nombres : [];
+  for (var i = 0; i < plazas; i++) {
+    var wrap = document.createElement('div');
+    var input = document.createElement('input');
+    input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
+    input.placeholder = i === 0 ? 'Tu nombre y apellidos' : 'Acompañante ' + (i+1) + ' (deja en blanco si no viene)';
+    if (nombres[i]) input.value = nombres[i];
+    input.setAttribute('aria-label', 'Persona ' + (i+1));
+    wrap.appendChild(input); cont.appendChild(wrap);
+  }
+  document.getElementById('aviso-plazas').textContent = inv
+    ? (plazas > 1 ? 'Esta invitación es para ' + plazas + ' personas. Si alguna no puede venir, deja su casilla en blanco.' : 'Esta invitación es para una persona.')
+    : 'Si has recibido un enlace personal, usa ese para que reconozcamos tu invitación.';
+
+  // Mostrar u ocultar bloques según asistencia
+  var radios = document.querySelectorAll('input[name=asistencia]');
+  function refrescar(){
+    var no = document.getElementById('asistencia-no').checked;
+    document.getElementById('bloque-bus').hidden = no;
+    document.getElementById('bloque-alergias').hidden = no;
+  }
+  for (var r = 0; r < radios.length; r++) radios[r].addEventListener('change', refrescar);
+
+  // ---------- Envío ----------
+  // De momento la web solo muestra la respuesta; se conectará al formulario de respuestas cuando esté creado.
+  var form = document.getElementById('rsvp');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var err = document.getElementById('rsvp-error');
+    var asis = form.querySelector('input[name=asistencia]:checked');
+    var primero = document.getElementById('persona-1').value.trim();
+    if (!asis) { err.textContent = 'Dinos si vienes o no.'; err.hidden = false; return; }
+    if (!primero) { err.textContent = 'Necesitamos al menos tu nombre.'; err.hidden = false; return; }
+    err.hidden = true;
+
+    var datos = { codigo: codigo, asistencia: asis.value, personas: [], bus: document.getElementById('bus').value,
+      alergias: document.getElementById('alergias').value.trim(), telefono: document.getElementById('telefono').value.trim(),
+      mensaje: document.getElementById('mensaje').value.trim() };
+    for (var i = 1; i <= plazas; i++) {
+      var v = document.getElementById('persona-' + i).value.trim();
+      if (v) datos.personas.push(v);
+    }
+    if (window.enviarRespuesta) { window.enviarRespuesta(datos); }
+
+    form.hidden = true;
+    var ok = document.getElementById('rsvp-ok');
+    document.getElementById('ok-titulo').textContent = asis.value === 'si' ? '¡Qué alegría!' : 'Os echaremos de menos';
+    document.getElementById('ok-texto').textContent = asis.value === 'si'
+      ? 'Apuntad' + (datos.personas.length > 1 ? 'os' : 'o') + ': ' + datos.personas.join(', ') + '. Nos vemos el 29 de mayo.'
+      : 'Gracias por avisarnos. Brindaremos por vosotros.';
+    ok.hidden = false;
+    ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+</body>
+</html>
