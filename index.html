@@ -481,9 +481,7 @@
     input.setAttribute('aria-label', 'Persona ' + (i+1));
     wrap.appendChild(input); cont.appendChild(wrap);
   }
-  document.getElementById('aviso-plazas').textContent = inv
-    ? (plazas > 1 ? 'Esta invitación es para ' + plazas + ' personas. Si alguna no puede venir, deja su casilla en blanco.' : 'Esta invitación es para una persona.')
-    : 'Si has recibido un enlace personal, usa ese para que reconozcamos tu invitación.';
+  document.getElementById('aviso-plazas').hidden = true;
 
   // Mostrar u ocultar bloques según asistencia
   var radios = document.querySelectorAll('input[name=asistencia]');
