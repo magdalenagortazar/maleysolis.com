@@ -352,7 +352,7 @@
         </div>
 
         <div class="campo" id="bloque-nombres">
-          <label>Quiénes venís</label>
+          <label>Quiénes venís (nombre, primer y segundo apellido)</label>
           <div class="acomp" id="acompanantes"></div>
           <p class="aviso" id="aviso-plazas"></p>
         </div>
@@ -379,6 +379,11 @@
         <div class="campo" id="bloque-alergias">
           <label for="alergias">Alergias o intolerancias</label>
           <input type="text" id="alergias" name="alergias" placeholder="Si no hay ninguna, déjalo en blanco">
+        </div>
+
+        <div class="campo" id="bloque-direccion">
+          <label for="direccion">Dirección postal, para enviaros la invitación</label>
+          <input type="text" id="direccion" name="direccion" placeholder="Calle, número, piso, código postal y ciudad">
         </div>
 
         <div class="campo">
@@ -480,7 +485,7 @@
     var wrap = document.createElement('div');
     var input = document.createElement('input');
     input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
-    input.placeholder = i === 0 ? 'Tu nombre y apellidos' : 'Acompañante ' + (i+1) + ' (deja en blanco si no viene)';
+    input.placeholder = i === 0 ? 'Nombre y dos apellidos' : 'Acompañante ' + (i+1) + ': nombre y dos apellidos (en blanco si no viene)';
     if (nombres[i]) input.value = nombres[i];
     input.setAttribute('aria-label', 'Persona ' + (i+1));
     wrap.appendChild(input); cont.appendChild(wrap);
@@ -493,6 +498,7 @@
     var no = document.getElementById('asistencia-no').checked;
     document.getElementById('bloque-bus').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
+    document.getElementById('bloque-direccion').hidden = no;
     if (inv && inv.preboda) document.getElementById('bloque-preboda').hidden = no;
   }
   for (var r = 0; r < radios.length; r++) radios[r].addEventListener('change', refrescar);
@@ -501,7 +507,7 @@
   // Las respuestas van a un formulario de Google (cuenta de Magdalena) sin que el invitado salga de la web.
   var FORM_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfaMrtrCZs4uhqK8UFoUILecJ5qOPMhRi9nJx-qxkMEDxje5g/formResponse';
   var CAMPOS = { codigo:'entry.1503952189', invitacion:'entry.1605586533', asistencia:'entry.399777822', personas:'entry.1140168907',
-    preboda:'entry.718608536', bus:'entry.1649016250', alergias:'entry.1320641239', telefono:'entry.782198896', mensaje:'entry.1045242669' };
+    preboda:'entry.718608536', bus:'entry.1649016250', alergias:'entry.1320641239', telefono:'entry.782198896', mensaje:'entry.1045242669', direccion:'entry.1007048015' };
   window.enviarRespuesta = function(d){
     try {
       var fd = new FormData();
@@ -512,6 +518,7 @@
       fd.append(CAMPOS.preboda, d.preboda === 'si' ? 'Sí' : d.preboda === 'no' ? 'No' : '');
       fd.append(CAMPOS.bus, d.bus);
       fd.append(CAMPOS.alergias, d.alergias);
+      fd.append(CAMPOS.direccion, d.direccion || '');
       fd.append(CAMPOS.telefono, d.telefono);
       fd.append(CAMPOS.mensaje, d.mensaje);
       fetch(FORM_URL, { method:'POST', mode:'no-cors', body: fd });
@@ -528,7 +535,7 @@
     err.hidden = true;
 
     var datos = { codigo: codigo, asistencia: asis.value, personas: [], bus: document.getElementById('bus').value,
-      alergias: document.getElementById('alergias').value.trim(), telefono: document.getElementById('telefono').value.trim(),
+      alergias: document.getElementById('alergias').value.trim(), direccion: document.getElementById('direccion').value.trim(), telefono: document.getElementById('telefono').value.trim(),
       mensaje: document.getElementById('mensaje').value.trim(),
       preboda: (form.querySelector('input[name=preboda]:checked') || {}).value || '' };
     for (var i = 1; i <= plazas; i++) {
