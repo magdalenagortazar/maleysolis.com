@@ -58,13 +58,28 @@
   .nav li a:hover{color:var(--fino)}
   @media (max-width:640px){.nav ul{display:none}}
 
-  /* Portada */
+  /* Portada con foto */
+  .foto{
+    position:relative;min-height:92vh;min-height:92svh;display:grid;
+    background:var(--verde) url(fotos/portada.jpg) center/cover no-repeat;
+  }
+  .foto::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,35,28,.30),rgba(20,35,28,.70))}
+  .foto-c{
+    position:relative;z-index:1;align-content:center;justify-items:center;text-align:center;
+    display:grid;gap:18px;padding:80px 20px 64px;color:var(--albariza);
+  }
+  .foto .names{color:var(--albariza)}
+  .foto .eyebrow{color:var(--fino-2)}
+  /* Bloque de fecha, hora y lugar */
   .hero{
     text-align:center;
-    padding:72px 20px 56px;
+    padding:56px 20px 48px;
     max-width:760px;margin:0 auto;
-    display:grid;gap:22px;justify-items:center;
+    display:grid;gap:18px;justify-items:center;
   }
+  .datos{display:grid;gap:6px}
+  .datos .date{font-size:clamp(26px,4vw,36px);color:var(--verde)}
+  .datos .hora{font-family:var(--display);font-size:clamp(20px,3vw,26px);color:var(--fino)}
   .eyebrow{
     font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--fino);font-weight:600;
   }
@@ -111,19 +126,6 @@
   .sec-head{display:grid;gap:10px}
   .sec-head h2{font-size:clamp(34px,5vw,48px);color:var(--verde)}
   .lead{font-size:18px;color:var(--tinta-2);max-width:60ch}
-
-  /* Programa del día */
-  .programa{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
-  .programa li{
-    display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start;
-    padding:18px 0;border-top:1px solid var(--linea);
-  }
-  .programa li:last-child{border-bottom:1px solid var(--linea)}
-  .hora{font-family:var(--display);font-size:26px;color:var(--fino);line-height:1.2;font-variant-numeric:tabular-nums}
-  .programa h3{font-size:22px;color:var(--tinta)}
-  .programa p{color:var(--tinta-2);font-size:16px;margin-top:4px}
-  .pc{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fino);margin-left:8px;white-space:nowrap}
-  @media (max-width:480px){.programa li{grid-template-columns:70px 1fr;gap:12px}.hora{font-size:22px}}
 
   /* Lugares */
   .lugares{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
@@ -199,7 +201,6 @@
     <a class="brand" href="#inicio">M <i>&amp;</i> S</a>
     <nav aria-label="Secciones">
       <ul>
-        <li><a href="#el-dia">El día</a></li>
         <li><a href="#lugares">Lugares</a></li>
         <li><a href="#llegar">Cómo llegar</a></li>
         <li><a href="#confirmar">Confirmar</a></li>
@@ -211,12 +212,22 @@
 
 <main id="inicio">
 
+  <div class="foto">
+    <div class="foto-c">
+      <p class="eyebrow">Nos casamos</p>
+      <h1 class="names">Male<span class="amp">&amp;</span>Solís</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="place">29 · 05 · 2027</p>
+    </div>
+  </div>
+
   <div class="hero">
-    <p class="eyebrow">Nos casamos</p>
-    <h1 class="names">Male<span class="amp">&amp;</span>Solís</h1>
+    <div class="datos">
+      <p class="date">Sábado, 29 de mayo de 2027</p>
+      <p class="hora">a las 12:30</p>
+      <p class="place">Parroquia de San Francisco, El Puerto de Santa María<br>y después, Bodegas Tío Pepe, Jerez de la Frontera</p>
+    </div>
     <div class="rule" aria-hidden="true"></div>
-    <p class="date">Sábado, 29 de mayo de 2027</p>
-    <p class="place">El Puerto de Santa María · Jerez de la Frontera</p>
     <div class="countdown" id="countdown" aria-label="Cuenta atrás">
       <div><b id="cd-d">—</b><span>días</span></div>
       <div><b id="cd-h">—</b><span>horas</span></div>
@@ -226,53 +237,6 @@
   </div>
 
   <div class="franja">Una boda entre <span>el mar de El Puerto</span> y <span>las bodegas de Jerez</span></div>
-
-  <section id="el-dia">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">El día</p>
-        <h2>Así será el sábado</h2>
-        <p class="lead">La ceremonia es en El Puerto de Santa María y la celebración en Jerez, a veinte minutos. Iremos actualizando las horas conforme las cerremos.</p>
-      </div>
-      <ol class="programa">
-        <li>
-          <div class="hora">12:30</div>
-          <div>
-            <h3>Ceremonia</h3>
-            <p>Parroquia de San Francisco (los Jesuitas), El Puerto de Santa María. Os pedimos puntualidad: la misa empieza en punto.</p>
-          </div>
-        </li>
-        <li>
-          <div class="hora">14:00</div>
-          <div>
-            <h3>Camino de Jerez <span class="pc">hora por confirmar</span></h3>
-            <p>Autobuses desde la iglesia hasta las bodegas para quien no vaya en coche.</p>
-          </div>
-        </li>
-        <li>
-          <div class="hora">14:30</div>
-          <div>
-            <h3>Cóctel en los jardines <span class="pc">hora por confirmar</span></h3>
-            <p>Bodegas Tío Pepe, González Byass. Con una copa de fino como manda el sitio.</p>
-          </div>
-        </li>
-        <li>
-          <div class="hora">16:00</div>
-          <div>
-            <h3>Comida en la Bodega Los Gigantes <span class="pc">hora por confirmar</span></h3>
-            <p>Comida sentada dentro de la bodega, entre las botas.</p>
-          </div>
-        </li>
-        <li>
-          <div class="hora">19:00</div>
-          <div>
-            <h3>Baile <span class="pc">hora por confirmar</span></h3>
-            <p>Hasta que el cuerpo aguante. La fiesta acaba a las 2:00.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
 
   <section id="lugares">
     <div class="wrap wrap-wide">
@@ -289,7 +253,7 @@
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Parroquia+de+San+Francisco+Jesuitas+Calle+San+Francisco+27+El+Puerto+de+Santa+Maria" target="_blank" rel="noopener">Ver en el mapa</a>
         </article>
         <article class="lugar">
-          <p class="eyebrow">Celebración · desde las 14:30</p>
+          <p class="eyebrow">Celebración · después de la ceremonia</p>
           <h3>Bodegas Tío Pepe · Los Gigantes</h3>
           <p class="dir">Calle Manuel María González, 12 · Jerez de la Frontera (Cádiz)</p>
           <p>Las bodegas de González Byass, en pleno centro de Jerez, junto a la catedral. El cóctel en los jardines y la comida en la Bodega Los Gigantes.</p>
