@@ -7,5 +7,6 @@
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
 window.INVITADOS = {
   "prueba": { nombre: "Familia de prueba", plazas: 2, genero: "p", nombres: ["Persona de prueba", ""], preboda: true },
-  "prueba1": { nombre: "Invitada de prueba", plazas: 1, genero: "f" }
+  "prueba1": { nombre: "Invitada de prueba", plazas: 1, genero: "f" },
+  "preboda": { nombre: "Familia de ejemplo", plazas: 2, genero: "p", preboda: true }
 };
