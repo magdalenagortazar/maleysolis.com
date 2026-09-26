@@ -60,7 +60,7 @@
 
   /* Portada con foto */
   .foto{
-    position:relative;min-height:92vh;min-height:92svh;display:grid;
+    position:relative;height:46vh;height:46svh;min-height:260px;max-height:520px;display:grid;
     background:var(--verde) url(fotos/portada.jpg) center/cover no-repeat;
   }
   
@@ -74,18 +74,18 @@
   /* Bloque de fecha, hora y lugar */
   .hero{
     text-align:center;
-    padding:64px 20px 64px;
+    padding:28px 20px 48px;
     max-width:760px;margin:0 auto;
-    display:grid;gap:18px;justify-items:center;
+    display:grid;gap:12px;justify-items:center;
   }
   .datos{display:grid;gap:6px}
-  .datos .date{font-size:clamp(26px,4vw,36px);color:var(--verde)}
+  .datos .date{font-size:clamp(22px,3.5vw,32px);color:var(--verde)}
   .datos .hora{font-family:var(--display);font-size:clamp(20px,3vw,26px);color:var(--fino)}
   .eyebrow{
     font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--fino);font-weight:600;
   }
   .names{
-    font-size:clamp(56px,11vw,112px);
+    font-size:clamp(48px,10vw,96px);
     line-height:.95;color:var(--verde);
     font-variation-settings:"opsz" 96;
   }
@@ -102,7 +102,7 @@
     margin-top:8px;font-variant-numeric:tabular-nums;
   }
   .countdown div{display:grid;gap:2px;min-width:64px}
-  .countdown b{font-family:var(--display);font-weight:400;font-size:40px;line-height:1;color:var(--verde)}
+  .countdown b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;color:var(--verde)}
   .countdown span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
   .saludo{
     background:#FBFAF6;color:var(--tinta);border:1px solid var(--linea);border-top:2px solid var(--fino);
