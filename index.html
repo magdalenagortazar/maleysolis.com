@@ -13,12 +13,12 @@
   :root{
     --albariza:#F4F2EC;
     --albariza-2:#EAE6DC;
-    --tinta:#1B211D;
-    --tinta-2:#4A524C;
-    --verde:#1C1C1C;      /* color principal: titulares, nombres, botones */
-    --verde-2:#333333;
-    --fino:#C6553B;       /* acento: terracota */
-    --fino-2:#E07A62;
+    --tinta:#333333;
+    --tinta-2:#666666;
+    --verde:#3A3A3A;      /* color principal: titulares, nombres, botones (gris oscuro) */
+    --verde-2:#4E4E4E;
+    --fino:#A3262F;       /* acento: carmín */
+    --fino-2:#C4464F;
     --linea:#CFC9BB;
     --display:"Bodoni Moda", "Didot", "Playfair Display", Georgia, serif;
     --body:"Karla", "Helvetica Neue", Arial, sans-serif;
@@ -58,19 +58,14 @@
   .nav li a:hover{color:var(--fino)}
   @media (max-width:640px){.nav ul{display:none}}
 
-  /* Portada con foto */
+  /* Portada: pase de fotos, pequeño y centrado sobre el fondo */
   .foto{
-    position:relative;height:46vh;height:46svh;min-height:260px;max-height:520px;display:grid;
-    background:var(--verde) url(fotos/portada.jpg) center/cover no-repeat;
+    position:relative;width:min(52%,360px);aspect-ratio:4/5;margin:32px auto 0;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);background:var(--albariza);
   }
-  
-  .foto-c{
-    position:relative;z-index:1;align-content:center;justify-items:center;text-align:center;
-    display:grid;gap:18px;padding:80px 20px 64px;color:var(--albariza);
-  }
-  .foto .names{color:var(--albariza)}
-  .foto .eyebrow{color:var(--fino-2)}
-  .foto .place{color:var(--albariza);font-family:var(--display);font-size:22px;letter-spacing:.12em}
+  .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.2s ease}
+  .foto img.on{opacity:1}
+  @media (prefers-reduced-motion:reduce){.foto img{transition:none}}
   /* Bloque de fecha, hora y lugar */
   .hero{
     text-align:center;
@@ -227,7 +222,11 @@
 
 <main id="inicio">
 
-  <div class="foto" role="img" aria-label="Foto de Male y Solís"></div>
+  <div class="foto" role="img" aria-label="Fotos de Male y Solís">
+    <img src="fotos/portada-pedida.jpg" alt="" class="on">
+    <img src="fotos/portada-jardin.jpg" alt="">
+    <img src="fotos/portada-playa.jpg" alt="">
+  </div>
 
   <div class="hero">
     <p class="eyebrow">¡Nos casamos!</p>
@@ -445,6 +444,10 @@
     document.getElementById('cd-m').textContent = pad(m);
   }
   tick(); setInterval(tick, 30000);
+
+  // ---------- Pase de fotos de portada (cada 3 segundos) ----------
+  var fotos = document.querySelectorAll('.foto img'), f = 0;
+  if (fotos.length > 1) setInterval(function(){ fotos[f].classList.remove('on'); f = (f + 1) % fotos.length; fotos[f].classList.add('on'); }, 3000);
 
   // ---------- Invitación personalizada ----------
   // El enlace de cada invitación lleva ?i=codigo. Los códigos viven en invitados.js.
