@@ -105,19 +105,17 @@
   .countdown b{font-family:var(--display);font-weight:400;font-size:40px;line-height:1;color:var(--verde)}
   .countdown span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
   .saludo{
-    background:var(--verde);color:var(--albariza);
-    padding:14px 20px;border-radius:2px;max-width:560px;
-    font-size:16px;
+    background:#FBFAF6;color:var(--tinta);border:1px solid var(--linea);border-top:2px solid var(--fino);
+    padding:16px 22px;max-width:560px;font-size:16px;
   }
-  .saludo b{color:var(--fino-2);font-weight:600}
+  .saludo b{color:var(--verde);font-weight:600}
 
   /* Franja de fino */
   .franja{
-    background:var(--verde);color:var(--albariza);
-    padding:22px 20px;text-align:center;
-    font-family:var(--display);font-style:italic;font-size:clamp(18px,2.6vw,24px);
+    padding:8px 20px 56px;text-align:center;max-width:640px;margin:0 auto;
+    font-family:var(--display);font-style:italic;font-size:clamp(20px,3vw,28px);color:var(--tinta-2);line-height:1.35;
   }
-  .franja span{color:var(--fino-2)}
+  .franja span{color:var(--fino)}
 
   /* Secciones */
   section{padding:64px 20px;border-bottom:1px solid var(--linea)}
@@ -173,15 +171,16 @@
     display:flex;align-items:center;gap:8px;
   }
   .opciones input{accent-color:var(--verde)}
-  .opciones label:has(input:checked){border-color:var(--verde);background:var(--verde);color:var(--albariza)}
+  .opciones label:has(input:checked){border-color:var(--fino);background:#FFF8E6;color:var(--tinta);box-shadow:inset 0 0 0 1px var(--fino)}
   .acomp{display:grid;gap:10px}
   .aviso{
     font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
   }
   .ok{
-    background:var(--verde);color:var(--albariza);padding:22px 24px;display:grid;gap:8px;
+    background:#FBFAF6;color:var(--tinta);border:1px solid var(--linea);border-top:2px solid var(--fino);
+    padding:22px 24px;display:grid;gap:8px;
   }
-  .ok b{font-family:var(--display);font-weight:400;font-size:26px}
+  .ok b{font-family:var(--display);font-weight:400;font-size:26px;color:var(--verde)}
   button.btn{font-family:var(--body);cursor:pointer;background:var(--verde);color:var(--albariza)}
   button.btn:hover{background:var(--verde-2)}
 
@@ -215,7 +214,7 @@
 
   <div class="foto">
     <div class="foto-c">
-      <p class="eyebrow">Nos casamos</p>
+      <p class="eyebrow">Después de tanto soñarlo</p>
       <h1 class="names">Male<span class="amp">&amp;</span>Solís</h1>
       <div class="rule" aria-hidden="true"></div>
       <p class="place">29 · 05 · 2027</p>
@@ -237,7 +236,7 @@
     <p class="saludo" id="saludo" hidden></p>
   </div>
 
-  <div class="franja">Una boda entre <span>el mar de El Puerto</span> y <span>las bodegas de Jerez</span></div>
+  <div class="franja">Nos casamos, y no se nos ocurre mejor manera de empezar que <span>rodeados de la gente que queremos</span>. Ven a celebrarlo con nosotros.</div>
 
   <section id="lugares">
     <div class="wrap wrap-wide">
