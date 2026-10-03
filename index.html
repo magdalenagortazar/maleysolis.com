@@ -340,6 +340,7 @@
         <div>
           <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
           <p id="hotel-familia" hidden>Se está gestionando el hotel para la familia.</p>
+          <p id="hotel-jovenes" hidden>A los más jóvenes os recomendamos dormir en El Puerto de Santa María: allí es la preboda del viernes y allí terminan los autobuses la noche de la boda, así que os ahorráis viajes. Estamos cerrando condiciones especiales con varios hoteles para que os salga mejor, y aquí pondremos opciones tanto en El Puerto como en Jerez para que elijáis la que más os guste.</p>
           <p id="hotel-general">Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos. Los dos sitios están a veinte minutos, así que cualquiera de los dos va bien.</p>
           <p id="hotel-preboda" hidden>Si venís a la preboda del viernes, os recomendamos dormir en El Puerto: el Club Las Redes está allí mismo y os ahorráis el viaje esa noche.</p>
         </div>
@@ -498,12 +499,17 @@
       document.getElementById('hotel-general').hidden = true;
       document.getElementById('hotel-familia').hidden = false;
     }
+    if (inv.joven) {
+      // Jóvenes: recomendación de dormir en El Puerto, en lugar del texto general.
+      document.getElementById('hotel-general').hidden = true;
+      document.getElementById('hotel-jovenes').hidden = false;
+    }
     if (inv.zaragoza) document.getElementById('llegar-zaragoza').hidden = false;
     if (inv.preboda) {
       document.getElementById('preboda').hidden = false;
       document.getElementById('nav-preboda').hidden = false;
       document.getElementById('bloque-preboda').hidden = false;
-      document.getElementById('hotel-preboda').hidden = false;
+      if (!inv.joven) document.getElementById('hotel-preboda').hidden = false;
     }
   }
 

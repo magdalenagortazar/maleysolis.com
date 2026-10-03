@@ -7,12 +7,13 @@
 // ninos (opcional): posiciones (desde 0) de los niños; se les pide la edad.
 // titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
 // familia: true en la familia de la novia (sin la información general de hoteles) · zaragoza: true muestra cómo llegar desde Zaragoza.
+// joven: true muestra la recomendación de dormir en El Puerto (amigas y jóvenes).
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
 window.INVITADOS = {
-  "prueba": { nombre: "Familia de prueba", plazas: 2, genero: "p", nombres: ["Persona de prueba", ""], preboda: true },
+  "prueba": { nombre: "Familia de prueba", plazas: 2, genero: "p", nombres: ["Persona de prueba", ""], preboda: true, joven: true },
   "prueba1": { nombre: "Invitada de prueba", plazas: 1, genero: "f" },
-  "preboda": { nombre: "Familia de ejemplo", plazas: 2, genero: "p", preboda: true },
+  "preboda": { nombre: "Familia de ejemplo", plazas: 2, genero: "p", preboda: true, joven: true },
   // Familia materna y paterna de la novia (03/10/2026). Hotel en Jerez pagado por los novios.
   // Un enlace por casa; el saludo es el de la familia y el formulario pregunta "titulo, ¿quiénes venís?".
   "florit-machado-aw8a-luis-maricarmen": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Mari Carmen"], titulo: "Luis y Mari Carmen", familia: true },
@@ -48,23 +49,23 @@ window.INVITADOS = {
   "bego-joseantonio-cy5m": { nombre: "Tía Bego y José Antonio", plazas: 2, genero: "p", nombres: ["Begoña", "José Antonio"], titulo: "Begoña y José Antonio", familia: true },
   "sintes-vz35": { nombre: "Familia Sintes", plazas: 5, genero: "p", nombres: ["Carlos", "Silvia", "Román", "Adrián", "Nuria"], titulo: "Carlos, Silvia, Román, Adrián y Nuria", familia: true },
   // Amigas de la novia (03/10/2026): un enlace por amiga o pareja; ven la preboda.
-  "clara-jaime-yscg": { nombre: "Clara y Jaime", plazas: 2, genero: "p", nombres: ["Clara", "Jaime"], titulo: "Clara y Jaime", preboda: true },
-  "elena-qvjn": { nombre: "Elena", plazas: 1, genero: "f", nombres: ["Elena"], titulo: "Elena", preboda: true },
-  "macarena-kp4k": { nombre: "Macarena", plazas: 1, genero: "f", nombres: ["Macarena"], titulo: "Macarena", preboda: true },
-  "maria-javier-5r7q": { nombre: "María y Javier", plazas: 2, genero: "p", nombres: ["María", "Javier"], titulo: "María y Javier", preboda: true },
-  "marisa-gonzalo-9ghf": { nombre: "Marisa y Gonzalo", plazas: 2, genero: "p", nombres: ["Marisa", "Gonzalo"], titulo: "Marisa y Gonzalo", preboda: true },
-  "rocio-afonso-n47v": { nombre: "Rocío y Afonso", plazas: 2, genero: "p", nombres: ["Rocío", "Afonso"], titulo: "Rocío y Afonso", preboda: true },
-  "teresa-javier-mtmu": { nombre: "Teresa y Javier", plazas: 2, genero: "p", nombres: ["Teresa", "Javier"], titulo: "Teresa y Javier", preboda: true },
-  "isabel-johnny-vdxv": { nombre: "Isabel y Johnny", plazas: 2, genero: "p", nombres: ["Isabel", "Johnny"], titulo: "Isabel y Johnny", preboda: true },
-  "alejandra-uvwj": { nombre: "Alejandra", plazas: 1, genero: "f", nombres: ["Alejandra"], titulo: "Alejandra", preboda: true },
-  "belen-tch3": { nombre: "Belén", plazas: 1, genero: "f", nombres: ["Belén"], titulo: "Belén", preboda: true },
-  "marta-felipe-af7e": { nombre: "Marta y Felipe", plazas: 2, genero: "p", nombres: ["Marta", "Felipe"], titulo: "Marta y Felipe", preboda: true },
-  "almu-guille-qdqa": { nombre: "Almu y Guille", plazas: 2, genero: "p", nombres: ["Almu", "Guille"], titulo: "Almu y Guille", preboda: true },
-  "ainhoa-gwxg": { nombre: "Ainhoa", plazas: 1, genero: "f", nombres: ["Ainhoa"], titulo: "Ainhoa", preboda: true },
-  "andy-cobaleda-76kp": { nombre: "Andy y Cobaleda", plazas: 2, genero: "p", nombres: ["Andy", "Cobaleda"], titulo: "Andy y Cobaleda", preboda: true },
-  "mariana-tiago-djya": { nombre: "Mariana y Tiago", plazas: 2, genero: "p", nombres: ["Mariana", "Tiago"], titulo: "Mariana y Tiago", preboda: true },
-  "marta-alberto-9kph": { nombre: "Marta y Alberto", plazas: 2, genero: "p", nombres: ["Marta", "Alberto"], titulo: "Marta y Alberto", preboda: true },
-  "maria-sucri-azzq": { nombre: "María y Sucri", plazas: 2, genero: "p", nombres: ["María", "Sucri"], titulo: "María y Sucri", preboda: true },
-  "candela-carlos-928q": { nombre: "Candela y Carlos", plazas: 2, genero: "p", nombres: ["Candela", "Carlos"], titulo: "Candela y Carlos", preboda: true },
-  "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true }
+  "clara-jaime-yscg": { nombre: "Clara y Jaime", plazas: 2, genero: "p", nombres: ["Clara", "Jaime"], titulo: "Clara y Jaime", preboda: true, joven: true },
+  "elena-qvjn": { nombre: "Elena", plazas: 1, genero: "f", nombres: ["Elena"], titulo: "Elena", preboda: true, joven: true },
+  "macarena-kp4k": { nombre: "Macarena", plazas: 1, genero: "f", nombres: ["Macarena"], titulo: "Macarena", preboda: true, joven: true },
+  "maria-javier-5r7q": { nombre: "María y Javier", plazas: 2, genero: "p", nombres: ["María", "Javier"], titulo: "María y Javier", preboda: true, joven: true },
+  "marisa-gonzalo-9ghf": { nombre: "Marisa y Gonzalo", plazas: 2, genero: "p", nombres: ["Marisa", "Gonzalo"], titulo: "Marisa y Gonzalo", preboda: true, joven: true },
+  "rocio-afonso-n47v": { nombre: "Rocío y Afonso", plazas: 2, genero: "p", nombres: ["Rocío", "Afonso"], titulo: "Rocío y Afonso", preboda: true, joven: true },
+  "teresa-javier-mtmu": { nombre: "Teresa y Javier", plazas: 2, genero: "p", nombres: ["Teresa", "Javier"], titulo: "Teresa y Javier", preboda: true, joven: true },
+  "isabel-johnny-vdxv": { nombre: "Isabel y Johnny", plazas: 2, genero: "p", nombres: ["Isabel", "Johnny"], titulo: "Isabel y Johnny", preboda: true, joven: true },
+  "alejandra-uvwj": { nombre: "Alejandra", plazas: 1, genero: "f", nombres: ["Alejandra"], titulo: "Alejandra", preboda: true, joven: true },
+  "belen-tch3": { nombre: "Belén", plazas: 1, genero: "f", nombres: ["Belén"], titulo: "Belén", preboda: true, joven: true },
+  "marta-felipe-af7e": { nombre: "Marta y Felipe", plazas: 2, genero: "p", nombres: ["Marta", "Felipe"], titulo: "Marta y Felipe", preboda: true, joven: true },
+  "almu-guille-qdqa": { nombre: "Almu y Guille", plazas: 2, genero: "p", nombres: ["Almu", "Guille"], titulo: "Almu y Guille", preboda: true, joven: true },
+  "ainhoa-gwxg": { nombre: "Ainhoa", plazas: 1, genero: "f", nombres: ["Ainhoa"], titulo: "Ainhoa", preboda: true, joven: true },
+  "andy-cobaleda-76kp": { nombre: "Andy y Cobaleda", plazas: 2, genero: "p", nombres: ["Andy", "Cobaleda"], titulo: "Andy y Cobaleda", preboda: true, joven: true },
+  "mariana-tiago-djya": { nombre: "Mariana y Tiago", plazas: 2, genero: "p", nombres: ["Mariana", "Tiago"], titulo: "Mariana y Tiago", preboda: true, joven: true },
+  "marta-alberto-9kph": { nombre: "Marta y Alberto", plazas: 2, genero: "p", nombres: ["Marta", "Alberto"], titulo: "Marta y Alberto", preboda: true, joven: true },
+  "maria-sucri-azzq": { nombre: "María y Sucri", plazas: 2, genero: "p", nombres: ["María", "Sucri"], titulo: "María y Sucri", preboda: true, joven: true },
+  "candela-carlos-928q": { nombre: "Candela y Carlos", plazas: 2, genero: "p", nombres: ["Candela", "Carlos"], titulo: "Candela y Carlos", preboda: true, joven: true },
+  "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true, joven: true }
 };
