@@ -176,7 +176,7 @@
   .acomp .fila input.edad{width:5.5em;flex:none}
   .acomp .persona{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--tinta);cursor:pointer;flex:1;min-height:44px;text-transform:none;letter-spacing:normal;font-weight:400;margin:0}
   .acomp .persona input[type=checkbox]{width:20px;height:20px;flex:none}
-  .acomp .persona input[type=text]{flex:1}
+  .acomp .persona input[type=text]{flex:1;min-width:0}
   .hoteles{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .hotel{border:1px solid var(--linea);background:#FBFAF6;padding:22px 22px 24px;display:grid;gap:8px;align-content:start}
   .hotel h3{font-size:24px;color:var(--verde)}
@@ -598,10 +598,14 @@
       var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'viene-' + (i+1);
       lab.appendChild(cb);
       if (nombres[i]) {
-        lab.appendChild(document.createTextNode(nombres[i]));
+        // Nombre ya escrito; se pide completarlo con los apellidos (para la lista de invitados).
+        var tn = document.createElement('input'); tn.type = 'text'; tn.id = 'persona-' + (i+1);
+        tn.value = nombres[i]; tn.setAttribute('aria-label', nombres[i] + ': nombre y apellidos');
+        tn.addEventListener('input', (function(c){ return function(){ if (this.value.trim()) c.checked = true; }; })(cb));
+        lab.appendChild(tn);
       } else {
         var t = document.createElement('input'); t.type = 'text'; t.id = 'persona-' + (i+1);
-        t.placeholder = esNino ? 'Hijo/a: nombre' : (etiquetas[i] || 'Acompañante') + ': nombre';
+        t.placeholder = (esNino ? 'Hijo/a' : (etiquetas[i] || 'Acompañante')) + ': nombre y apellidos';
         t.setAttribute('aria-label', etiquetas[i] || 'Acompañante');
         t.addEventListener('input', (function(c){ return function(){ if (this.value.trim()) c.checked = true; }; })(cb));
         lab.appendChild(t);
@@ -625,16 +629,18 @@
     if (esNino) fila.appendChild(campoEdad(i));
     wrap.appendChild(fila); cont.appendChild(wrap);
   }
-  // Invitación de una sola persona: no hace falta preguntar quién viene.
-  if (modoCasillas && plazas === 1) { document.getElementById('viene-1').checked = true; document.getElementById('bloque-nombres').hidden = true; }
-  document.getElementById('aviso-plazas').hidden = true;
+  // Invitación de una sola persona: la casilla ya viene marcada; el hueco sirve para los apellidos.
+  if (modoCasillas && plazas === 1) { document.getElementById('viene-1').checked = true; document.getElementById('nombres-titulo').textContent = 'Tu nombre'; }
+  var avisoPlazas = document.getElementById('aviso-plazas');
+  if (modoCasillas) { avisoPlazas.textContent = plazas > 1 ? 'Completad cada nombre con los apellidos: nos hace falta para la lista.' : 'Complétalo con tus apellidos: nos hace falta para la lista.'; }
+  else avisoPlazas.hidden = true;
 
   // Mostrar u ocultar bloques según asistencia
   var radios = document.querySelectorAll('input[name=asistencia]');
   function refrescar(){
     var no = document.getElementById('asistencia-no').checked;
     document.getElementById('bloque-bus').hidden = no;
-    if (!(modoCasillas && plazas === 1)) document.getElementById('bloque-nombres').hidden = no;
+    document.getElementById('bloque-nombres').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
     document.getElementById('bloque-direccion').hidden = no;
     if (inv && (inv.preboda || inv.padres)) document.getElementById('bloque-preboda').hidden = no;
@@ -678,13 +684,13 @@
     var noVienen = [];
     for (var i = 1; i <= plazas; i++) {
       var t = document.getElementById('persona-' + i);
-      var v = nombres[i-1] || (t ? t.value.trim() : '');
+      var v = (t && t.value.trim()) || nombres[i-1] || '';
       var e = document.getElementById('edad-' + i);
       if (v && e && e.value.trim()) v += ' (' + e.value.trim() + (/^\d+$/.test(e.value.trim()) ? ' años' : '') + ')';
       var cbv = document.getElementById('viene-' + i);
       if (modoCasillas) {
         if (cbv.checked) datos.personas.push(v || etiquetas[i-1] || 'Acompañante');
-        else if (nombres[i-1]) noVienen.push(v);
+        else if (nombres[i-1]) noVienen.push(nombres[i-1]);
       } else if (v) datos.personas.push(v);
     }
     if (asis.value === 'si' && !datos.personas.length) { err.textContent = 'Marcad quién viene.'; err.hidden = false; return; }
