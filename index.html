@@ -449,7 +449,11 @@
   <p>maleysolis.com</p>
 </footer>
 
-<script src="invitados.js"></script>
+<script>
+  // invitados.js se carga con la hora en la dirección para que el navegador no use una copia guardada
+  // y las invitaciones nuevas se vean al momento.
+  document.write('<script src="invitados.js?t=' + Date.now() + '"><\/script>');
+</script>
 <script>
 (function(){
   // ---------- Cuenta atrás ----------
