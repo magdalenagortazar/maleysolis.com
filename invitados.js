@@ -62,7 +62,7 @@ window.INVITADOS = {
   "marta-felipe-af7e": { nombre: "Marta y Felipe", plazas: 2, genero: "p", nombres: ["Marta", "Felipe"], titulo: "Marta y Felipe", preboda: true, joven: true },
   "almu-guille-qdqa": { nombre: "Almu y Guille", plazas: 2, genero: "p", nombres: ["Almu", "Guille"], titulo: "Almu y Guille", preboda: true, joven: true },
   "ainhoa-gwxg": { nombre: "Ainhoa", plazas: 1, genero: "f", nombres: ["Ainhoa"], titulo: "Ainhoa", preboda: true, joven: true },
-  "andy-cobaleda-76kp": { nombre: "Andy y Cobaleda", plazas: 2, genero: "p", nombres: ["Andy", "Cobaleda"], titulo: "Andy y Cobaleda", preboda: true, joven: true },
+  "andy-cobi-76kp": { nombre: "Andy y Cobi", plazas: 2, genero: "p", nombres: ["Andy", "Cobi"], titulo: "Andy y Cobi", preboda: true, joven: true },
   "mariana-tiago-djya": { nombre: "Mariana y Tiago", plazas: 2, genero: "p", nombres: ["Mariana", "Tiago"], titulo: "Mariana y Tiago", preboda: true, joven: true },
   "marta-alberto-9kph": { nombre: "Marta y Alberto", plazas: 2, genero: "p", nombres: ["Marta", "Alberto"], titulo: "Marta y Alberto", preboda: true, joven: true },
   "maria-sucri-azzq": { nombre: "María y Sucri", plazas: 2, genero: "p", nombres: ["María", "Sucri"], titulo: "María y Sucri", preboda: true, joven: true },
@@ -73,3 +73,5 @@ window.INVITADOS = {
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
 // Enlace antiguo de Ale (por si ya se mandó).
 window.INVITADOS["alejandra-uvwj"] = window.INVITADOS["ale-uvwj"];
+// Enlace antiguo de Andy y Cobi (por si ya se mandó).
+window.INVITADOS["andy-cobaleda-76kp"] = window.INVITADOS["andy-cobi-76kp"];
