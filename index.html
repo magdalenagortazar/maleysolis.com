@@ -174,11 +174,9 @@
   .acomp .fila{display:flex;gap:8px}
   .acomp .fila input:first-child{flex:1}
   .acomp .fila input.edad{width:5.5em;flex:none}
-  .acomp .fila label.viene{display:flex;align-items:center;gap:6px;flex:none;font-size:14px;color:var(--tinta-2);white-space:nowrap}
-  .acomp .hueco.no input[type=text]{opacity:.45;text-decoration:line-through}
-  .hogares{display:grid;gap:12px;max-width:520px}
-  .hogares a.btn{display:block;text-align:center}
-  .volver{font-size:14px;margin:0 0 14px}
+  .acomp .persona{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--tinta);cursor:pointer;flex:1;min-height:44px;text-transform:none;letter-spacing:normal;font-weight:400;margin:0}
+  .acomp .persona input[type=checkbox]{width:20px;height:20px;flex:none}
+  .acomp .persona input[type=text]{flex:1}
   .aviso{
     font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
   }
@@ -362,7 +360,7 @@
         </div>
 
         <div class="campo" id="bloque-nombres">
-          <label>Quiénes venís</label>
+          <label id="nombres-titulo">Quiénes venís</label>
           <div class="acomp" id="acompanantes"></div>
           <p class="aviso" id="aviso-plazas"></p>
         </div>
@@ -409,8 +407,6 @@
         <p class="aviso" id="rsvp-error" hidden></p>
         <button class="btn btn-solid" type="submit">Enviar confirmación</button>
       </form>
-
-      <div class="hogares" id="hogares" hidden></div>
 
       <div class="ok" id="rsvp-ok" hidden>
         <b id="ok-titulo">¡Gracias!</b>
@@ -475,30 +471,18 @@
   var inv = (window.INVITADOS && window.INVITADOS[codigo]) || null;
   var plazas = inv ? inv.plazas : 1;
 
+  // Modo casillas: la invitación trae los nombres; cada persona se marca con una casilla.
+  var modoCasillas = !!(inv && inv.nombres);
   if (inv) {
     var saludo = document.getElementById('saludo');
-    var lista = (inv.nombres || []).filter(function(n){ return n; });
     saludo.innerHTML = '<b>' + inv.nombre + '</b>' +
-      ((plazas > 1 || inv.hogares) ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
+      (plazas > 1 ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
-    if (inv.hogares) {
-      // Enlace de familia: un botón por casa; cada casa confirma en su enlace.
-      document.getElementById('rsvp').hidden = true;
-      document.getElementById('rsvp-titulo').textContent = '¿Contamos con vosotros?';
-      document.getElementById('rsvp-lead').textContent = 'Cada casa confirma por separado. Elegid la vuestra:';
-      var hg = document.getElementById('hogares');
-      inv.hogares.forEach(function(h){
-        var a = document.createElement('a'); a.className = 'btn'; a.href = '?i=' + h.codigo + '#confirmar'; a.textContent = h.titulo;
-        hg.appendChild(a);
-      });
-      hg.hidden = false;
-    }
-    if (inv.familia && window.INVITADOS[inv.familia]) {
-      var v = document.createElement('p'); v.className = 'volver';
-      var va = document.createElement('a'); va.href = '?i=' + inv.familia + '#confirmar'; va.textContent = '← Ver las demás casas de la familia';
-      v.appendChild(va);
-      var form0 = document.getElementById('rsvp'); form0.parentNode.insertBefore(v, form0);
+    if (inv.titulo && plazas > 1) document.getElementById('nombres-titulo').textContent = inv.titulo + ', ¿quiénes venís?';
+    if (plazas > 1) {
+      var rs = document.getElementById('asistencia-si').parentNode, rn = document.getElementById('asistencia-no').parentNode;
+      rs.lastChild.textContent = ' Sí, allí estaremos'; rn.lastChild.textContent = ' No podremos ir';
     }
     if (inv.preboda) {
       document.getElementById('preboda').hidden = false;
@@ -508,40 +492,50 @@
     }
   }
 
-  // Campos de nombre: uno por plaza.
-  // etiquetas (opcional): texto encima de cada hueco (p. ej. "Novia de Borja").
-  // ninos (opcional): posiciones (desde 0) que son niños; a esos se les pide también la edad.
+  // Quiénes venís.
+  // Con invitación: una casilla por persona (nombres). Los huecos sin nombre (etiquetas, p. ej. "Novia de Borja")
+  // llevan además un campo para escribirlo; a los niños (ninos: posiciones desde 0) se les pide la edad.
+  // Sin invitación: campos de texto como siempre.
   var cont = document.getElementById('acompanantes');
   var nombres = inv && inv.nombres ? inv.nombres : [];
   var etiquetas = inv && inv.etiquetas ? inv.etiquetas : [];
   var ninos = inv && inv.ninos ? inv.ninos : [];
-  var lv = null;
+  function campoEdad(i){
+    var edad = document.createElement('input');
+    edad.type = 'text'; edad.inputMode = 'numeric'; edad.className = 'edad'; edad.id = 'edad-' + (i+1);
+    edad.placeholder = 'Edad'; edad.setAttribute('aria-label', 'Edad');
+    return edad;
+  }
   for (var i = 0; i < plazas; i++) {
     var wrap = document.createElement('div'); wrap.className = 'hueco';
-    var esNino = ninos.indexOf(i) !== -1;
-    if (etiquetas[i]) { var sm = document.createElement('small'); sm.textContent = etiquetas[i]; wrap.appendChild(sm); }
     var fila = document.createElement('div'); fila.className = 'fila';
-    var input = document.createElement('input');
-    input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
-    input.placeholder = (i === 0 && !etiquetas[i]) ? 'Nombre' : (etiquetas[i] || esNino ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)');
-    if (nombres[i]) input.value = nombres[i];
-    input.setAttribute('aria-label', etiquetas[i] || ('Persona ' + (i+1)));
-    fila.appendChild(input);
-    if (plazas > 1) {
-      var lv = document.createElement('label'); lv.className = 'viene';
-      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'viene-' + (i+1); cb.checked = true;
-      cb.addEventListener('change', (function(w, c){ return function(){ w.classList.toggle('no', !c.checked); }; })(wrap, cb));
-      lv.appendChild(cb); lv.appendChild(document.createTextNode('viene'));
+    var esNino = ninos.indexOf(i) !== -1;
+    if (modoCasillas) {
+      var lab = document.createElement('label'); lab.className = 'persona';
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'viene-' + (i+1);
+      lab.appendChild(cb);
+      if (nombres[i]) {
+        lab.appendChild(document.createTextNode(nombres[i]));
+      } else {
+        var t = document.createElement('input'); t.type = 'text'; t.id = 'persona-' + (i+1);
+        t.placeholder = esNino ? 'Hijo/a: nombre' : (etiquetas[i] || 'Acompañante') + ': nombre';
+        t.setAttribute('aria-label', etiquetas[i] || 'Acompañante');
+        t.addEventListener('input', (function(c){ return function(){ if (this.value.trim()) c.checked = true; }; })(cb));
+        lab.appendChild(t);
+      }
+      fila.appendChild(lab);
+    } else {
+      var input = document.createElement('input');
+      input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
+      input.placeholder = i === 0 ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)';
+      input.setAttribute('aria-label', 'Persona ' + (i+1));
+      fila.appendChild(input);
     }
-    if (esNino) {
-      var edad = document.createElement('input');
-      edad.type = 'text'; edad.inputMode = 'numeric'; edad.className = 'edad'; edad.id = 'edad-' + (i+1);
-      edad.placeholder = 'Edad'; edad.setAttribute('aria-label', 'Edad');
-      fila.appendChild(edad);
-    }
-    if (lv) { fila.appendChild(lv); lv = null; }
+    if (esNino) fila.appendChild(campoEdad(i));
     wrap.appendChild(fila); cont.appendChild(wrap);
   }
+  // Invitación de una sola persona: no hace falta preguntar quién viene.
+  if (modoCasillas && plazas === 1) { document.getElementById('viene-1').checked = true; document.getElementById('bloque-nombres').hidden = true; }
   document.getElementById('aviso-plazas').hidden = true;
 
   // Mostrar u ocultar bloques según asistencia
@@ -549,6 +543,7 @@
   function refrescar(){
     var no = document.getElementById('asistencia-no').checked;
     document.getElementById('bloque-bus').hidden = no;
+    if (!(modoCasillas && plazas === 1)) document.getElementById('bloque-nombres').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
     document.getElementById('bloque-direccion').hidden = no;
     if (inv && inv.preboda) document.getElementById('bloque-preboda').hidden = no;
@@ -581,9 +576,8 @@
     e.preventDefault();
     var err = document.getElementById('rsvp-error');
     var asis = form.querySelector('input[name=asistencia]:checked');
-    var primero = document.getElementById('persona-1').value.trim();
-    if (!asis) { err.textContent = 'Dinos si vienes o no.'; err.hidden = false; return; }
-    if (!primero) { err.textContent = 'Necesitamos al menos tu nombre.'; err.hidden = false; return; }
+    if (!asis) { err.textContent = plazas > 1 ? 'Decidnos si venís o no.' : 'Dinos si vienes o no.'; err.hidden = false; return; }
+    if (!modoCasillas && !document.getElementById('persona-1').value.trim()) { err.textContent = 'Necesitamos al menos tu nombre.'; err.hidden = false; return; }
     err.hidden = true;
 
     var datos = { codigo: codigo, asistencia: asis.value, personas: [], bus: document.getElementById('bus').value,
@@ -592,14 +586,17 @@
       preboda: (form.querySelector('input[name=preboda]:checked') || {}).value || '' };
     var noVienen = [];
     for (var i = 1; i <= plazas; i++) {
-      var v = document.getElementById('persona-' + i).value.trim();
+      var t = document.getElementById('persona-' + i);
+      var v = nombres[i-1] || (t ? t.value.trim() : '');
       var e = document.getElementById('edad-' + i);
       if (v && e && e.value.trim()) v += ' (' + e.value.trim() + (/^\d+$/.test(e.value.trim()) ? ' años' : '') + ')';
       var cbv = document.getElementById('viene-' + i);
-      if (v && cbv && !cbv.checked) { noVienen.push(v); continue; }
-      if (v) datos.personas.push(v);
+      if (modoCasillas) {
+        if (cbv.checked) datos.personas.push(v || etiquetas[i-1] || 'Acompañante');
+        else if (nombres[i-1]) noVienen.push(v);
+      } else if (v) datos.personas.push(v);
     }
-    if (asis.value === 'si' && !datos.personas.length) { err.textContent = 'Marcad al menos a una persona que viene.'; err.hidden = false; return; }
+    if (asis.value === 'si' && !datos.personas.length) { err.textContent = 'Marcad quién viene.'; err.hidden = false; return; }
     if (noVienen.length) datos.noVienen = noVienen;
     if (window.enviarRespuesta) { window.enviarRespuesta(datos); }
 
