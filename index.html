@@ -632,7 +632,7 @@
   // Invitación de una sola persona: la casilla ya viene marcada; el hueco sirve para los apellidos.
   if (modoCasillas && plazas === 1) { document.getElementById('viene-1').checked = true; document.getElementById('nombres-titulo').textContent = 'Tu nombre'; }
   var avisoPlazas = document.getElementById('aviso-plazas');
-  if (modoCasillas) { avisoPlazas.textContent = plazas > 1 ? '¡Completad porfa cada nombre con los apellidos! Nos hace falta para la lista.' : '¡Completa porfa tu nombre con los apellidos! Nos hace falta para la lista.'; }
+  if (modoCasillas) { avisoPlazas.textContent = plazas > 1 ? 'COMPLETAD, PORFA, CADA NOMBRE CON LOS DOS APELLIDOS!!!' : 'COMPLETA, PORFA, TU NOMBRE CON LOS DOS APELLIDOS!!!'; }
   else avisoPlazas.hidden = true;
 
   // Mostrar u ocultar bloques según asistencia
