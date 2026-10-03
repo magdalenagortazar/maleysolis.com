@@ -362,7 +362,7 @@
         </div>
 
         <div class="campo" id="bloque-nombres">
-          <label>Quiénes venís (nombre, primer y segundo apellido)</label>
+          <label>Quiénes venís</label>
           <div class="acomp" id="acompanantes"></div>
           <p class="aviso" id="aviso-plazas"></p>
         </div>
@@ -479,7 +479,7 @@
     var saludo = document.getElementById('saludo');
     var lista = (inv.nombres || []).filter(function(n){ return n; });
     saludo.innerHTML = '<b>' + inv.nombre + '</b>' +
-      (plazas > 1 ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
+      ((plazas > 1 || inv.hogares) ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
     if (inv.hogares) {
@@ -523,8 +523,7 @@
     var fila = document.createElement('div'); fila.className = 'fila';
     var input = document.createElement('input');
     input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
-    input.placeholder = esNino ? 'Nombre y dos apellidos' :
-      (i === 0 ? 'Nombre y dos apellidos' : (etiquetas[i] ? 'Nombre y dos apellidos' : 'Acompañante ' + (i+1) + ': nombre y dos apellidos (en blanco si no viene)'));
+    input.placeholder = (i === 0 && !etiquetas[i]) ? 'Nombre' : (etiquetas[i] || esNino ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)');
     if (nombres[i]) input.value = nombres[i];
     input.setAttribute('aria-label', etiquetas[i] || ('Persona ' + (i+1)));
     fila.appendChild(input);
