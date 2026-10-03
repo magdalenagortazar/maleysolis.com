@@ -78,8 +78,7 @@ window.INVITADOS = {
   "lucia-jacobo-n5ug": { nombre: "Lucía y Jacobo", plazas: 2, genero: "p", nombres: ["Lucía", "Jacobo"], titulo: "Lucía y Jacobo", preboda: true, joven: true },
   // Amigos de los padres de la novia (03/10/2026): un único enlace general para todos.
   // Dos huecos (tú y acompañante) con nombre y apellidos; preboda de adultos en Jerez y hoteles recomendando Jerez.
-  "amigos-gonzalo-magdy-r8tq": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true },
-  "prueba-padres": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true, balon: true },
+  "amigos-gonzalo-magdy-r8tq": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true, balon: true },
   // Familia de Solís (03/10/2026): un enlace por casa.
   "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
@@ -103,3 +102,5 @@ window.INVITADOS["alejandra-uvwj"] = window.INVITADOS["ale-uvwj"];
 window.INVITADOS["andy-cobaleda-76kp"] = window.INVITADOS["andy-cobi-76kp"];
 // Enlace antiguo de Miry y Edu (por si ya se mandó).
 window.INVITADOS["miriam-edu-szu5"] = window.INVITADOS["miry-edu-szu5"];
+// Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
+window.INVITADOS["prueba-padres"] = window.INVITADOS["amigos-gonzalo-magdy-r8tq"];
