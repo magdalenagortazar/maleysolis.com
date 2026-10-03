@@ -68,7 +68,7 @@ window.INVITADOS = {
   "maria-sucri-azzq": { nombre: "María y Sucri", plazas: 2, genero: "p", nombres: ["María", "Sucri"], titulo: "María y Sucri", preboda: true, joven: true },
   "candela-carlos-928q": { nombre: "Candela y Carlos", plazas: 2, genero: "p", nombres: ["Candela", "Carlos"], titulo: "Candela y Carlos", preboda: true, joven: true },
   "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true, joven: true },
-  "miriam-edu-szu5": { nombre: "Miriam y Edu", plazas: 2, genero: "p", nombres: ["Miriam", "Edu"], titulo: "Miriam y Edu", preboda: true, joven: true },
+  "miry-edu-szu5": { nombre: "Miry y Edu", plazas: 2, genero: "p", nombres: ["Miry", "Edu"], titulo: "Miry y Edu", preboda: true, joven: true },
   "cris-chema-6pan": { nombre: "Cris y Chema", plazas: 2, genero: "p", nombres: ["Cris", "Chema"], titulo: "Cris y Chema", preboda: true, joven: true },
   "tere-charlie-9vs8": { nombre: "Tere y Charlie", plazas: 2, genero: "p", nombres: ["Tere", "Charlie"], titulo: "Tere y Charlie", preboda: true, joven: true },
   "lucia-charlie-yrhd": { nombre: "Lucía y Charlie", plazas: 2, genero: "p", nombres: ["Lucía", "Charlie"], titulo: "Lucía y Charlie", preboda: true, joven: true },
@@ -80,3 +80,5 @@ window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
 window.INVITADOS["alejandra-uvwj"] = window.INVITADOS["ale-uvwj"];
 // Enlace antiguo de Andy y Cobi (por si ya se mandó).
 window.INVITADOS["andy-cobaleda-76kp"] = window.INVITADOS["andy-cobi-76kp"];
+// Enlace antiguo de Miry y Edu (por si ya se mandó).
+window.INVITADOS["miriam-edu-szu5"] = window.INVITADOS["miry-edu-szu5"];
