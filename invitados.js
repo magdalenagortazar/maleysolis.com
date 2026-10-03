@@ -31,7 +31,7 @@ window.INVITADOS = {
   "basarte-fernandez-73e5-javi-irune": { nombre: "Familia Basarte Fernández", plazas: 3, genero: "p", nombres: ["Javi", "Irune", "Jimena"], titulo: "Javi e Irune", etiquetas: ["", "", "Hija de Javi e Irune"], ninos: [2], familia: true, zaragoza: true },
   "basarte-fernandez-73e5-nacho-blanca": { nombre: "Familia Basarte Fernández", plazas: 2, genero: "p", nombres: ["Nacho", "Blanca"], titulo: "Nacho y Blanca", familia: true, zaragoza: true },
   "basarte-jesus-wtby": { nombre: "Familia Basarte", plazas: 3, genero: "p", nombres: ["Jesús", "Darío", "Claudia"], titulo: "Jesús, Darío y Claudia", familia: true, zaragoza: true },
-  "alarcon-hu5s": { nombre: "Familia Alarcón Rosalba", plazas: 2, genero: "p", nombres: ["Mariela", "Aarón"], titulo: "Mariela y Aarón", familia: true },
+  "alarcon-hu5s": { nombre: "Familia Alarcón", plazas: 2, genero: "p", nombres: ["Mariela", "Aarón"], titulo: "Mariela y Aarón", familia: true },
   "miriam-r7kd": { nombre: "Miriam", plazas: 1, genero: "f", nombres: ["Miriam"], titulo: "Miriam", familia: true },
   "gortazar-alvarez-ehkm-luis-reyes": { nombre: "Familia Gortázar-Álvarez de las Asturias", plazas: 2, genero: "p", nombres: ["Luis", "Reyes"], titulo: "Luis y Reyes", familia: true },
   "gortazar-alvarez-ehkm-borja": { nombre: "Familia Gortázar-Álvarez de las Asturias", plazas: 2, genero: "p", nombres: ["Borja", ""], titulo: "Borja", etiquetas: ["", "Novia de Borja"], familia: true },
