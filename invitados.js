@@ -56,7 +56,7 @@ window.INVITADOS = {
   "marisa-gonzalo-9ghf": { nombre: "Marisa y Gonzalo", plazas: 2, genero: "p", nombres: ["Marisa", "Gonzalo"], titulo: "Marisa y Gonzalo", preboda: true, joven: true },
   "rocio-afonso-n47v": { nombre: "Rocío y Afonso", plazas: 2, genero: "p", nombres: ["Rocío", "Afonso"], titulo: "Rocío y Afonso", preboda: true, joven: true },
   "teresa-javier-mtmu": { nombre: "Teresa y Javier", plazas: 2, genero: "p", nombres: ["Teresa", "Javier"], titulo: "Teresa y Javier", preboda: true, joven: true },
-  "isabel-johnny-vdxv": { nombre: "Isabel y Johnny", plazas: 2, genero: "p", nombres: ["Isabel", "Johnny"], titulo: "Isabel y Johnny", preboda: true, joven: true },
+  "isabel-jonny-vdxv": { nombre: "Isabel y Jonny", plazas: 2, genero: "p", nombres: ["Isabel", "Jonny"], titulo: "Isabel y Jonny", preboda: true, joven: true },
   "alejandra-uvwj": { nombre: "Alejandra", plazas: 1, genero: "f", nombres: ["Alejandra"], titulo: "Alejandra", preboda: true, joven: true },
   "belen-tch3": { nombre: "Belén", plazas: 1, genero: "f", nombres: ["Belén"], titulo: "Belén", preboda: true, joven: true },
   "marta-felipe-af7e": { nombre: "Marta y Felipe", plazas: 2, genero: "p", nombres: ["Marta", "Felipe"], titulo: "Marta y Felipe", preboda: true, joven: true },
@@ -69,3 +69,5 @@ window.INVITADOS = {
   "candela-carlos-928q": { nombre: "Candela y Carlos", plazas: 2, genero: "p", nombres: ["Candela", "Carlos"], titulo: "Candela y Carlos", preboda: true, joven: true },
   "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true, joven: true }
 };
+// Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
+window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
