@@ -174,6 +174,11 @@
   .acomp .fila{display:flex;gap:8px}
   .acomp .fila input:first-child{flex:1}
   .acomp .fila input.edad{width:5.5em;flex:none}
+  .acomp .fila label.viene{display:flex;align-items:center;gap:6px;flex:none;font-size:14px;color:var(--tinta-2);white-space:nowrap}
+  .acomp .hueco.no input[type=text]{opacity:.45;text-decoration:line-through}
+  .hogares{display:grid;gap:12px;max-width:520px}
+  .hogares a.btn{display:block;text-align:center}
+  .volver{font-size:14px;margin:0 0 14px}
   .aviso{
     font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
   }
@@ -405,6 +410,8 @@
         <button class="btn btn-solid" type="submit">Enviar confirmación</button>
       </form>
 
+      <div class="hogares" id="hogares" hidden></div>
+
       <div class="ok" id="rsvp-ok" hidden>
         <b id="ok-titulo">¡Gracias!</b>
         <p id="ok-texto"></p>
@@ -475,6 +482,24 @@
       (plazas > 1 ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
+    if (inv.hogares) {
+      // Enlace de familia: un botón por casa; cada casa confirma en su enlace.
+      document.getElementById('rsvp').hidden = true;
+      document.getElementById('rsvp-titulo').textContent = '¿Contamos con vosotros?';
+      document.getElementById('rsvp-lead').textContent = 'Cada casa confirma por separado. Elegid la vuestra:';
+      var hg = document.getElementById('hogares');
+      inv.hogares.forEach(function(h){
+        var a = document.createElement('a'); a.className = 'btn'; a.href = '?i=' + h.codigo + '#confirmar'; a.textContent = h.titulo;
+        hg.appendChild(a);
+      });
+      hg.hidden = false;
+    }
+    if (inv.familia && window.INVITADOS[inv.familia]) {
+      var v = document.createElement('p'); v.className = 'volver';
+      var va = document.createElement('a'); va.href = '?i=' + inv.familia + '#confirmar'; va.textContent = '← Ver las demás casas de la familia';
+      v.appendChild(va);
+      var form0 = document.getElementById('rsvp'); form0.parentNode.insertBefore(v, form0);
+    }
     if (inv.preboda) {
       document.getElementById('preboda').hidden = false;
       document.getElementById('nav-preboda').hidden = false;
@@ -490,6 +515,7 @@
   var nombres = inv && inv.nombres ? inv.nombres : [];
   var etiquetas = inv && inv.etiquetas ? inv.etiquetas : [];
   var ninos = inv && inv.ninos ? inv.ninos : [];
+  var lv = null;
   for (var i = 0; i < plazas; i++) {
     var wrap = document.createElement('div'); wrap.className = 'hueco';
     var esNino = ninos.indexOf(i) !== -1;
@@ -502,12 +528,19 @@
     if (nombres[i]) input.value = nombres[i];
     input.setAttribute('aria-label', etiquetas[i] || ('Persona ' + (i+1)));
     fila.appendChild(input);
+    if (plazas > 1) {
+      var lv = document.createElement('label'); lv.className = 'viene';
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'viene-' + (i+1); cb.checked = true;
+      cb.addEventListener('change', (function(w, c){ return function(){ w.classList.toggle('no', !c.checked); }; })(wrap, cb));
+      lv.appendChild(cb); lv.appendChild(document.createTextNode('viene'));
+    }
     if (esNino) {
       var edad = document.createElement('input');
       edad.type = 'text'; edad.inputMode = 'numeric'; edad.className = 'edad'; edad.id = 'edad-' + (i+1);
       edad.placeholder = 'Edad'; edad.setAttribute('aria-label', 'Edad');
       fila.appendChild(edad);
     }
+    if (lv) { fila.appendChild(lv); lv = null; }
     wrap.appendChild(fila); cont.appendChild(wrap);
   }
   document.getElementById('aviso-plazas').hidden = true;
@@ -534,7 +567,7 @@
       fd.append(CAMPOS.codigo, d.codigo || '(sin código)');
       fd.append(CAMPOS.invitacion, inv ? inv.nombre : '');
       fd.append(CAMPOS.asistencia, d.asistencia === 'si' ? 'Sí' : 'No');
-      fd.append(CAMPOS.personas, d.personas.join(', '));
+      fd.append(CAMPOS.personas, d.personas.join(', ') + (d.noVienen ? ' · No vienen: ' + d.noVienen.join(', ') : ''));
       fd.append(CAMPOS.preboda, d.preboda === 'si' ? 'Sí' : d.preboda === 'no' ? 'No' : '');
       fd.append(CAMPOS.bus, d.bus);
       fd.append(CAMPOS.alergias, d.alergias);
@@ -558,12 +591,17 @@
       alergias: document.getElementById('alergias').value.trim(), direccion: document.getElementById('direccion').value.trim(), telefono: document.getElementById('telefono').value.trim(),
       mensaje: document.getElementById('mensaje').value.trim(),
       preboda: (form.querySelector('input[name=preboda]:checked') || {}).value || '' };
+    var noVienen = [];
     for (var i = 1; i <= plazas; i++) {
       var v = document.getElementById('persona-' + i).value.trim();
       var e = document.getElementById('edad-' + i);
       if (v && e && e.value.trim()) v += ' (' + e.value.trim() + (/^\d+$/.test(e.value.trim()) ? ' años' : '') + ')';
+      var cbv = document.getElementById('viene-' + i);
+      if (v && cbv && !cbv.checked) { noVienen.push(v); continue; }
       if (v) datos.personas.push(v);
     }
+    if (asis.value === 'si' && !datos.personas.length) { err.textContent = 'Marcad al menos a una persona que viene.'; err.hidden = false; return; }
+    if (noVienen.length) datos.noVienen = noVienen;
     if (window.enviarRespuesta) { window.enviarRespuesta(datos); }
 
     form.hidden = true;
