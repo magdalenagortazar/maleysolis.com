@@ -177,6 +177,16 @@
   .acomp .persona{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--tinta);cursor:pointer;flex:1;min-height:44px;text-transform:none;letter-spacing:normal;font-weight:400;margin:0}
   .acomp .persona input[type=checkbox]{width:20px;height:20px;flex:none}
   .acomp .persona input[type=text]{flex:1}
+  .hoteles{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .hotel{border:1px solid var(--linea);background:#FBFAF6;padding:22px 22px 24px;display:grid;gap:8px;align-content:start}
+  .hotel h3{font-size:24px;color:var(--verde)}
+  .hotel .eyebrow{font-size:12px;color:var(--verde-2)}
+  .hotel p{color:var(--tinta-2);font-size:15px}
+  .hotel .dir{color:var(--tinta);font-size:14px;font-weight:500}
+  .hotel .btn{margin-top:6px}
+  .hoteles-otros{display:grid;gap:10px}
+  .hoteles-otros h3{font-size:22px;color:var(--verde)}
+  .hoteles-otros p{color:var(--tinta-2);font-size:16px;max-width:60ch}
   .aviso{
     font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
   }
@@ -221,6 +231,7 @@
         <li id="nav-preboda" hidden><a href="#preboda">Preboda</a></li>
         <li><a href="#lugares">Lugares</a></li>
         <li><a href="#llegar">Cómo llegar</a></li>
+        <li id="nav-hoteles" hidden><a href="#hoteles">Hoteles</a></li>
         <li><a href="#confirmar">Confirmar</a></li>
         <li><a href="#regalos">Regalos</a></li>
       </ul>
@@ -274,6 +285,31 @@
           <h3>Dónde</h3>
           <p>Club Las Redes, El Puerto de Santa María.</p>
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Club+Las+Redes+El+Puerto+de+Santa+Maria" target="_blank" rel="noopener">Ver en el mapa</a>
+        </div>
+        <div>
+          <h3>Confirmar</h3>
+          <p>Al confirmar la asistencia a la boda, más abajo, os preguntamos también si venís a la preboda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preboda-padres" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <svg class="dib" viewBox="0 0 96 96" aria-hidden="true"><use href="#catavinos"/></svg>
+        <p class="eyebrow">La víspera</p>
+        <h2>Preboda en Jerez</h2>
+        <p class="lead">El viernes 28 de mayo, la víspera de la boda, Gonzalo y Magdy reúnen a sus amigos en Jerez para brindar por los novios.</p>
+      </div>
+      <div class="info">
+        <div>
+          <h3>Cuándo</h3>
+          <p>Viernes 28 de mayo de 2027, de 20:00 a 23:00.</p>
+        </div>
+        <div>
+          <h3>Dónde</h3>
+          <p>En Jerez de la Frontera. El sitio concreto lo confirmaremos aquí en cuanto lo tengamos. <span class="pendiente">sitio por confirmar</span></p>
         </div>
         <div>
           <h3>Confirmar</h3>
@@ -337,13 +373,57 @@
           <h3>En coche</h3>
           <p>Desde Madrid son unas seis horas por la A-4. Jerez y El Puerto de Santa María están a unos 15 km, veinte minutos en coche.</p>
         </div>
-        <div>
+        <div id="dormir-general">
           <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
           <p id="hotel-familia" hidden>Se está gestionando el hotel para la familia.</p>
           <p id="hotel-jovenes" hidden>A los más jóvenes os recomendamos dormir en El Puerto de Santa María: allí es la preboda del viernes y allí terminan los autobuses la noche de la boda, así que os ahorráis viajes. Estamos cerrando condiciones especiales con varios hoteles para que os salga mejor, y aquí pondremos opciones tanto en El Puerto como en Jerez para que elijáis la que más os guste.</p>
           <p id="hotel-general">Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos. Los dos sitios están a veinte minutos, así que cualquiera de los dos va bien.</p>
           <p id="hotel-preboda" hidden>Si venís a la preboda del viernes, os recomendamos dormir en El Puerto: el Club Las Redes está allí mismo y os ahorráis el viaje esa noche.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hoteles" hidden>
+    <div class="wrap wrap-wide">
+      <div class="sec-head">
+        <p class="eyebrow">Dónde dormir</p>
+        <h2>Os recomendamos Jerez</h2>
+        <p class="lead">En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento en Jerez, así que conviene reservar pronto. <span class="pendiente">condiciones especiales en gestión</span></p>
+      </div>
+      <div class="hoteles">
+        <article class="hotel">
+          <p class="eyebrow">5 estrellas · a 1,6 km de la bodega</p>
+          <h3>Hotel Villa Jerez</h3>
+          <p>Hotel boutique en una zona residencial tranquila, con más de 4.000 m² de jardines y piscina en verano.</p>
+          <p class="dir">Avenida de la Cruz Roja, 7</p>
+          <a class="btn" href="https://www.hace.es/hotel-villa-jerez/" target="_blank" rel="noopener">Web del hotel</a>
+        </article>
+        <article class="hotel">
+          <p class="eyebrow">4 estrellas · a 300 m de la bodega</p>
+          <h3>Eurostars Asta Regia</h3>
+          <p>En pleno casco histórico, a cinco minutos andando de González Byass. Edificio protegido con piscina en la azotea. Es pequeño (31 habitaciones).</p>
+          <p class="dir">Calle San Agustín, 9</p>
+          <a class="btn" href="https://www.eurostarshotels.com/eurostars-asta-regia.html" target="_blank" rel="noopener">Web del hotel</a>
+        </article>
+        <article class="hotel">
+          <p class="eyebrow">4 estrellas · a 2,4 km de la bodega</p>
+          <h3>Hotel Jerez AQ35</h3>
+          <p>El más grande de los que hemos mirado (131 habitaciones), con jardines y piscina.</p>
+          <p class="dir">Avenida Alcalde Álvaro Domecq, 47</p>
+          <a class="btn" href="https://www.hace.es/hotel-jerez-aq35/" target="_blank" rel="noopener">Web del hotel</a>
+        </article>
+        <article class="hotel">
+          <p class="eyebrow">A 1,5 km de la bodega</p>
+          <h3>NH Avenida Jerez</h3>
+          <p>Hotel de ciudad con terraza, a unos diez minutos andando del centro.</p>
+          <p class="dir">Avenida Alcalde Álvaro Domecq, 10</p>
+          <a class="btn" href="https://www.nh-hotels.com/es/hotel/nh-avenida-jerez" target="_blank" rel="noopener">Web del hotel</a>
+        </article>
+      </div>
+      <div class="hoteles-otros">
+        <h3>Si preferís El Puerto de Santa María</h3>
+        <p>Está a veinte minutos de Jerez y allí es la ceremonia. Hemos mirado el <a href="https://www.sohohoteles.com/en/soho-boutique-duques-de-medinaceli-hotel-5/" target="_blank" rel="noopener">Soho Boutique Duques de Medinaceli</a> (5 estrellas, en el centro) y el <a href="https://www.sohohoteles.com/en/hotel-soho-boutique-vistahermosa-4-en/" target="_blank" rel="noopener">Soho Boutique Vistahermosa</a> (4 estrellas, también con apartamentos).</p>
       </div>
     </div>
   </section>
@@ -485,7 +565,7 @@
   var modoCasillas = !!(inv && inv.nombres);
   if (inv) {
     var saludo = document.getElementById('saludo');
-    saludo.innerHTML = '<b>' + inv.nombre + '</b>' +
+    saludo.innerHTML = '<b>' + (inv.saludo || inv.nombre) + '</b>' +
       (plazas > 1 ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
@@ -510,6 +590,17 @@
       document.getElementById('nav-preboda').hidden = false;
       document.getElementById('bloque-preboda').hidden = false;
       if (!inv.joven) document.getElementById('hotel-preboda').hidden = false;
+    }
+    if (inv.padres) {
+      // Amigos de los padres: preboda de adultos en Jerez y hoteles recomendando Jerez.
+      document.getElementById('preboda-padres').hidden = false;
+      document.getElementById('nav-preboda').hidden = false;
+      document.querySelector('#nav-preboda a').setAttribute('href', '#preboda-padres');
+      document.getElementById('bloque-preboda').hidden = false;
+      document.querySelector('label[for=preboda-si]').textContent = 'Preboda del viernes en Jerez';
+      document.getElementById('hoteles').hidden = false;
+      document.getElementById('nav-hoteles').hidden = false;
+      document.getElementById('dormir-general').hidden = true;
     }
   }
 
@@ -548,8 +639,16 @@
     } else {
       var input = document.createElement('input');
       input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
-      input.placeholder = i === 0 ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)';
-      input.setAttribute('aria-label', 'Persona ' + (i+1));
+      if (inv && inv.apellidos) {
+        // Enlace general: nombre y apellidos de cada uno, con su rótulo encima.
+        var rot = document.createElement('small');
+        rot.textContent = i === 0 ? 'Tú' : 'Acompañante (déjalo en blanco si vienes solo)';
+        wrap.appendChild(rot);
+        input.placeholder = 'Nombre y apellidos';
+      } else {
+        input.placeholder = i === 0 ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)';
+      }
+      input.setAttribute('aria-label', i === 0 ? 'Nombre y apellidos' : 'Acompañante: nombre y apellidos');
       fila.appendChild(input);
     }
     if (esNino) fila.appendChild(campoEdad(i));
@@ -567,7 +666,7 @@
     if (!(modoCasillas && plazas === 1)) document.getElementById('bloque-nombres').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
     document.getElementById('bloque-direccion').hidden = no;
-    if (inv && inv.preboda) document.getElementById('bloque-preboda').hidden = no;
+    if (inv && (inv.preboda || inv.padres)) document.getElementById('bloque-preboda').hidden = no;
   }
   for (var r = 0; r < radios.length; r++) radios[r].addEventListener('change', refrescar);
 

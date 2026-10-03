@@ -9,6 +9,9 @@
 // familia: true en la familia de la novia (sin la información general de hoteles) · zaragoza: true muestra cómo llegar desde Zaragoza.
 // joven: true muestra la recomendación de dormir en El Puerto (amigas y jóvenes).
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
+// padres: true en el enlace de los amigos de los padres (preboda de adultos en Jerez y hoteles recomendando Jerez).
+// apellidos: true en enlaces generales sin nombres: dos huecos de nombre y apellidos (tú y acompañante).
+// saludo (opcional): texto del saludo si no debe ser el nombre de la invitación.
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
 window.INVITADOS = {
   "prueba": { nombre: "Familia de prueba", plazas: 2, genero: "p", nombres: ["Persona de prueba", ""], preboda: true, joven: true },
@@ -73,6 +76,9 @@ window.INVITADOS = {
   "tere-charlie-9vs8": { nombre: "Tere y Charlie", plazas: 2, genero: "p", nombres: ["Tere", "Charlie"], titulo: "Tere y Charlie", preboda: true, joven: true },
   "lucia-charlie-yrhd": { nombre: "Lucía y Charlie", plazas: 2, genero: "p", nombres: ["Lucía", "Charlie"], titulo: "Lucía y Charlie", preboda: true, joven: true },
   "lucia-jacobo-n5ug": { nombre: "Lucía y Jacobo", plazas: 2, genero: "p", nombres: ["Lucía", "Jacobo"], titulo: "Lucía y Jacobo", preboda: true, joven: true },
+  // Amigos de los padres de la novia (03/10/2026): un único enlace general para todos.
+  // Dos huecos (tú y acompañante) con nombre y apellidos; preboda de adultos en Jerez y hoteles recomendando Jerez.
+  "amigos-gonzalo-magdy-r8tq": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true },
   // Familia de Solís (03/10/2026): un enlace por casa.
   "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
