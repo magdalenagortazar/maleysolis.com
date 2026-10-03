@@ -7,7 +7,6 @@
 // ninos (opcional): posiciones (desde 0) de los niños; se les pide la edad.
 // titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
 // familia: true en la familia de la novia (sin la información general de hoteles) · zaragoza: true muestra cómo llegar desde Zaragoza.
-// titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
 window.INVITADOS = {
