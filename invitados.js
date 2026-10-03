@@ -48,7 +48,7 @@ window.INVITADOS = {
   "ami-nb6g": { nombre: "Tía Ami", plazas: 1, genero: "f", nombres: ["Ami"], titulo: "Ami", familia: true },
   "bego-joseantonio-cy5m": { nombre: "Tía Bego y José Antonio", plazas: 2, genero: "p", nombres: ["Begoña", "José Antonio"], titulo: "Begoña y José Antonio", familia: true },
   "sintes-vz35": { nombre: "Familia Sintes", plazas: 5, genero: "p", nombres: ["Carlos", "Silvia", "Román", "Adrián", "Nuria"], titulo: "Carlos, Silvia, Román, Adrián y Nuria", familia: true },
-  // Amigas de la novia (03/10/2026): un enlace por amiga o pareja; ven la preboda.
+  // Amigas y amigos de la novia (03/10/2026): un enlace por amiga o pareja; ven la preboda.
   "clara-jaime-yscg": { nombre: "Clara y Jaime", plazas: 2, genero: "p", nombres: ["Clara", "Jaime"], titulo: "Clara y Jaime", preboda: true, joven: true },
   "elena-qvjn": { nombre: "Elena", plazas: 1, genero: "f", nombres: ["Elena"], titulo: "Elena", preboda: true, joven: true },
   "macarena-kp4k": { nombre: "Macarena", plazas: 1, genero: "f", nombres: ["Macarena"], titulo: "Macarena", preboda: true, joven: true },
@@ -67,7 +67,12 @@ window.INVITADOS = {
   "marta-alberto-9kph": { nombre: "Marta y Alberto", plazas: 2, genero: "p", nombres: ["Marta", "Alberto"], titulo: "Marta y Alberto", preboda: true, joven: true },
   "maria-sucri-azzq": { nombre: "María y Sucri", plazas: 2, genero: "p", nombres: ["María", "Sucri"], titulo: "María y Sucri", preboda: true, joven: true },
   "candela-carlos-928q": { nombre: "Candela y Carlos", plazas: 2, genero: "p", nombres: ["Candela", "Carlos"], titulo: "Candela y Carlos", preboda: true, joven: true },
-  "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true, joven: true }
+  "manuela-sacris-2htr": { nombre: "Manuela y Sacris", plazas: 2, genero: "p", nombres: ["Manuela", "Sacris"], titulo: "Manuela y Sacris", preboda: true, joven: true },
+  "miriam-edu-szu5": { nombre: "Miriam y Edu", plazas: 2, genero: "p", nombres: ["Miriam", "Edu"], titulo: "Miriam y Edu", preboda: true, joven: true },
+  "cris-chema-6pan": { nombre: "Cris y Chema", plazas: 2, genero: "p", nombres: ["Cris", "Chema"], titulo: "Cris y Chema", preboda: true, joven: true },
+  "tere-charlie-9vs8": { nombre: "Tere y Charlie", plazas: 2, genero: "p", nombres: ["Tere", "Charlie"], titulo: "Tere y Charlie", preboda: true, joven: true },
+  "lucia-charlie-yrhd": { nombre: "Lucía y Charlie", plazas: 2, genero: "p", nombres: ["Lucía", "Charlie"], titulo: "Lucía y Charlie", preboda: true, joven: true },
+  "lucia-jacobo-n5ug": { nombre: "Lucía y Jacobo", plazas: 2, genero: "p", nombres: ["Lucía", "Jacobo"], titulo: "Lucía y Jacobo", preboda: true, joven: true }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
