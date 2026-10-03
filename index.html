@@ -471,7 +471,7 @@
   if (inv) {
     var saludo = document.getElementById('saludo');
     var lista = (inv.nombres || []).filter(function(n){ return n; });
-    saludo.innerHTML = '<b>' + inv.nombre + '</b>' + (lista.length && plazas > 1 ? ' (' + lista.join(', ') + ')' : '') +
+    saludo.innerHTML = '<b>' + inv.nombre + '</b>' +
       (plazas > 1 ? ': nos haría mucha ilusión veros allí.' : ': nos haría mucha ilusión verte allí.');
     saludo.hidden = false;
     document.getElementById('rsvp-titulo').textContent = plazas > 1 ? '¿Contamos con vosotros?' : '¿Contamos contigo?';
