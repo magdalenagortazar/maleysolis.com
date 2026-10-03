@@ -72,7 +72,21 @@ window.INVITADOS = {
   "cris-chema-6pan": { nombre: "Cris y Chema", plazas: 2, genero: "p", nombres: ["Cris", "Chema"], titulo: "Cris y Chema", preboda: true, joven: true },
   "tere-charlie-9vs8": { nombre: "Tere y Charlie", plazas: 2, genero: "p", nombres: ["Tere", "Charlie"], titulo: "Tere y Charlie", preboda: true, joven: true },
   "lucia-charlie-yrhd": { nombre: "Lucía y Charlie", plazas: 2, genero: "p", nombres: ["Lucía", "Charlie"], titulo: "Lucía y Charlie", preboda: true, joven: true },
-  "lucia-jacobo-n5ug": { nombre: "Lucía y Jacobo", plazas: 2, genero: "p", nombres: ["Lucía", "Jacobo"], titulo: "Lucía y Jacobo", preboda: true, joven: true }
+  "lucia-jacobo-n5ug": { nombre: "Lucía y Jacobo", plazas: 2, genero: "p", nombres: ["Lucía", "Jacobo"], titulo: "Lucía y Jacobo", preboda: true, joven: true },
+  // Familia de Solís (03/10/2026): un enlace por casa.
+  "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
+  "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
+  "fer-lucia-9t59": { nombre: "Fer y Lucía", plazas: 2, genero: "p", nombres: ["Fer", "Lucía"], titulo: "Fer y Lucía" },
+  "maria-freddy-fnt3": { nombre: "María y Freddy", plazas: 2, genero: "p", nombres: ["María", "Freddy"], titulo: "María y Freddy" },
+  "carlos-aq8j": { nombre: "Carlos", plazas: 1, genero: "f", nombres: ["Carlos"], titulo: "Carlos" },
+  "moni-gksh": { nombre: "Moni", plazas: 1, genero: "f", nombres: ["Moni"], titulo: "Moni" },
+  "bea-sve5": { nombre: "Bea", plazas: 1, genero: "f", nombres: ["Bea"], titulo: "Bea" },
+  "guille-rocio-cfd6": { nombre: "Guille y Rocío", plazas: 2, genero: "p", nombres: ["Guille", "Rocío"], titulo: "Guille y Rocío" },
+  "beita-jaime-myfr": { nombre: "Beita y Jaime", plazas: 5, genero: "p", nombres: ["Beita", "Jaime", "Jaimete", "Javi", "Armadito"], titulo: "Beita y Jaime", ninos: [2, 3, 4] },
+  "manolo-monica-ysca": { nombre: "Manolo y Mónica", plazas: 2, genero: "p", nombres: ["Manolo", "Mónica"], titulo: "Manolo y Mónica" },
+  "lucia-g2mz": { nombre: "Lucía", plazas: 2, genero: "p", nombres: ["Lucía", ""], titulo: "Lucía", etiquetas: ["", "Acompañante"] },
+  "alba-trpw": { nombre: "Alba", plazas: 1, genero: "f", nombres: ["Alba"], titulo: "Alba" },
+  "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"] }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
