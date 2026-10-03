@@ -169,6 +169,11 @@
   .opciones input{accent-color:var(--verde)}
   .opciones label:has(input:checked){border-color:var(--fino);background:#FFF8E6;color:var(--tinta);box-shadow:inset 0 0 0 1px var(--fino)}
   .acomp{display:grid;gap:10px}
+  .acomp .hueco{display:grid;gap:4px}
+  .acomp .hueco small{font-size:.85em;opacity:.75}
+  .acomp .fila{display:flex;gap:8px}
+  .acomp .fila input:first-child{flex:1}
+  .acomp .fila input.edad{width:5.5em;flex:none}
   .aviso{
     font-size:14px;color:var(--tinta-2);border-left:2px solid var(--fino);padding-left:12px;
   }
@@ -478,17 +483,32 @@
     }
   }
 
-  // Campos de nombre: uno por plaza
+  // Campos de nombre: uno por plaza.
+  // etiquetas (opcional): texto encima de cada hueco (p. ej. "Novia de Borja").
+  // ninos (opcional): posiciones (desde 0) que son niños; a esos se les pide también la edad.
   var cont = document.getElementById('acompanantes');
   var nombres = inv && inv.nombres ? inv.nombres : [];
+  var etiquetas = inv && inv.etiquetas ? inv.etiquetas : [];
+  var ninos = inv && inv.ninos ? inv.ninos : [];
   for (var i = 0; i < plazas; i++) {
-    var wrap = document.createElement('div');
+    var wrap = document.createElement('div'); wrap.className = 'hueco';
+    var esNino = ninos.indexOf(i) !== -1;
+    if (etiquetas[i]) { var sm = document.createElement('small'); sm.textContent = etiquetas[i]; wrap.appendChild(sm); }
+    var fila = document.createElement('div'); fila.className = 'fila';
     var input = document.createElement('input');
     input.type = 'text'; input.id = 'persona-' + (i+1); input.name = 'persona' + (i+1);
-    input.placeholder = i === 0 ? 'Nombre y dos apellidos' : 'Acompañante ' + (i+1) + ': nombre y dos apellidos (en blanco si no viene)';
+    input.placeholder = esNino ? 'Nombre y dos apellidos' :
+      (i === 0 ? 'Nombre y dos apellidos' : (etiquetas[i] ? 'Nombre y dos apellidos' : 'Acompañante ' + (i+1) + ': nombre y dos apellidos (en blanco si no viene)'));
     if (nombres[i]) input.value = nombres[i];
-    input.setAttribute('aria-label', 'Persona ' + (i+1));
-    wrap.appendChild(input); cont.appendChild(wrap);
+    input.setAttribute('aria-label', etiquetas[i] || ('Persona ' + (i+1)));
+    fila.appendChild(input);
+    if (esNino) {
+      var edad = document.createElement('input');
+      edad.type = 'text'; edad.inputMode = 'numeric'; edad.className = 'edad'; edad.id = 'edad-' + (i+1);
+      edad.placeholder = 'Edad'; edad.setAttribute('aria-label', 'Edad');
+      fila.appendChild(edad);
+    }
+    wrap.appendChild(fila); cont.appendChild(wrap);
   }
   document.getElementById('aviso-plazas').hidden = true;
 
@@ -540,6 +560,8 @@
       preboda: (form.querySelector('input[name=preboda]:checked') || {}).value || '' };
     for (var i = 1; i <= plazas; i++) {
       var v = document.getElementById('persona-' + i).value.trim();
+      var e = document.getElementById('edad-' + i);
+      if (v && e && e.value.trim()) v += ' (' + e.value.trim() + (/^\d+$/.test(e.value.trim()) ? ' años' : '') + ')';
       if (v) datos.personas.push(v);
     }
     if (window.enviarRespuesta) { window.enviarRespuesta(datos); }
