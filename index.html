@@ -317,6 +317,10 @@
         <h2>Trenes, aviones y autobuses</h2>
       </div>
       <div class="info">
+        <div id="llegar-zaragoza" hidden>
+          <h3>Desde Zaragoza</h3>
+          <p>Hay trenes directos de alta velocidad de Zaragoza a Sevilla, unas cuatro horas y media. De Sevilla a Jerez hay poco más de una hora en tren o en coche. También se puede ir en AVE a Madrid y allí coger el tren a Jerez. En coche son unos 930 km, alrededor de nueve horas. No hay vuelos directos desde Zaragoza.</p>
+        </div>
         <div>
           <h3>Autobuses de la boda <span class="pendiente">horarios en breve</span></h3>
           <p>Saldrán autobuses desde Jerez a la iglesia. Después de la ceremonia habrá un traslado desde la iglesia a las bodegas para el cóctel, y por la noche, de vuelta tanto a Jerez como a El Puerto.</p>
@@ -335,7 +339,8 @@
         </div>
         <div>
           <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
-          <p>Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos. Los dos sitios están a veinte minutos, así que cualquiera de los dos va bien.</p>
+          <p id="hotel-familia" hidden>Del hotel os informaremos más adelante: lo estamos gestionando.</p>
+          <p id="hotel-general">Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos. Los dos sitios están a veinte minutos, así que cualquiera de los dos va bien.</p>
           <p id="hotel-preboda" hidden>Si venís a la preboda del viernes, os recomendamos dormir en El Puerto: el Club Las Redes está allí mismo y os ahorráis el viaje esa noche.</p>
         </div>
       </div>
@@ -484,6 +489,12 @@
       var rs = document.getElementById('asistencia-si').parentNode, rn = document.getElementById('asistencia-no').parentNode;
       rs.lastChild.textContent = ' Sí, allí estaremos'; rn.lastChild.textContent = ' No podremos ir';
     }
+    if (inv.familia) {
+      // Familia: el hotel lo gestionan los novios; se quita la información general de hoteles.
+      document.getElementById('hotel-general').hidden = true;
+      document.getElementById('hotel-familia').hidden = false;
+    }
+    if (inv.zaragoza) document.getElementById('llegar-zaragoza').hidden = false;
     if (inv.preboda) {
       document.getElementById('preboda').hidden = false;
       document.getElementById('nav-preboda').hidden = false;
