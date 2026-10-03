@@ -6,6 +6,7 @@
 // etiquetas (opcional): texto encima de cada hueco, p. ej. "Novia de Borja".
 // ninos (opcional): posiciones (desde 0) de los niños; se les pide la edad.
 // titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
+// titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
 window.INVITADOS = {
@@ -14,7 +15,8 @@ window.INVITADOS = {
   "preboda": { nombre: "Familia de ejemplo", plazas: 2, genero: "p", preboda: true },
   // Familia materna y paterna de la novia (03/10/2026). Hotel en Jerez pagado por los novios.
   // Un enlace por casa; el saludo es el de la familia y el formulario pregunta "titulo, ¿quiénes venís?".
-  "florit-machado-aw8a-luis-maricarmen": { nombre: "Familia Florit-Machado", plazas: 3, genero: "p", nombres: ["Luis", "Mari Carmen", "María"], titulo: "Luis y Mari Carmen" },
+  "florit-machado-aw8a-luis-maricarmen": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Mari Carmen"], titulo: "Luis y Mari Carmen" },
+  "florit-machado-aw8a-maria": { nombre: "Familia Florit-Machado", plazas: 1, genero: "f", nombres: ["María"], titulo: "María" },
   "florit-machado-aw8a-luis-silvia": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Silvia"], titulo: "Luis y Silvia" },
   "telerin-m8e5": { nombre: "Familia Telerín", plazas: 4, genero: "p", nombres: ["Ana Pilar", "Raquel", "Julia", "Elvira"], titulo: "Ana Pilar, Raquel, Julia y Elvira" },
   "florit-canibano-sktd": { nombre: "Familia Florit-Cañibano", plazas: 2, genero: "p", nombres: ["Manolo", "Ana"], titulo: "Manolo y Ana" },
