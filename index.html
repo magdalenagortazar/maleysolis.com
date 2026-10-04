@@ -605,7 +605,7 @@
         lab.appendChild(tn);
       } else {
         var t = document.createElement('input'); t.type = 'text'; t.id = 'persona-' + (i+1);
-        t.placeholder = (esNino ? 'Hijo/a' : (etiquetas[i] || 'Acompañante')) + ': nombre y apellidos';
+        t.placeholder = (i === 0 && !etiquetas[i]) ? 'Nombre y apellidos' : (esNino ? 'Hijo/a' : (etiquetas[i] || 'Acompañante')) + ': nombre y apellidos';
         t.setAttribute('aria-label', etiquetas[i] || 'Acompañante');
         t.addEventListener('input', (function(c){ return function(){ if (this.value.trim()) c.checked = true; }; })(cb));
         lab.appendChild(t);
@@ -674,7 +674,7 @@
     var err = document.getElementById('rsvp-error');
     var asis = form.querySelector('input[name=asistencia]:checked');
     if (!asis) { err.textContent = plazas > 1 ? 'Decidnos si venís o no.' : 'Dinos si vienes o no.'; err.hidden = false; return; }
-    if (!modoCasillas && !document.getElementById('persona-1').value.trim()) { err.textContent = 'Necesitamos al menos tu nombre.'; err.hidden = false; return; }
+    if (!nombres[0] && document.getElementById('persona-1') && !document.getElementById('persona-1').value.trim() && !(modoCasillas && document.getElementById('asistencia-no').checked)) { err.textContent = 'Necesitamos al menos tu nombre.'; err.hidden = false; return; }
     err.hidden = true;
 
     var datos = { codigo: codigo, asistencia: asis.value, personas: [], bus: document.getElementById('bus').value,

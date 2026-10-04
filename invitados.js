@@ -79,10 +79,10 @@ window.INVITADOS = {
   // Amigos de los padres de la novia (03/10/2026): un único enlace general para todos.
   // Dos huecos (tú y acompañante) con nombre y apellidos; preboda de adultos en Jerez y hoteles recomendando Jerez.
   "amigos-gonzalo-magdy-r8tq": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true, balon: true },
-  // Invitado y amigas de Ana (hermana de la novia), 04/10/2026: enlaces individuales, sin acompañante, con preboda.
-  "reina-m6ny": { nombre: "Reina", plazas: 1, genero: "m", nombres: ["Álvaro Reina García"], titulo: "Álvaro", preboda: true, joven: true },
-  "cristina-jimeno-u6vd": { nombre: "Cristina", plazas: 1, genero: "f", nombres: ["Cristina Jimeno"], titulo: "Cristina", preboda: true, joven: true },
-  "maria-lopez-de-haro-yrnp": { nombre: "María", plazas: 1, genero: "f", nombres: ["María López de Haro"], titulo: "María", preboda: true, joven: true },
+  // Invitado y amigas de Ana (hermana de la novia), 04/10/2026: enlaces individuales, sin acompañante, con preboda. El nombre lo escriben ellos (hueco vacío).
+  "reina-m6ny": { nombre: "Reina", plazas: 1, genero: "m", nombres: [""], titulo: "Álvaro", preboda: true, joven: true },
+  "cristina-jimeno-u6vd": { nombre: "Rizos", plazas: 1, genero: "f", nombres: [""], titulo: "Cristina", preboda: true, joven: true },
+  "maria-lopez-de-haro-yrnp": { nombre: "María", plazas: 1, genero: "f", nombres: [""], titulo: "María", preboda: true, joven: true },
   // Familia de Solís (03/10/2026): un enlace por casa.
   "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
