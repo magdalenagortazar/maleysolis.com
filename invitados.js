@@ -83,6 +83,8 @@ window.INVITADOS = {
   "reina-m6ny": { nombre: "Reina", plazas: 1, genero: "m", nombres: [""], titulo: "Álvaro", preboda: true, joven: true },
   "cristina-gimeno-u6vd": { nombre: "Rizos", plazas: 1, genero: "f", nombres: [""], titulo: "Cristina", preboda: true, joven: true },
   "maria-lopez-de-haro-yrnp": { nombre: "María", plazas: 1, genero: "f", nombres: [""], titulo: "María", preboda: true, joven: true },
+  // Cris Elices (amiga de la novia, "Otros amigos"), 05/10/2026: con acompañante, preboda de El Puerto; los nombres los escriben ellos.
+  "cris-elices-avtk": { nombre: "Cris", plazas: 2, genero: "p", nombres: ["", ""], titulo: "Cris", etiquetas: ["", "Acompañante"], preboda: true, joven: true },
   // Familia de Solís (03/10/2026): un enlace por casa.
   "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
