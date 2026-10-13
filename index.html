@@ -146,6 +146,7 @@
   .info h3{font-size:22px;color:var(--verde)}
   .info p{color:var(--tinta-2);font-size:16px;max-width:60ch}
   .info div{display:grid;gap:8px;justify-items:start}
+  .nota-preboda{font-size:14px;color:var(--tinta-2);margin-top:4px}
   .pendiente{
     display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--fino);border:1px dashed var(--fino);padding:2px 8px;margin-left:6px;vertical-align:middle;
@@ -512,6 +513,7 @@
             <label><input type="radio" name="preboda" id="preboda-si" value="si"> Sí, también vamos</label>
             <label><input type="radio" name="preboda" id="preboda-no" value="no"> Solo a la boda</label>
           </div>
+          <p class="nota-preboda" id="preboda-nota" hidden></p>
         </div>
 
         <div class="campo" id="bloque-bus">
@@ -651,9 +653,13 @@
       // Amigos de los padres (y, desde el 14/10/2026, la familia que no va a la de El Puerto): preboda de adultos en Jerez.
       document.getElementById('preboda-padres').hidden = false;
       document.getElementById('nav-preboda').hidden = false;
-      document.querySelector('#nav-preboda a').setAttribute('href', '#preboda-padres');
       document.getElementById('bloque-preboda').hidden = false;
-      document.querySelector('label[for=preboda-si]').textContent = 'Preboda del viernes en Jerez';
+      if (!inv.preboda) {
+        // Solo la de Jerez. Si tienen las dos (preboda y prebodaPadres), el enlace y la pregunta se quedan genéricos.
+        document.querySelector('#nav-preboda a').setAttribute('href', '#preboda-padres');
+        document.querySelector('label[for=preboda-si]').textContent = 'Preboda del viernes en Jerez';
+      }
+      if (inv.prebodaNota) { var pn = document.getElementById('preboda-nota'); pn.textContent = inv.prebodaNota; pn.hidden = false; }
       
       document.getElementById('nav-hoteles').hidden = false;
       
