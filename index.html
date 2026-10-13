@@ -158,6 +158,15 @@
   .iban button.btn{background:none;color:var(--tinta-2);border-color:var(--linea);padding:4px 10px;font-size:11px;letter-spacing:.1em}
   .iban button.btn:hover{background:var(--verde);color:var(--albariza)}
 
+  /* Cómo llegar: pestañas plegables (14/10/2026) */
+  .info .plegables{display:block;justify-items:stretch;border-top:1px solid var(--linea)}
+  .plegables details{border-bottom:1px solid var(--linea)}
+  .plegables summary{cursor:pointer;list-style:none;padding:13px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--verde);display:flex;justify-content:space-between;align-items:center}
+  .plegables summary::-webkit-details-marker{display:none}
+  .plegables summary::after{content:"+";font-size:20px;line-height:1;color:var(--fino)}
+  .plegables details[open] summary::after{content:"–"}
+  .plegables details p{padding:0 0 14px}
+
   /* Formulario */
   form{display:grid;gap:18px}
   .campo{display:grid;gap:6px}
@@ -426,25 +435,27 @@
         <h2>Trenes, aviones y autobuses</h2>
       </div>
       <div class="info">
-        <div id="llegar-zaragoza" hidden>
-          <h3>Desde Zaragoza</h3>
-          <p>Hay trenes directos de alta velocidad de Zaragoza a Sevilla, unas cuatro horas y media. De Sevilla a Jerez hay poco más de una hora en tren o en coche. También se puede ir en AVE a Madrid y allí coger el tren a Jerez. En coche son unos 930 km, alrededor de nueve horas. No hay vuelos directos desde Zaragoza.</p>
-        </div>
         <div>
           <h3>Autobuses de la boda <span class="pendiente">horarios en breve</span></h3>
-          <p>Saldrán autobuses desde Jerez a la iglesia. Después de la ceremonia habrá un traslado desde la iglesia a las bodegas para el cóctel, y por la noche, de vuelta a El Puerto.</p>
+          <p>De Jerez a la iglesia, de la iglesia a las bodegas para el cóctel y, por la noche, de vuelta a El Puerto.</p>
         </div>
-        <div>
-          <h3>En tren</h3>
-          <p>Hay AVE de Madrid a Jerez de la Frontera. Para los que duerman en El Puerto, hay también tren directo Madrid–El Puerto de Santa María. Otra opción es el AVE Madrid–Sevilla y seguir en coche (poco más de una hora).</p>
-        </div>
-        <div>
-          <h3>En avión</h3>
-          <p>El aeropuerto de Jerez está a quince minutos de la ciudad y tiene vuelos directos desde Madrid y Barcelona. Sevilla es la alternativa, a una hora y cuarto por autopista.</p>
-        </div>
-        <div>
-          <h3>En coche</h3>
-          <p>Desde Madrid son unas seis horas por la A-4. Jerez y El Puerto de Santa María están a unos 15 km, veinte minutos en coche.</p>
+        <div class="plegables">
+          <details id="llegar-zaragoza" hidden>
+            <summary>Desde Zaragoza</summary>
+            <p>Tren directo de alta velocidad Zaragoza–Sevilla (unas cuatro horas y media) y de Sevilla a Jerez, poco más de una hora en tren o en coche. O AVE a Madrid y desde allí a Jerez. En coche, unos 930 km, alrededor de nueve horas. No hay vuelos directos.</p>
+          </details>
+          <details>
+            <summary>En tren</summary>
+            <p>AVE Madrid–Jerez. Si dormís en El Puerto, hay también tren directo Madrid–El Puerto. Otra opción: AVE a Sevilla y poco más de una hora en coche.</p>
+          </details>
+          <details>
+            <summary>En avión</summary>
+            <p>El aeropuerto de Jerez está a quince minutos, con vuelos directos desde Madrid y Barcelona. Sevilla es la alternativa, a una hora y cuarto por autopista.</p>
+          </details>
+          <details>
+            <summary>En coche</summary>
+            <p>Desde Madrid, unas seis horas por la A-4. Jerez y El Puerto están a 15 km, veinte minutos.</p>
+          </details>
         </div>
         <!-- El bloque "Dónde dormir" de aquí se quitó el 14/10/2026: la sección de hoteles va justo debajo. Quedan los párrafos vacíos porque el script los usa. -->
         <div id="dormir-general" hidden>
