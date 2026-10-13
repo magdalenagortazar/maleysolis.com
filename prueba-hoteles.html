@@ -231,15 +231,22 @@
   .h-cifras{display:grid;grid-template-columns:1fr 1fr;margin:18px 22px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
   .h-cifras div{padding:14px 0;display:grid;gap:2px;align-content:start}
   .h-cifras div+div{border-left:1px solid var(--linea);padding-left:16px}
-  .h-cifras b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1;color:var(--fino);font-variant-numeric:tabular-nums}
-  .h-cifras .precio b{color:var(--verde);font-size:26px;line-height:1.3}
+  .h-cifras b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1.1;color:var(--fino);font-variant-numeric:tabular-nums}
+  .h-cifras .precio b{color:var(--verde)}
   .h-cifras small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
-  .h-cifras .sin b{font-size:22px;line-height:1.5;color:var(--verde)}
+  .h-cifras .sin b{color:var(--linea)}
   .h-dist{list-style:none;margin:0;padding:14px 22px 0;display:grid;gap:6px;font-size:15px;color:var(--tinta-2)}
   .h-dist li{display:flex;gap:10px;align-items:center}
   .h-dist svg{width:20px;height:20px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
   .h-pie{padding:18px 22px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  .h-pie .nota{font-size:13px;color:var(--tinta-2)}
+  .h-datos{margin:0;padding:6px 22px 0;display:grid}
+  .h-datos div{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;border-bottom:1px dotted var(--linea);align-items:baseline}
+  .h-datos div:last-child{border-bottom:0}
+  .h-datos dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--tinta-2);display:flex;gap:6px;align-items:center}
+  .h-datos dd{margin:0;font-size:15px;color:var(--tinta)}
+  .h-datos svg{width:16px;height:16px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .h-pie{justify-content:flex-start!important;gap:8px!important}
+  .h-pie .btn{padding:10px 14px;letter-spacing:.1em}
   .h-pie button.btn{font-family:var(--body);cursor:pointer;background:none;color:var(--verde)}
   .h-pie button.btn:hover{background:var(--verde);color:var(--albariza)}
   .h-aviso{font-size:14px;color:var(--tinta-2);max-width:70ch}
@@ -449,7 +456,7 @@
         <button type="button" data-zona="Jerez" aria-pressed="false">Jerez</button>
       </div>
       <div class="h-grid" id="h-grid"></div>
-      <p class="h-aviso">Los precios son orientativos, por habitación doble y noche; el precio real es el del día en que reservéis.</p>
+      <p class="h-aviso">Precio medio orientativo de una habitación doble por noche, antes del descuento. El precio real es el del día en que reservéis.</p>
     </div>
   </section>
 
@@ -787,57 +794,47 @@
     var PEND = '<span class="pendiente" style="margin:0">próximamente</span>';
     var H = [
       { zona:'El Puerto', nombre:'Petit Palace Santa María', est:'★★★★',
-        dto:'−10 %', dtoTxt:'con el código', precio:'50–180 €', precioTxt:'la noche, aprox.',
-        dist:[['iglesia','A 10 min andando de la iglesia'],['bodega','A 20 min en coche de las bodegas']],
-        nota:'En pleno centro',
+        dto:'10 %', precio:'130 €', reserva:'En su web, con el código MALEYSOLIS', iglesia:'10 min andando', bodega:'20 min en coche', web:'https://www.petitpalace.com',
         filas:[
           ['Descuento','<b>10 %</b> sobre la tarifa de su web. Si además os registráis en su programa Tripster, otro 10 %.'],
           ['Código','<span class="codigo">MALEYSOLIS</span>'],
           ['Cómo reservar','En la web de Petit Palace: elegid el hotel y las fechas e introducid el código. Cada uno pone sus datos y elige cómo pagar.'],
-          ['Precio','Entre 50 y 180 € la habitación doble por noche, según la época (orientativo).'],
+          ['Precio medio','Unos 130 € la doble un viernes o sábado, antes del descuento (orientativo).'],
           ['El hotel','100 habitaciones en la Avenida de la Bajamar, a diez minutos andando de la iglesia.'],
           ['Contacto','<a href="mailto:santamaria@petitpalace.com">santamaria@petitpalace.com</a> · <a href="tel:+34956873211">956 87 32 11</a>']
-        ],
-        web:'https://www.petitpalace.com' },
+        ] },
       { zona:'El Puerto', nombre:'Soho Duques de Medinaceli', est:'★★★★★',
-        dto:'−20 %', dtoTxt:'por ser de la boda', precio:'130–230 €', precioTxt:'la noche, aprox.',
-        dist:[['iglesia','A 15 min andando de la iglesia'],['bodega','A 20 min en coche de las bodegas']],
-        nota:'Palacio con jardín y piscina',
+        dto:'20 %', precio:'240 €', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'15 min andando', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
           ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis.'],
           ['Código',PEND],
           ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.'],
-          ['Precio','Entre 130 y 230 € la habitación doble por noche, según la época (orientativo).'],
+          ['Precio medio','Unos 240 € la doble en mayo, antes del descuento (orientativo).'],
           ['El hotel','Palacio restaurado con jardín y piscina en la Plaza de los Jazmines. Aparcamiento de pago.']
         ] },
       { zona:'El Puerto', nombre:'Soho Vistahermosa', est:'★★★★',
-        dto:'−20 %', dtoTxt:'por ser de la boda', precio:'60–170 €', precioTxt:'la noche, aprox.',
-        dist:[['iglesia','A 7 min en coche de la iglesia'],['bodega','A 20 min en coche de las bodegas']],
-        nota:'Hotel y apartamentos',
+        dto:'20 %', precio:'155 €', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'7 min en coche', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
           ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Vale también para los apartamentos.'],
           ['Código',PEND],
           ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.'],
-          ['Precio','Entre 60 y 170 € la habitación doble por noche, según la época (orientativo).']
+          ['Precio medio','Unos 155 € la doble un viernes o sábado, antes del descuento (orientativo).']
         ] },
       { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
-        dto:'2–3', dtoTxt:'dormitorios', precio:'50–150 €', precioTxt:'el apartamento, aprox.',
-        dist:[['fiesta','Al lado del Club Las Redes (preboda)'],['iglesia','A 10 min en coche de la iglesia']],
-        nota:'Para ir en grupo',
+        dto:'', precio:'150 €', precioNota:'el apartamento', reserva:'Con el hotel, a partir de diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
         filas:[
           ['Qué es','Apartamentos de dos y tres dormitorios con cocina, en el puerto deportivo. Piscinas y aparcamiento gratis.'],
           ['Cuándo','Abren las reservas de 2027 en diciembre.'],
-          ['Precio','Entre 50 y 150 € el apartamento por noche, según la época (orientativo).'],
+          ['Precio medio','Desde unos 150 € el apartamento por noche (orientativo).'],
+          ['Descuento','Sin descuento de boda.'],
           ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
-        dto:'−15 %', dtoTxt:'con el código', precio:'≈ 110 €', precioTxt:'la noche con descuento',
-        dist:[['bodega','A 6 min en coche de las bodegas'],['iglesia','A 20 min en coche de la iglesia']],
-        nota:'Aparcamiento gratis',
+        dto:'15 %', precio:'130 €', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
         filas:[
           ['Descuento','<b>15 %</b> sobre su mejor tarifa. Para ese fin de semana el hotel calcula unos 130 € la doble, que con el código se quedan en unos 110 €, sin desayuno.'],
           ['Código',PEND],
@@ -849,9 +846,7 @@
           ['Contacto','<a href="mailto:reservas@jerezhotel.com">reservas@jerezhotel.com</a> · <a href="tel:+34956300600">956 30 06 00</a> · WhatsApp <a href="https://wa.me/34674273703">674 273 703</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Villa Jerez', est:'★★★★★',
-        dto:'−15 %', dtoTxt:'con el código', precio:'≈ 170 €', precioTxt:'antes del descuento',
-        dist:[['bodega','A 5 min en coche de las bodegas'],['iglesia','A 20 min en coche de la iglesia']],
-        nota:'Pequeño, con jardín',
+        dto:'15 %', precio:'170 €', precioNota:'con desayuno', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
         filas:[
           ['Descuento','<b>15 %</b> sobre su mejor tarifa. La doble con desayuno sale por unos 170 € la noche antes del descuento.'],
           ['Código',PEND],
@@ -867,14 +862,21 @@
     var grid = document.getElementById('h-grid'), dlg = document.getElementById('h-dlg');
     if (!grid) return;
     grid.innerHTML = H.map(function(h, i){
-      var sin = /^[0-9]/.test(h.dto) ? ' class="sin"' : '';
       return '<article class="h-card" data-zona="' + h.zona + '">' +
         '<div class="h-top"><span class="h-zona">' + h.zona + '</span><span class="h-est">' + h.est + '</span></div>' +
         '<h3>' + h.nombre + '</h3>' +
-        '<div><div class="h-cifras"><div' + sin + '><b>' + h.dto + '</b><small>' + h.dtoTxt + '</small></div>' +
-        '<div class="precio"><b>' + h.precio + '</b><small>' + h.precioTxt + '</small></div></div>' +
-        '<ul class="h-dist">' + h.dist.map(function(d){ return '<li>' + ICO[d[0]] + d[1] + '</li>'; }).join('') + '</ul></div>' +
-        '<div class="h-pie"><span class="nota">' + h.nota + '</span><button type="button" class="btn" data-h="' + i + '">Ver condiciones</button></div>' +
+        '<div><div class="h-cifras">' +
+          '<div class="precio"><b>' + h.precio + '</b><small>precio medio' + (h.precioNota ? ' · ' + h.precioNota : '') + '</small></div>' +
+          '<div' + (h.dto ? '' : ' class="sin"') + '><b>' + (h.dto ? '−' + h.dto : '—') + '</b><small>' + (h.dto ? 'descuento boda' : 'sin descuento') + '</small></div>' +
+        '</div>' +
+        '<dl class="h-datos">' +
+          '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
+          '<div><dt>' + ICO.iglesia + 'Iglesia</dt><dd>' + h.iglesia + '</dd></div>' +
+          '<div><dt>' + ICO.bodega + 'Bodegas</dt><dd>' + h.bodega + '</dd></div>' +
+          (h.extra ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
+        '</dl></div>' +
+        '<div class="h-pie"><a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>' +
+        '<button type="button" class="btn" data-h="' + i + '">Condiciones</button></div>' +
         '</article>';
     }).join('');
     grid.addEventListener('click', function(e){
@@ -884,7 +886,7 @@
       document.getElementById('dlg-nombre').textContent = h.nombre;
       document.getElementById('dlg-filas').innerHTML = h.filas.map(function(f){
         return '<div class="fila"><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('');
-      document.getElementById('dlg-acciones').innerHTML = h.web ? '<a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Reservar en su web</a>' : '';
+      document.getElementById('dlg-acciones').innerHTML = '<a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>';
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
     });
     document.getElementById('dlg-cerrar').addEventListener('click', function(){ dlg.close(); });
