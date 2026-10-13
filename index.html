@@ -366,7 +366,7 @@
         <svg class="dib" viewBox="0 0 96 96" aria-hidden="true"><use href="#catavinos"/></svg>
         <p class="eyebrow">La víspera</p>
         <h2>Preboda en Jerez</h2>
-        <p class="lead">El viernes 28 de mayo, la víspera de la boda, Gonzalo y Magdy reúnen a sus amigos en Jerez para brindar por los novios.</p>
+        <p class="lead">El viernes 28 de mayo, la víspera de la boda, Gonzalo y Magdy reúnen a la familia y a sus amigos en Jerez para brindar por los novios.</p>
       </div>
       <div class="info">
         <div>
@@ -647,8 +647,8 @@
       if (!inv.joven) document.getElementById('hotel-preboda').hidden = false;
     }
     if (inv.balon) document.getElementById("balon-dib").removeAttribute('hidden');
-    if (inv.padres) {
-      // Amigos de los padres: preboda de adultos en Jerez y hoteles recomendando Jerez.
+    if (inv.padres || inv.prebodaPadres) {
+      // Amigos de los padres (y, desde el 14/10/2026, la familia que no va a la de El Puerto): preboda de adultos en Jerez.
       document.getElementById('preboda-padres').hidden = false;
       document.getElementById('nav-preboda').hidden = false;
       document.querySelector('#nav-preboda a').setAttribute('href', '#preboda-padres');
@@ -728,7 +728,7 @@
     document.getElementById('bloque-nombres').hidden = no;
     document.getElementById('bloque-alergias').hidden = no;
     document.getElementById('bloque-direccion').hidden = no;
-    if (inv && (inv.preboda || inv.padres)) document.getElementById('bloque-preboda').hidden = no;
+    if (inv && (inv.preboda || inv.padres || inv.prebodaPadres)) document.getElementById('bloque-preboda').hidden = no;
   }
   for (var r = 0; r < radios.length; r++) radios[r].addEventListener('change', refrescar);
 
@@ -893,7 +893,7 @@
     var inv = (window.INVITADOS && window.INVITADOS[codigoInv]) || null, titulo = document.getElementById('hoteles-titulo'), intro = document.getElementById('hoteles-intro');
     if (inv && inv.familia) {
       titulo.textContent = 'Vuestro hotel';
-      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles. Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
+      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles.' + (inv.preboda ? ' La preboda del viernes es en El Puerto, a veinte minutos en coche.' : '') + ' Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
       intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
