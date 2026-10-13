@@ -228,18 +228,15 @@
   .h-zona{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--fino)}
   .h-est{font-size:13px;letter-spacing:.12em;color:var(--tinta-2)}
   .h-card h3{font-size:26px;color:var(--verde);padding:6px 22px 0}
-  .h-cifras{display:grid;grid-template-columns:1fr 1fr;margin:18px 22px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .h-cifras{display:grid;grid-template-columns:1fr;margin:18px 22px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
   .h-cifras div{padding:14px 0;display:grid;gap:2px;align-content:start}
-  .h-cifras div+div{border-left:1px solid var(--linea);padding-left:16px}
   .h-cifras b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1.1;color:var(--fino);font-variant-numeric:tabular-nums}
-  .h-cifras .precio b{color:var(--verde)}
   .h-cifras small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
   .h-cifras .sin b{color:var(--linea)}
   .h-dist{list-style:none;margin:0;padding:14px 22px 0;display:grid;gap:6px;font-size:15px;color:var(--tinta-2)}
   .h-dist li{display:flex;gap:10px;align-items:center}
   .h-dist svg{width:20px;height:20px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
   .h-pie{padding:18px 22px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  .h-cifras.una{grid-template-columns:1fr}
   .h-datos{margin:0;padding:6px 22px 0;display:grid}
   .h-datos div{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;border-bottom:1px dotted var(--linea);align-items:baseline}
   .h-datos div:last-child{border-bottom:0}
@@ -448,7 +445,7 @@
     <div class="wrap wrap-wide">
       <div class="sec-head">
         <p class="eyebrow">Dónde dormir</p>
-        <h2>Hoteles</h2>
+        <h2 id="hoteles-titulo">Hoteles</h2>
         <p class="lead" id="hoteles-intro">En varios de estos hoteles tenéis descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
       </div>
       <div class="filtro" role="group" aria-label="Filtrar por zona">
@@ -457,7 +454,7 @@
         <button type="button" data-zona="Jerez" aria-pressed="false">Jerez</button>
       </div>
       <div class="h-grid" id="h-grid"></div>
-      <p class="h-aviso">Los precios que aparecen son los que nos ha dado el hotel, por habitación doble y noche, antes del descuento. En el resto, mirad el precio en su web.</p>
+      <p class="h-aviso">El precio lo veréis en la web de cada hotel; el descuento se aplica al reservar como dice cada ficha.</p>
     </div>
   </section>
 
@@ -579,6 +576,10 @@
   // invitados.js se carga con la hora en la dirección para que el navegador no use una copia guardada
   // y las invitaciones nuevas se vean al momento.
   document.write('<script src="invitados.js?t=' + Date.now() + '"><\/script>');
+</script>
+<script>
+  // Solo para esta página de prueba: enlace de ejemplo de la familia (?i=prueba-familia).
+  if (window.INVITADOS) window.INVITADOS['prueba-familia'] = { nombre: 'Familia de prueba', plazas: 2, genero: 'p', nombres: ['Luis', 'Reyes'], titulo: 'Luis y Reyes', familia: true, zaragoza: true };
 </script>
 <script>
 (function(){
@@ -785,7 +786,7 @@
 </script>
 <script>
   // Dónde dormir: la misma lista para todas las invitaciones (13/10/2026).
-  // Datos de los correos de cada hotel; los precios de portales (Tripadvisor / Hotels.com) son orientativos.
+  // Datos de los correos de cada hotel. Sin precios: se ven en la web de cada hotel (decisión de Magdalena, 13/10/2026).
   (function(){
     var ICO = {
       iglesia:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M10 4h4M7 21V11l5-5 5 5v10M4 21h16M10 21v-4a2 2 0 0 1 4 0v4"/></svg>',
@@ -806,9 +807,8 @@
       { zona:'El Puerto', nombre:'Soho Duques de Medinaceli', est:'★★★★★',
         dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'15 min andando', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
-          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis.'],
-          ['Código',PEND],
-          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.'],
           ['El hotel','Palacio restaurado con jardín y piscina en la Plaza de los Jazmines. Aparcamiento de pago.']
@@ -816,9 +816,8 @@
       { zona:'El Puerto', nombre:'Soho Vistahermosa', est:'★★★★',
         dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'7 min en coche', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
-          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Vale también para los apartamentos.'],
-          ['Código',PEND],
-          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Vale también para los apartamentos. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.']
         ] },
@@ -831,9 +830,9 @@
           ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
-        dto:'15 %', precio:'130 €', precioNota:'dato del hotel', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
+        dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
         filas:[
-          ['Descuento','<b>15 %</b> sobre su mejor tarifa. Para ese fin de semana el hotel calcula unos 130 € la doble, que con el código se quedan en unos 110 €, sin desayuno.'],
+          ['Descuento','<b>15 %</b> sobre su mejor tarifa. Las habitaciones son todas iguales, para una o dos personas.'],
           ['Código',PEND],
           ['Cómo reservar','Directamente con el hotel, dando el código. Máximo tres habitaciones a un mismo nombre.'],
           ['Pago','En el hotel.'],
@@ -843,9 +842,9 @@
           ['Contacto','<a href="mailto:reservas@jerezhotel.com">reservas@jerezhotel.com</a> · <a href="tel:+34956300600">956 30 06 00</a> · WhatsApp <a href="https://wa.me/34674273703">674 273 703</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Villa Jerez', est:'★★★★★',
-        dto:'15 %', precio:'170 €', precioNota:'con desayuno, dato del hotel', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
+        dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
         filas:[
-          ['Descuento','<b>15 %</b> sobre su mejor tarifa. La doble con desayuno sale por unos 170 € la noche antes del descuento.'],
+          ['Descuento','<b>15 %</b> sobre su mejor tarifa.'],
           ['Código',PEND],
           ['Cómo reservar','Directamente con el hotel, dando el código.'],
           ['Pago','En el hotel.'],
@@ -856,12 +855,22 @@
           ['Contacto','<a href="mailto:reservas@villajerez.com">reservas@villajerez.com</a> · <a href="tel:+34956153100">956 15 31 00</a> · WhatsApp <a href="https://wa.me/34674273638">674 273 638</a>']
         ] },
       { zona:'Jerez', nombre:'Soho Boutique Jerez', est:'★★★★',
-        dto:'20 %', dtoPend:true, reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'13 min andando', web:'https://www.sohohoteles.com',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'13 min andando', web:'https://www.sohohoteles.com',
         filas:[
-          ['Descuento','<b>20 %</b> sobre la tarifa flexible, el mismo que en los Soho de El Puerto <span class="pendiente" style="margin:0">por confirmar</span>'],
-          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
-          ['El hotel','59 habitaciones en la calle Nuño de Cañas, en el centro de Jerez.'],
-          ['Contacto','<a href="tel:+34956327230">956 32 72 30</a>']
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.'],
+          ['El hotel','59 habitaciones en la calle Nuño de Cañas, en el centro de Jerez.']
+        ] },
+      { zona:'Jerez', nombre:'Itaca Jerez by Soho', est:'★★★★',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'10 min andando', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.'],
+          ['El hotel','En la calle Diego Fernández Herrera, en el centro de Jerez, a diez minutos andando de la catedral y las bodegas.']
         ] },
       { zona:'Jerez', nombre:'Hipotels Sherry Park', est:'★★★★',
         dto:'', reserva:'En su web o con el hotel', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hipotels.com/hoteles/sherrypark',
@@ -886,13 +895,28 @@
     ];
     var grid = document.getElementById('h-grid'), dlg = document.getElementById('h-dlg');
     if (!grid) return;
+    // Texto de cabecera según la invitación (inv viene del script principal). Todos ven todos los hoteles;
+    // cambia la recomendación y el orden (la zona recomendada va primero).
+    var codigoInv = (new URLSearchParams(location.search).get('i') || '').toLowerCase();
+    var inv = (window.INVITADOS && window.INVITADOS[codigoInv]) || null, titulo = document.getElementById('hoteles-titulo'), intro = document.getElementById('hoteles-intro');
+    if (inv && inv.familia) {
+      titulo.textContent = 'Vuestro hotel';
+      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles. Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
+      H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
+    } else if (inv && inv.padres) {
+      titulo.textContent = 'Os recomendamos Jerez';
+      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: en varios hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
+      H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
+    } else if (inv && inv.joven) {
+      titulo.textContent = 'Os recomendamos El Puerto';
+      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. En varios hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
+    }
     grid.innerHTML = H.map(function(h, i){
       return '<article class="h-card" data-zona="' + h.zona + '">' +
         '<div class="h-top"><span class="h-zona">' + h.zona + '</span><span class="h-est">' + h.est + '</span></div>' +
         '<h3>' + h.nombre + '</h3>' +
-        '<div><div class="h-cifras' + (h.precio ? '' : ' una') + '">' +
+        '<div><div class="h-cifras">' +
           '<div' + (h.dto ? '' : ' class="sin"') + '><b>' + (h.dto ? '−' + h.dto : '—') + '</b><small>' + (h.dto ? (h.dtoPend ? 'descuento boda · por confirmar' : 'descuento boda') : 'sin descuento de boda') + '</small></div>' +
-          (h.precio ? '<div class="precio"><b>' + h.precio + '</b><small>la noche · ' + h.precioNota + '</small></div>' : '') +
         '</div>' +
         '<dl class="h-datos">' +
           '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
