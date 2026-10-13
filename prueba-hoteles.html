@@ -444,8 +444,8 @@
     <div class="wrap wrap-wide">
       <div class="sec-head">
         <p class="eyebrow">Dónde dormir</p>
-        <h2 id="hoteles-titulo">Hoteles</h2>
-        <p class="lead" id="hoteles-intro">En varios de estos hoteles tenéis descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
+        <h2 id="hoteles-titulo">Hoteles con descuento</h2>
+        <p class="lead" id="hoteles-intro">En todos estos hoteles tenéis descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
       </div>
       <div class="filtro" role="group" aria-label="Filtrar por zona">
         <button type="button" data-zona="" aria-pressed="true">Todos</button>
@@ -785,7 +785,7 @@
 </script>
 <script>
   // Dónde dormir: la misma lista para todas las invitaciones (13/10/2026).
-  // Datos de los correos de cada hotel. Sin precios: se ven en la web de cada hotel (decisión de Magdalena, 13/10/2026).
+  // Datos de los correos de cada hotel. Sin precios y solo hoteles con descuento confirmado por el hotel (decisión de Magdalena, 13 y 14/10/2026).
   (function(){
     var ICO = {
       iglesia:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M10 4h4M7 21V11l5-5 5 5v10M4 21h16M10 21v-4a2 2 0 0 1 4 0v4"/></svg>',
@@ -819,14 +819,6 @@
           ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.']
-        ] },
-      { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
-        dto:'', reserva:'Con el hotel, a partir de diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
-        filas:[
-          ['Qué es','Apartamentos de dos y tres dormitorios con cocina, en el puerto deportivo. Piscinas y aparcamiento gratis.'],
-          ['Cuándo','Abren las reservas de 2027 en diciembre.'],
-          ['Descuento','Sin descuento de boda.'],
-          ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
         dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
@@ -870,27 +862,10 @@
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.'],
           ['El hotel','En la calle Diego Fernández Herrera, en el centro de Jerez, a diez minutos andando de la catedral y las bodegas.']
-        ] },
-      { zona:'Jerez', nombre:'Hipotels Sherry Park', est:'★★★★',
-        dto:'', reserva:'En su web o con el hotel', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hipotels.com/hoteles/sherrypark',
-        filas:[
-          ['Descuento','Sin descuento de boda: tienen ya cubierto su cupo de bodas para esa fecha. Se puede reservar a precio normal si queda sitio.'],
-          ['El hotel','174 habitaciones con jardines y piscina en la Avenida Álvaro Domecq. Aparcamiento de pago.'],
-          ['Contacto','<a href="mailto:reservas.sherry@hipotels.com">reservas.sherry@hipotels.com</a> · <a href="tel:+34956317614">956 31 76 14</a>']
-        ] },
-      { zona:'Jerez', nombre:'NH Avenida Jerez', est:'★★★★',
-        dto:'', reserva:'En su web o con el hotel', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.nh-hotels.com',
-        filas:[
-          ['Descuento','Sin descuento de boda por ahora.'],
-          ['El hotel','95 habitaciones y 5 junior suites en la Avenida Alcalde Álvaro Domecq.'],
-          ['Contacto','<a href="mailto:nhavenidadejerez@nh-hotels.com">nhavenidadejerez@nh-hotels.com</a> · <a href="tel:+34956347411">956 34 74 11</a>']
-        ] },
-      { zona:'Jerez', nombre:'Eurostars Asta Regia', est:'★★★★',
-        dto:'', reserva:'En su web', iglesia:'20 min en coche', bodega:'5 min andando', web:'https://www.eurostarshotels.com',
-        filas:[
-          ['Descuento','Sin descuento de boda.'],
-          ['El hotel','31 habitaciones en la calle San Agustín, junto a la plaza del Arenal: el más cerca de las bodegas.']
         ] }
+      
+      
+      
     ];
     var grid = document.getElementById('h-grid'), dlg = document.getElementById('h-dlg');
     if (!grid) return;
@@ -904,11 +879,11 @@
       H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
-      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: en varios hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
+      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: en todos estos hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
       H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
     } else if (inv && inv.joven) {
       titulo.textContent = 'Os recomendamos El Puerto';
-      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. En varios hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
+      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. En todos estos hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
     }
     grid.innerHTML = H.map(function(h, i){
       return '<article class="h-card" data-zona="' + h.zona + '">' +
