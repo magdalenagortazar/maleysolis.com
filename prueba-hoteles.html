@@ -239,6 +239,7 @@
   .h-dist li{display:flex;gap:10px;align-items:center}
   .h-dist svg{width:20px;height:20px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
   .h-pie{padding:18px 22px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .h-cifras.una{grid-template-columns:1fr}
   .h-datos{margin:0;padding:6px 22px 0;display:grid}
   .h-datos div{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;border-bottom:1px dotted var(--linea);align-items:baseline}
   .h-datos div:last-child{border-bottom:0}
@@ -447,8 +448,8 @@
     <div class="wrap wrap-wide">
       <div class="sec-head">
         <p class="eyebrow">Dónde dormir</p>
-        <h2>Hoteles con descuento</h2>
-        <p class="lead" id="hoteles-intro">Hemos conseguido descuento en estos hoteles por ser de la boda. No nos guardan habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
+        <h2>Hoteles</h2>
+        <p class="lead" id="hoteles-intro">En varios de estos hoteles tenéis descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
       </div>
       <div class="filtro" role="group" aria-label="Filtrar por zona">
         <button type="button" data-zona="" aria-pressed="true">Todos</button>
@@ -456,7 +457,7 @@
         <button type="button" data-zona="Jerez" aria-pressed="false">Jerez</button>
       </div>
       <div class="h-grid" id="h-grid"></div>
-      <p class="h-aviso">Precio medio orientativo de una habitación doble por noche, antes del descuento. El precio real es el del día en que reservéis.</p>
+      <p class="h-aviso">Los precios que aparecen son los que nos ha dado el hotel, por habitación doble y noche, antes del descuento. En el resto, mirad el precio en su web.</p>
     </div>
   </section>
 
@@ -794,47 +795,43 @@
     var PEND = '<span class="pendiente" style="margin:0">próximamente</span>';
     var H = [
       { zona:'El Puerto', nombre:'Petit Palace Santa María', est:'★★★★',
-        dto:'10 %', precio:'130 €', reserva:'En su web, con el código MALEYSOLIS', iglesia:'10 min andando', bodega:'20 min en coche', web:'https://www.petitpalace.com',
+        dto:'10 %', reserva:'En su web, con el código MALEYSOLIS', iglesia:'10 min andando', bodega:'20 min en coche', web:'https://www.petitpalace.com',
         filas:[
           ['Descuento','<b>10 %</b> sobre la tarifa de su web. Si además os registráis en su programa Tripster, otro 10 %.'],
           ['Código','<span class="codigo">MALEYSOLIS</span>'],
           ['Cómo reservar','En la web de Petit Palace: elegid el hotel y las fechas e introducid el código. Cada uno pone sus datos y elige cómo pagar.'],
-          ['Precio medio','Unos 130 € la doble un viernes o sábado, antes del descuento (orientativo).'],
           ['El hotel','100 habitaciones en la Avenida de la Bajamar, a diez minutos andando de la iglesia.'],
           ['Contacto','<a href="mailto:santamaria@petitpalace.com">santamaria@petitpalace.com</a> · <a href="tel:+34956873211">956 87 32 11</a>']
         ] },
       { zona:'El Puerto', nombre:'Soho Duques de Medinaceli', est:'★★★★★',
-        dto:'20 %', precio:'240 €', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'15 min andando', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'15 min andando', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
           ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis.'],
           ['Código',PEND],
           ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.'],
-          ['Precio medio','Unos 240 € la doble en mayo, antes del descuento (orientativo).'],
           ['El hotel','Palacio restaurado con jardín y piscina en la Plaza de los Jazmines. Aparcamiento de pago.']
         ] },
       { zona:'El Puerto', nombre:'Soho Vistahermosa', est:'★★★★',
-        dto:'20 %', precio:'155 €', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'7 min en coche', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'7 min en coche', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
         filas:[
           ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Vale también para los apartamentos.'],
           ['Código',PEND],
           ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Male%20y%20Sol%C3%ADs">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
           ['Pago','Se paga al reservar.'],
-          ['Cancelación','Gratis hasta 5 días antes.'],
-          ['Precio medio','Unos 155 € la doble un viernes o sábado, antes del descuento (orientativo).']
+          ['Cancelación','Gratis hasta 5 días antes.']
         ] },
       { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
-        dto:'', precio:'150 €', precioNota:'el apartamento', reserva:'Con el hotel, a partir de diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
+        dto:'', reserva:'Con el hotel, a partir de diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
         filas:[
           ['Qué es','Apartamentos de dos y tres dormitorios con cocina, en el puerto deportivo. Piscinas y aparcamiento gratis.'],
           ['Cuándo','Abren las reservas de 2027 en diciembre.'],
-          ['Precio medio','Desde unos 150 € el apartamento por noche (orientativo).'],
           ['Descuento','Sin descuento de boda.'],
           ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
-        dto:'15 %', precio:'130 €', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
+        dto:'15 %', precio:'130 €', precioNota:'dato del hotel', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
         filas:[
           ['Descuento','<b>15 %</b> sobre su mejor tarifa. Para ese fin de semana el hotel calcula unos 130 € la doble, que con el código se quedan en unos 110 €, sin desayuno.'],
           ['Código',PEND],
@@ -846,7 +843,7 @@
           ['Contacto','<a href="mailto:reservas@jerezhotel.com">reservas@jerezhotel.com</a> · <a href="tel:+34956300600">956 30 06 00</a> · WhatsApp <a href="https://wa.me/34674273703">674 273 703</a>']
         ] },
       { zona:'Jerez', nombre:'Hotel Villa Jerez', est:'★★★★★',
-        dto:'15 %', precio:'170 €', precioNota:'con desayuno', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
+        dto:'15 %', precio:'170 €', precioNota:'con desayuno, dato del hotel', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
         filas:[
           ['Descuento','<b>15 %</b> sobre su mejor tarifa. La doble con desayuno sale por unos 170 € la noche antes del descuento.'],
           ['Código',PEND],
@@ -857,6 +854,34 @@
           ['Hasta cuándo','El código vale hasta dos meses antes de la boda.'],
           ['El hotel','Villa de 18 habitaciones con jardines y piscina en la Avenida de la Cruz Roja.'],
           ['Contacto','<a href="mailto:reservas@villajerez.com">reservas@villajerez.com</a> · <a href="tel:+34956153100">956 15 31 00</a> · WhatsApp <a href="https://wa.me/34674273638">674 273 638</a>']
+        ] },
+      { zona:'Jerez', nombre:'Soho Boutique Jerez', est:'★★★★',
+        dto:'20 %', dtoPend:true, reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'13 min andando', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible, el mismo que en los Soho de El Puerto <span class="pendiente" style="margin:0">por confirmar</span>'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y el código, con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno.'],
+          ['El hotel','59 habitaciones en la calle Nuño de Cañas, en el centro de Jerez.'],
+          ['Contacto','<a href="tel:+34956327230">956 32 72 30</a>']
+        ] },
+      { zona:'Jerez', nombre:'Hipotels Sherry Park', est:'★★★★',
+        dto:'', reserva:'En su web o con el hotel', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hipotels.com/hoteles/sherrypark',
+        filas:[
+          ['Descuento','Sin descuento de boda: tienen ya cubierto su cupo de bodas para esa fecha. Se puede reservar a precio normal si queda sitio.'],
+          ['El hotel','174 habitaciones con jardines y piscina en la Avenida Álvaro Domecq. Aparcamiento de pago.'],
+          ['Contacto','<a href="mailto:reservas.sherry@hipotels.com">reservas.sherry@hipotels.com</a> · <a href="tel:+34956317614">956 31 76 14</a>']
+        ] },
+      { zona:'Jerez', nombre:'NH Avenida Jerez', est:'★★★★',
+        dto:'', reserva:'En su web o con el hotel', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.nh-hotels.com',
+        filas:[
+          ['Descuento','Sin descuento de boda por ahora.'],
+          ['El hotel','95 habitaciones y 5 junior suites en la Avenida Alcalde Álvaro Domecq.'],
+          ['Contacto','<a href="mailto:nhavenidadejerez@nh-hotels.com">nhavenidadejerez@nh-hotels.com</a> · <a href="tel:+34956347411">956 34 74 11</a>']
+        ] },
+      { zona:'Jerez', nombre:'Eurostars Asta Regia', est:'★★★★',
+        dto:'', reserva:'En su web', iglesia:'20 min en coche', bodega:'5 min andando', web:'https://www.eurostarshotels.com',
+        filas:[
+          ['Descuento','Sin descuento de boda.'],
+          ['El hotel','31 habitaciones en la calle San Agustín, junto a la plaza del Arenal: el más cerca de las bodegas.']
         ] }
     ];
     var grid = document.getElementById('h-grid'), dlg = document.getElementById('h-dlg');
@@ -865,9 +890,9 @@
       return '<article class="h-card" data-zona="' + h.zona + '">' +
         '<div class="h-top"><span class="h-zona">' + h.zona + '</span><span class="h-est">' + h.est + '</span></div>' +
         '<h3>' + h.nombre + '</h3>' +
-        '<div><div class="h-cifras">' +
-          '<div class="precio"><b>' + h.precio + '</b><small>precio medio' + (h.precioNota ? ' · ' + h.precioNota : '') + '</small></div>' +
-          '<div' + (h.dto ? '' : ' class="sin"') + '><b>' + (h.dto ? '−' + h.dto : '—') + '</b><small>' + (h.dto ? 'descuento boda' : 'sin descuento') + '</small></div>' +
+        '<div><div class="h-cifras' + (h.precio ? '' : ' una') + '">' +
+          '<div' + (h.dto ? '' : ' class="sin"') + '><b>' + (h.dto ? '−' + h.dto : '—') + '</b><small>' + (h.dto ? (h.dtoPend ? 'descuento boda · por confirmar' : 'descuento boda') : 'sin descuento de boda') + '</small></div>' +
+          (h.precio ? '<div class="precio"><b>' + h.precio + '</b><small>la noche · ' + h.precioNota + '</small></div>' : '') +
         '</div>' +
         '<dl class="h-datos">' +
           '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
