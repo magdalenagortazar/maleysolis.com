@@ -215,11 +215,18 @@
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
   /* Dónde dormir: tarjetas con descuento y precio, y desglose en una ventana */
-  .filtro{display:flex;gap:0;border:1px solid var(--linea);justify-self:start;background:#FBFAF6}
-  .filtro button{font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-    padding:10px 18px;border:0;background:none;color:var(--tinta-2);cursor:pointer;min-height:44px}
-  .filtro button+button{border-left:1px solid var(--linea)}
-  .filtro button[aria-pressed=true]{background:var(--verde);color:var(--albariza)}
+  .zonas{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .zona{font:inherit;text-align:left;cursor:pointer;background:#FBFAF6;border:1px solid var(--linea);padding:22px 24px 20px;
+    display:grid;gap:6px;color:var(--tinta);position:relative;min-height:44px;transition:border-color .15s,box-shadow .15s}
+  .zona:hover{border-color:var(--fino);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .zona[aria-pressed=true]{border-color:var(--fino);box-shadow:inset 0 0 0 1px var(--fino);background:#FFF8E6}
+  .zona-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--tinta-2)}
+  .zona-nombre{font-family:var(--display);font-size:28px;line-height:1.1;color:var(--verde)}
+  .zona-n{font-size:14px;color:var(--tinta-2)}
+  .zona-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .zona-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fino);border:1px dashed var(--fino);padding:2px 8px}
+  .zona::after{content:"Ver hoteles";margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--verde);text-decoration:underline;text-underline-offset:3px}
+  .zona[aria-pressed=true]::after{content:"Viendo estos hoteles";text-decoration:none;color:var(--fino)}
   .h-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
   .h-card{background:#FBFAF6;border:1px solid var(--linea);display:grid;grid-template-rows:auto auto 1fr auto;
     transition:border-color .15s, box-shadow .15s}
@@ -445,15 +452,22 @@
       <div class="sec-head">
         <p class="eyebrow">Dónde dormir</p>
         <h2 id="hoteles-titulo">Hoteles con descuento</h2>
-        <p class="lead" id="hoteles-intro">En todos estos hoteles tenéis descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
+        <p class="lead" id="hoteles-intro">Elegid dónde preferís dormir y veréis los hoteles que nos hacen descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
       </div>
-      <div class="filtro" role="group" aria-label="Filtrar por zona">
-        <button type="button" data-zona="" aria-pressed="true">Todos</button>
-        <button type="button" data-zona="El Puerto" aria-pressed="false">El Puerto</button>
-        <button type="button" data-zona="Jerez" aria-pressed="false">Jerez</button>
+      <div class="zonas" role="group" aria-label="Elegid dónde queréis dormir">
+        <button type="button" class="zona" data-zona="El Puerto" aria-pressed="false">
+          <span class="zona-top"><span class="zona-eyebrow">Iglesia y preboda</span><span class="zona-tag" hidden>Os lo recomendamos</span></span>
+          <span class="zona-nombre">El Puerto de Santa María</span>
+          <span class="zona-n" id="zona-n-puerto"></span>
+        </button>
+        <button type="button" class="zona" data-zona="Jerez" aria-pressed="false">
+          <span class="zona-top"><span class="zona-eyebrow">Celebración</span><span class="zona-tag" hidden>Os lo recomendamos</span></span>
+          <span class="zona-nombre">Jerez de la Frontera</span>
+          <span class="zona-n" id="zona-n-jerez"></span>
+        </button>
       </div>
-      <div class="h-grid" id="h-grid"></div>
-      <p class="h-aviso">El precio lo veréis en la web de cada hotel; el descuento se aplica al reservar como dice cada ficha.</p>
+      <div class="h-grid" id="h-grid" hidden></div>
+      <p class="h-aviso" id="h-aviso" hidden>El precio lo veréis en la web de cada hotel; el descuento se aplica al reservar como dice cada ficha.</p>
     </div>
   </section>
 
@@ -876,14 +890,12 @@
     if (inv && inv.familia) {
       titulo.textContent = 'Vuestro hotel';
       intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles. Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
-      H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
-      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: en todos estos hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
-      H.sort(function(a, b){ return (b.zona === 'Jerez') - (a.zona === 'Jerez'); });
+      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: todos los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
     } else if (inv && inv.joven) {
       titulo.textContent = 'Os recomendamos El Puerto';
-      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. En todos estos hoteles tenéis descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
+      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. Todos los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
     }
     grid.innerHTML = H.map(function(h, i){
       return '<article class="h-card" data-zona="' + h.zona + '">' +
@@ -914,11 +926,19 @@
     });
     document.getElementById('dlg-cerrar').addEventListener('click', function(){ dlg.close(); });
     dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
-    document.querySelectorAll('.filtro button').forEach(function(b){
+    // Zona: no se ve ningún hotel hasta pinchar en El Puerto o en Jerez (decisión de Magdalena, 14/10/2026).
+    var aviso = document.getElementById('h-aviso');
+    document.getElementById('zona-n-puerto').textContent = H.filter(function(h){ return h.zona === 'El Puerto'; }).length + ' hoteles con descuento';
+    document.getElementById('zona-n-jerez').textContent = H.filter(function(h){ return h.zona === 'Jerez'; }).length + ' hoteles con descuento';
+    var recomendada = (inv && inv.padres) ? 'Jerez' : (inv && inv.joven) ? 'El Puerto' : '';
+    document.querySelectorAll('.zona').forEach(function(b){
+      if (b.getAttribute('data-zona') === recomendada) b.querySelector('.zona-tag').hidden = false;
       b.addEventListener('click', function(){
         var z = b.getAttribute('data-zona');
-        document.querySelectorAll('.filtro button').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
-        grid.querySelectorAll('.h-card').forEach(function(c){ c.hidden = z && c.getAttribute('data-zona') !== z; });
+        document.querySelectorAll('.zona').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+        grid.querySelectorAll('.h-card').forEach(function(c){ c.hidden = c.getAttribute('data-zona') !== z; });
+        grid.hidden = false; aviso.hidden = false;
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   })();
