@@ -24,7 +24,7 @@ window.INVITADOS = {
   "florit-machado-aw8a-luis-maricarmen": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Mari Carmen"], titulo: "Luis y Mari Carmen", familia: true, prebodaPadres: true },
   "florit-machado-aw8a-maria": { nombre: "Familia Florit-Machado", plazas: 1, genero: "f", nombres: ["María"], titulo: "María", familia: true, preboda: true },
   "florit-machado-aw8a-luis-silvia": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Silvia"], titulo: "Luis y Silvia", familia: true, preboda: true },
-  "telerin-m8e5": { nombre: "Familia Telerín", plazas: 4, genero: "p", nombres: ["Ana Pilar", "Raquel", "Julia", "Elvira"], titulo: "Ana Pilar, Raquel, Julia y Elvira", familia: true, prebodaPadres: true },
+  "telerin-m8e5": { nombre: "Familia Telerín", plazas: 4, genero: "p", nombres: ["Ana Pilar", "Raquel", "Julia", "Elvira"], titulo: "Ana Pilar, Raquel, Julia y Elvira", familia: true, preboda: true, prebodaPadres: true, prebodaNota: "Raquel, Julia y Elvira, la vuestra es la de El Puerto, con los jóvenes; Ana Pilar, la tuya es la de Jerez, con Gonzalo y Magdy." }, // las dos prebodas (14/10/2026)
   "florit-canibano-sktd": { nombre: "Familia Florit-Cañibano", plazas: 2, genero: "p", nombres: ["Manolo", "Ana"], titulo: "Manolo y Ana", familia: true, prebodaPadres: true },
   "brun-basarte-wptk-pepe-elvira": { nombre: "Familia Brun Basarte", plazas: 2, genero: "p", nombres: ["Pepe", "Elvira"], titulo: "Pepe y Elvira", familia: true, prebodaPadres: true, zaragoza: true },
   "brun-basarte-wptk-ines-ramon": { nombre: "Familia Brun Basarte", plazas: 2, genero: "p", nombres: ["Inés", "Ramón"], titulo: "Inés y Ramón", familia: true, preboda: true, zaragoza: true },
