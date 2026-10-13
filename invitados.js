@@ -11,7 +11,7 @@
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
 // padres: true en el enlace de los amigos de los padres (preboda de adultos en Jerez y hoteles recomendando Jerez).
 // prebodaPadres: true en la familia invitada a la preboda de Gonzalo y Magdy en Jerez (14/10/2026); la familia joven con preboda: true va a la de El Puerto.
-// Si lleva las dos, se enseñan las dos prebodas y prebodaNota dice quién va a cuál (casa de Jesús, Darío y Claudia).
+// Si lleva las dos, se enseñan las dos prebodas; prebodaQuien pone en el título de cada una quién va (puerto / jerez) y prebodaNota lo repite bajo la pregunta del formulario.
 // apellidos: true en enlaces generales sin nombres: dos huecos de nombre y apellidos (tú y acompañante).
 // saludo (opcional): texto del saludo si no debe ser el nombre de la invitación.
 // Este archivo se genera desde la hoja de invitados de "Boda 2027.xlsx".
@@ -24,7 +24,7 @@ window.INVITADOS = {
   "florit-machado-aw8a-luis-maricarmen": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Mari Carmen"], titulo: "Luis y Mari Carmen", familia: true, prebodaPadres: true },
   "florit-machado-aw8a-maria": { nombre: "Familia Florit-Machado", plazas: 1, genero: "f", nombres: ["María"], titulo: "María", familia: true, preboda: true },
   "florit-machado-aw8a-luis-silvia": { nombre: "Familia Florit-Machado", plazas: 2, genero: "p", nombres: ["Luis", "Silvia"], titulo: "Luis y Silvia", familia: true, preboda: true },
-  "telerin-m8e5": { nombre: "Familia Telerín", plazas: 4, genero: "p", nombres: ["Ana Pilar", "Raquel", "Julia", "Elvira"], titulo: "Ana Pilar, Raquel, Julia y Elvira", familia: true, preboda: true, prebodaPadres: true, prebodaNota: "Raquel, Julia y Elvira, la vuestra es la de El Puerto, con los jóvenes; Ana Pilar, la tuya es la de Jerez, con Gonzalo y Magdy." }, // las dos prebodas (14/10/2026)
+  "telerin-m8e5": { nombre: "Familia Telerín", plazas: 4, genero: "p", nombres: ["Ana Pilar", "Raquel", "Julia", "Elvira"], titulo: "Ana Pilar, Raquel, Julia y Elvira", familia: true, preboda: true, prebodaPadres: true, prebodaQuien: { puerto: "Raquel, Julia y Elvira", jerez: "Ana Pilar" }, prebodaNota: "Raquel, Julia y Elvira, la vuestra es la de El Puerto, con los jóvenes; Ana Pilar, la tuya es la de Jerez, con Gonzalo y Magdy." }, // las dos prebodas (14/10/2026)
   "florit-canibano-sktd": { nombre: "Familia Florit-Cañibano", plazas: 2, genero: "p", nombres: ["Manolo", "Ana"], titulo: "Manolo y Ana", familia: true, prebodaPadres: true },
   "brun-basarte-wptk-pepe-elvira": { nombre: "Familia Brun Basarte", plazas: 2, genero: "p", nombres: ["Pepe", "Elvira"], titulo: "Pepe y Elvira", familia: true, prebodaPadres: true, zaragoza: true },
   "brun-basarte-wptk-ines-ramon": { nombre: "Familia Brun Basarte", plazas: 2, genero: "p", nombres: ["Inés", "Ramón"], titulo: "Inés y Ramón", familia: true, preboda: true, zaragoza: true },
@@ -36,7 +36,7 @@ window.INVITADOS = {
   "basarte-fernandez-73e5-javier-magdalena": { nombre: "Familia Basarte Fernández", plazas: 2, genero: "p", nombres: ["Javier", "Magdalena"], titulo: "Javier y Magdalena", familia: true, prebodaPadres: true, zaragoza: true },
   "basarte-fernandez-73e5-javi-irune": { nombre: "Familia Basarte Fernández", plazas: 3, genero: "p", nombres: ["Javi", "Irune", "Jimena"], titulo: "Javi e Irune", etiquetas: ["", "", "Hija de Javi e Irune"], ninos: [2], familia: true, preboda: true, zaragoza: true },
   "basarte-fernandez-73e5-nacho-blanca": { nombre: "Familia Basarte Fernández", plazas: 2, genero: "p", nombres: ["Nacho", "Blanca"], titulo: "Nacho y Blanca", familia: true, preboda: true, zaragoza: true },
-  "basarte-jesus-wtby": { nombre: "Familia Basarte", plazas: 3, genero: "p", nombres: ["Jesús", "Darío", "Claudia"], titulo: "Jesús, Darío y Claudia", familia: true, preboda: true, prebodaPadres: true, prebodaNota: "Darío y Claudia, la vuestra es la de El Puerto, con los jóvenes; Jesús, la tuya es la de Jerez, con Gonzalo y Magdy.", zaragoza: true }, // las dos prebodas (14/10/2026)
+  "basarte-jesus-wtby": { nombre: "Familia Basarte", plazas: 3, genero: "p", nombres: ["Jesús", "Darío", "Claudia"], titulo: "Jesús, Darío y Claudia", familia: true, preboda: true, prebodaPadres: true, prebodaQuien: { puerto: "Darío y Claudia", jerez: "Jesús" }, prebodaNota: "Darío y Claudia, la vuestra es la de El Puerto, con los jóvenes; Jesús, la tuya es la de Jerez, con Gonzalo y Magdy.", zaragoza: true }, // las dos prebodas (14/10/2026)
   "alarcon-hu5s": { nombre: "Familia Alarcón", plazas: 2, genero: "p", nombres: ["Mariela", "Aarón"], titulo: "Mariela y Aarón", familia: true }, // sin preboda (14/10/2026)
   "miriam-r7kd": { nombre: "Miriam", plazas: 1, genero: "f", nombres: ["Miriam"], titulo: "Miriam", familia: true }, // sin preboda (14/10/2026)
   "gortazar-alvarez-ehkm-luis-reyes": { nombre: "Familia Gortázar-Álvarez de las Asturias", plazas: 2, genero: "p", nombres: ["Luis", "Reyes"], titulo: "Luis y Reyes", familia: true, prebodaPadres: true },
