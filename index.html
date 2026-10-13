@@ -213,6 +213,69 @@
   .hero .dib.balon{width:22px;height:22px;stroke-width:3;opacity:.8}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  /* Dónde dormir: tarjetas con descuento y precio, y desglose en una ventana */
+  .zonas{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .zona{font:inherit;text-align:left;cursor:pointer;background:#FBFAF6;border:1px solid var(--linea);padding:22px 24px 20px;
+    display:grid;gap:6px;color:var(--tinta);position:relative;min-height:44px;transition:border-color .15s,box-shadow .15s}
+  .zona:hover{border-color:var(--fino);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .zona[aria-pressed=true]{border-color:var(--fino);box-shadow:inset 0 0 0 1px var(--fino);background:#FFF8E6}
+  .zona-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--tinta-2)}
+  .zona-nombre{font-family:var(--display);font-size:28px;line-height:1.1;color:var(--verde)}
+  .zona-n{font-size:14px;color:var(--tinta-2)}
+  .zona-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .zona-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fino);border:1px dashed var(--fino);padding:2px 8px}
+  .zona::after{content:"Ver hoteles";margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--verde);text-decoration:underline;text-underline-offset:3px}
+  .zona[aria-pressed=true]::after{content:"Viendo estos hoteles";text-decoration:none;color:var(--fino)}
+  .h-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+  .h-card{background:#FBFAF6;border:1px solid var(--linea);display:grid;grid-template-rows:auto auto 1fr auto;
+    transition:border-color .15s, box-shadow .15s}
+  .h-card:hover{border-color:var(--fino);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .h-top{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px 0;gap:10px}
+  .h-zona{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--fino)}
+  .h-est{font-size:13px;letter-spacing:.12em;color:var(--tinta-2)}
+  .h-card h3{font-size:26px;color:var(--verde);padding:6px 22px 0}
+  .h-cifras{display:grid;grid-template-columns:1fr;margin:18px 22px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .h-cifras div{padding:14px 0;display:grid;gap:2px;align-content:start}
+  .h-cifras b{font-family:var(--display);font-weight:400;font-size:34px;line-height:1.1;color:var(--fino);font-variant-numeric:tabular-nums}
+  .h-cifras small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+  .h-cifras .sin b{color:var(--linea)}
+  .h-dist{list-style:none;margin:0;padding:14px 22px 0;display:grid;gap:6px;font-size:15px;color:var(--tinta-2)}
+  .h-dist li{display:flex;gap:10px;align-items:center}
+  .h-dist svg{width:20px;height:20px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .h-pie{padding:18px 22px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .h-datos{margin:0;padding:6px 22px 0;display:grid}
+  .h-datos div{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:9px 0;border-bottom:1px dotted var(--linea);align-items:baseline}
+  .h-datos div:last-child{border-bottom:0}
+  .h-datos dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--tinta-2);display:flex;gap:6px;align-items:center}
+  .h-datos dd{margin:0;font-size:15px;color:var(--tinta)}
+  .h-datos svg{width:16px;height:16px;flex:none;stroke:var(--fino);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .h-pie{justify-content:flex-start!important;gap:8px!important}
+  .h-pie .btn{padding:10px 14px;letter-spacing:.1em}
+  .h-pie button.btn{font-family:var(--body);cursor:pointer;background:none;color:var(--verde)}
+  .h-pie button.btn:hover{background:var(--verde);color:var(--albariza)}
+  .h-aviso{font-size:14px;color:var(--tinta-2);max-width:70ch}
+
+  dialog.h-dlg{border:0;padding:0;max-width:560px;width:calc(100% - 32px);background:var(--albariza);color:var(--tinta);
+    max-height:calc(100dvh - 48px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  dialog.h-dlg::backdrop{background:rgba(40,36,30,.45)}
+  .dlg-head{position:sticky;top:0;background:var(--albariza);padding:22px 24px 16px;border-bottom:1px solid var(--linea);
+    border-top:3px solid var(--fino);display:grid;gap:4px}
+  .dlg-head h3{font-size:30px;color:var(--verde);padding-right:40px}
+  .dlg-cerrar{position:absolute;top:14px;right:12px;width:44px;height:44px;border:0;background:none;font-size:28px;line-height:1;color:var(--tinta-2);cursor:pointer}
+  .dlg-cerrar:hover{color:var(--fino)}
+  .dlg-body{padding:6px 24px 26px}
+  .dlg-body dl{margin:0;display:grid}
+  .dlg-body .fila{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--linea)}
+  .dlg-body dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--tinta-2);padding-top:3px}
+  .dlg-body dd{margin:0;font-size:16px}
+  .dlg-body dd b{color:var(--fino);font-weight:600}
+  .codigo{display:inline-flex;align-items:center;gap:10px;border:1px dashed var(--fino);padding:6px 12px;font-weight:600;letter-spacing:.06em}
+  .dlg-acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  @media (max-width:560px){
+    dialog.h-dlg{width:100%;max-width:none;margin:auto 0 0;max-height:88dvh}
+    .dlg-body .fila{grid-template-columns:1fr;gap:4px}
+  }
 </style>
 </head>
 <body>
@@ -233,7 +296,7 @@
         <li id="nav-preboda" hidden><a href="#preboda">Preboda</a></li>
         <li><a href="#lugares">Lugares</a></li>
         <li><a href="#llegar">Cómo llegar</a></li>
-        <li id="nav-hoteles" hidden><a href="#hoteles">Hoteles</a></li>
+        <li id="nav-hoteles"><a href="#hoteles">Hoteles</a></li>
         <li><a href="#confirmar">Confirmar</a></li>
         <li><a href="#regalos">Regalos</a></li>
       </ul>
@@ -376,27 +439,49 @@
           <h3>En coche</h3>
           <p>Desde Madrid son unas seis horas por la A-4. Jerez y El Puerto de Santa María están a unos 15 km, veinte minutos en coche.</p>
         </div>
-        <div id="dormir-general">
-          <h3>Dónde dormir <span class="pendiente">en gestión</span></h3>
-          <p id="hotel-familia" hidden>Se está gestionando el hotel para la familia.</p>
-          <p id="hotel-jovenes" hidden>A los más jóvenes os recomendamos dormir en El Puerto de Santa María: allí es la preboda del viernes y allí terminan los autobuses la noche de la boda, así que os ahorráis viajes. Estamos cerrando condiciones especiales con varios hoteles para que os salga mejor, y aquí pondremos opciones tanto en El Puerto como en Jerez para que elijáis la que más os guste.</p>
-          <p id="hotel-general">Estamos cerrando condiciones con hoteles de El Puerto y de Jerez para los invitados. Lo publicaremos aquí en cuanto lo tengamos. Los dos sitios están a veinte minutos, así que cualquiera de los dos va bien.</p>
-          <p id="hotel-preboda" hidden>Si venís a la preboda del viernes, os recomendamos dormir en El Puerto: el Club Las Redes está allí mismo y os ahorráis el viaje esa noche.</p>
+        <!-- El bloque "Dónde dormir" de aquí se quitó el 14/10/2026: la sección de hoteles va justo debajo. Quedan los párrafos vacíos porque el script los usa. -->
+        <div id="dormir-general" hidden>
+          <p id="hotel-general" hidden></p><p id="hotel-familia" hidden></p><p id="hotel-jovenes" hidden></p><p id="hotel-preboda" hidden></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="hoteles" hidden>
+  <section id="hoteles">
     <div class="wrap wrap-wide">
       <div class="sec-head">
         <p class="eyebrow">Dónde dormir</p>
-        <h2>Os recomendamos Jerez</h2>
-        <p class="lead">En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento en Jerez, así que conviene reservar pronto.</p>
-        <p class="lead">Dentro de poco aparecerán aquí opciones de hoteles con descuento por ser de la boda.</p>
+        <h2 id="hoteles-titulo">Hoteles con descuento</h2>
+        <p class="lead" id="hoteles-intro">Elegid dónde preferís dormir y veréis los hoteles que nos hacen descuento por ser de la boda. Ninguno nos guarda habitaciones, así que conviene reservar pronto: ese fin de semana hay mucho movimiento. El Puerto y Jerez están a veinte minutos, cualquiera de los dos va bien.</p>
       </div>
+      <div class="zonas" role="group" aria-label="Elegid dónde queréis dormir">
+        <button type="button" class="zona" data-zona="El Puerto" aria-pressed="false">
+          <span class="zona-top"><span class="zona-eyebrow">Iglesia y preboda</span><span class="zona-tag" hidden>Os lo recomendamos</span></span>
+          <span class="zona-nombre">El Puerto de Santa María</span>
+          <span class="zona-n" id="zona-n-puerto"></span>
+        </button>
+        <button type="button" class="zona" data-zona="Jerez" aria-pressed="false">
+          <span class="zona-top"><span class="zona-eyebrow">Celebración</span><span class="zona-tag" hidden>Os lo recomendamos</span></span>
+          <span class="zona-nombre">Jerez de la Frontera</span>
+          <span class="zona-n" id="zona-n-jerez"></span>
+        </button>
+      </div>
+      <div class="h-grid" id="h-grid" hidden></div>
+      <p class="h-aviso" id="h-aviso" hidden>El precio lo veréis en la web de cada hotel; el descuento se aplica al reservar como dice cada ficha.</p>
     </div>
   </section>
+
+  <dialog class="h-dlg" id="h-dlg" aria-labelledby="dlg-nombre">
+    <div class="dlg-head">
+      <span class="h-zona" id="dlg-zona"></span>
+      <h3 id="dlg-nombre"></h3>
+      <button type="button" class="dlg-cerrar" aria-label="Cerrar" id="dlg-cerrar">&times;</button>
+    </div>
+    <div class="dlg-body">
+      <dl id="dlg-filas"></dl>
+      <div class="dlg-acciones" id="dlg-acciones"></div>
+    </div>
+  </dialog>
 
   <section id="confirmar">
     <div class="wrap">
@@ -569,9 +654,9 @@
       document.querySelector('#nav-preboda a').setAttribute('href', '#preboda-padres');
       document.getElementById('bloque-preboda').hidden = false;
       document.querySelector('label[for=preboda-si]').textContent = 'Preboda del viernes en Jerez';
-      document.getElementById('hoteles').hidden = false;
+      
       document.getElementById('nav-hoteles').hidden = false;
-      document.getElementById('dormir-general').hidden = true;
+      
     }
   }
 
@@ -707,6 +792,164 @@
     ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 })();
+</script>
+<script>
+  // Dónde dormir: la misma lista para todas las invitaciones (13/10/2026).
+  // Datos de los correos de cada hotel. Sin precios y solo hoteles con descuento confirmado por el hotel (decisión de Magdalena, 13 y 14/10/2026).
+  (function(){
+    var ICO = {
+      iglesia:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M10 4h4M7 21V11l5-5 5 5v10M4 21h16M10 21v-4a2 2 0 0 1 4 0v4"/></svg>',
+      bodega:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v7M8.5 21h7"/></svg>',
+      fiesta:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l5-14 9 9zM14 4l1 2M19 9l2 1M17 3l-1 3"/></svg>'
+    };
+    var PEND = '<span class="pendiente" style="margin:0">próximamente</span>';
+    var H = [
+      { zona:'El Puerto', nombre:'Petit Palace Santa María', est:'★★★★',
+        dto:'10 %', reserva:'En su web, con el código MALEYSOLIS', iglesia:'10 min andando', bodega:'20 min en coche', web:'https://www.petitpalace.com',
+        filas:[
+          ['Descuento','<b>10 %</b> sobre la tarifa de su web. Si además os registráis en su programa Tripster, otro 10 %.'],
+          ['Código','<span class="codigo">MALEYSOLIS</span>'],
+          ['Cómo reservar','En la web de Petit Palace: elegid el hotel y las fechas e introducid el código. Cada uno pone sus datos y elige cómo pagar.'],
+          ['El hotel','100 habitaciones en la Avenida de la Bajamar, a diez minutos andando de la iglesia.'],
+          ['Contacto','<a href="mailto:santamaria@petitpalace.com">santamaria@petitpalace.com</a> · <a href="tel:+34956873211">956 87 32 11</a>']
+        ] },
+      { zona:'El Puerto', nombre:'Soho Duques de Medinaceli', est:'★★★★★',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'15 min andando', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.'],
+          ['El hotel','Palacio restaurado con jardín y piscina en la Plaza de los Jazmines. Aparcamiento de pago.']
+        ] },
+      { zona:'El Puerto', nombre:'Soho Vistahermosa', est:'★★★★',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'7 min en coche', bodega:'20 min en coche', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Vale también para los apartamentos. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.']
+        ] },
+      { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
+        dto:'', reserva:'Con el hotel; abren las reservas de 2027 en diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
+        filas:[
+          ['Qué es','Apartamentos de dos y tres dormitorios con cocina, en el puerto deportivo. Piscinas y aparcamiento gratis. Pensados para ir en grupo.'],
+          ['Cuándo','Todavía no se puede reservar: abren la agenda de 2027 en diciembre. Tienen anotada nuestra boda.'],
+          ['Descuento','Sin descuento de boda.'],
+          ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
+        ] },
+      { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
+        dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
+        filas:[
+          ['Descuento','<b>15 %</b> sobre su mejor tarifa. Las habitaciones son todas iguales, para una o dos personas.'],
+          ['Código',PEND],
+          ['Cómo reservar','Directamente con el hotel, dando el código. Máximo tres habitaciones a un mismo nombre.'],
+          ['Pago','En el hotel.'],
+          ['Cancelación','Gratis hasta 48 horas antes.'],
+          ['Incluye','Aparcamiento (según disponibilidad), wifi y una copa de jerez.'],
+          ['Hasta cuándo','El código vale hasta dos meses antes de la boda.'],
+          ['Contacto','<a href="mailto:reservas@jerezhotel.com">reservas@jerezhotel.com</a> · <a href="tel:+34956300600">956 30 06 00</a> · WhatsApp <a href="https://wa.me/34674273703">674 273 703</a>']
+        ] },
+      { zona:'Jerez', nombre:'Hotel Villa Jerez', est:'★★★★★',
+        dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'5 min en coche', web:'https://www.hace.es/hotel-villa-jerez/',
+        filas:[
+          ['Descuento','<b>15 %</b> sobre su mejor tarifa.'],
+          ['Código',PEND],
+          ['Cómo reservar','Directamente con el hotel, dando el código.'],
+          ['Pago','En el hotel.'],
+          ['Cancelación','Gratis hasta 24 horas antes.'],
+          ['Incluye','Aparcamiento, wifi y una copa de jerez.'],
+          ['Hasta cuándo','El código vale hasta dos meses antes de la boda.'],
+          ['El hotel','Villa de 18 habitaciones con jardines y piscina en la Avenida de la Cruz Roja.'],
+          ['Contacto','<a href="mailto:reservas@villajerez.com">reservas@villajerez.com</a> · <a href="tel:+34956153100">956 15 31 00</a> · WhatsApp <a href="https://wa.me/34674273638">674 273 638</a>']
+        ] },
+      { zona:'Jerez', nombre:'Soho Boutique Jerez', est:'★★★★',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'13 min andando', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.'],
+          ['El hotel','59 habitaciones en la calle Nuño de Cañas, en el centro de Jerez.']
+        ] },
+      { zona:'Jerez', nombre:'Itaca Jerez by Soho', est:'★★★★',
+        dto:'20 %', reserva:'Por correo a Verónica (info@sohohoteles.com)', iglesia:'20 min en coche', bodega:'10 min andando', web:'https://www.sohohoteles.com',
+        filas:[
+          ['Descuento','<b>20 %</b> sobre la tarifa flexible del día en que reservéis. Solo reservando con Verónica, no por internet.'],
+          ['Cómo reservar','Por correo a <a href="mailto:info@sohohoteles.com?subject=ATT%20DE%20VER%C3%93NICA%20-%20Boda%20Magdalena%20e%20Ignacio%20Sol%C3%ADs%2C%2029%20de%20mayo%20de%202027">info@sohohoteles.com</a>, poniendo «ATT DE VERÓNICA» y «Boda Magdalena e Ignacio Solís, 29 de mayo de 2027», con el hotel, vuestros nombres, el tipo de habitación, las fechas y si queréis desayuno. Os contestan con la confirmación y la forma de pago.'],
+          ['Pago','Se paga al reservar.'],
+          ['Cancelación','Gratis hasta 5 días antes.'],
+          ['El hotel','En la calle Diego Fernández Herrera, en el centro de Jerez, a diez minutos andando de la catedral y las bodegas.']
+        ] }
+      
+      
+      
+    ];
+    var grid = document.getElementById('h-grid'), dlg = document.getElementById('h-dlg');
+    if (!grid) return;
+    // Texto de cabecera según la invitación (inv viene del script principal). Todos ven todos los hoteles;
+    // cambia la recomendación y el orden (la zona recomendada va primero).
+    var codigoInv = (new URLSearchParams(location.search).get('i') || '').toLowerCase();
+    var inv = (window.INVITADOS && window.INVITADOS[codigoInv]) || null, titulo = document.getElementById('hoteles-titulo'), intro = document.getElementById('hoteles-intro');
+    if (inv && inv.familia) {
+      titulo.textContent = 'Vuestro hotel';
+      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles. Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
+    } else if (inv && inv.padres) {
+      titulo.textContent = 'Os recomendamos Jerez';
+      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
+    } else if (inv && inv.joven) {
+      titulo.textContent = 'Os recomendamos El Puerto';
+      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. Los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
+    }
+    grid.innerHTML = H.map(function(h, i){
+      return '<article class="h-card" data-zona="' + h.zona + '">' +
+        '<div class="h-top"><span class="h-zona">' + h.zona + '</span><span class="h-est">' + h.est + '</span></div>' +
+        '<h3>' + h.nombre + '</h3>' +
+        '<div><div class="h-cifras">' +
+          '<div' + (h.dto ? '' : ' class="sin"') + '><b>' + (h.dto ? '−' + h.dto : '—') + '</b><small>' + (h.dto ? (h.dtoPend ? 'descuento boda · por confirmar' : 'descuento boda') : 'sin descuento de boda') + '</small></div>' +
+        '</div>' +
+        '<dl class="h-datos">' +
+          '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
+          '<div><dt>' + ICO.iglesia + 'Iglesia</dt><dd>' + h.iglesia + '</dd></div>' +
+          '<div><dt>' + ICO.bodega + 'Bodegas</dt><dd>' + h.bodega + '</dd></div>' +
+          (h.extra && inv && inv.preboda ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
+        '</dl></div>' +
+        '<div class="h-pie"><a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>' +
+        '<button type="button" class="btn" data-h="' + i + '">Condiciones</button></div>' +
+        '</article>';
+    }).join('');
+    grid.addEventListener('click', function(e){
+      var b = e.target.closest('button[data-h]'); if (!b) return;
+      var h = H[+b.getAttribute('data-h')];
+      document.getElementById('dlg-zona').textContent = h.zona + ' · ' + h.est;
+      document.getElementById('dlg-nombre').textContent = h.nombre;
+      document.getElementById('dlg-filas').innerHTML = h.filas.map(function(f){
+        return '<div class="fila"><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('');
+      document.getElementById('dlg-acciones').innerHTML = '<a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>';
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+    document.getElementById('dlg-cerrar').addEventListener('click', function(){ dlg.close(); });
+    dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+    // Zona: no se ve ningún hotel hasta pinchar en El Puerto o en Jerez (decisión de Magdalena, 14/10/2026).
+    var aviso = document.getElementById('h-aviso');
+    function cuenta(z){
+      var con = H.filter(function(h){ return h.zona === z && h.dto; }).length, sin = H.filter(function(h){ return h.zona === z && !h.dto; }).length;
+      return con + ' hoteles con descuento' + (sin ? ' y apartamentos para grupos' : '');
+    }
+    document.getElementById('zona-n-puerto').textContent = cuenta('El Puerto');
+    document.getElementById('zona-n-jerez').textContent = cuenta('Jerez');
+    var recomendada = (inv && inv.padres) ? 'Jerez' : (inv && inv.joven) ? 'El Puerto' : '';
+    document.querySelectorAll('.zona').forEach(function(b){
+      if (b.getAttribute('data-zona') === recomendada) b.querySelector('.zona-tag').hidden = false;
+      b.addEventListener('click', function(){
+        var z = b.getAttribute('data-zona');
+        document.querySelectorAll('.zona').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+        grid.querySelectorAll('.h-card').forEach(function(c){ c.hidden = c.getAttribute('data-zona') !== z; });
+        grid.hidden = false; aviso.hidden = false;
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
 </script>
 </body>
 </html>

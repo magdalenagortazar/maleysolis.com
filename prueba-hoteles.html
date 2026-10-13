@@ -834,6 +834,14 @@
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.']
         ] },
+      { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
+        dto:'', reserva:'Con el hotel; abren las reservas de 2027 en diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
+        filas:[
+          ['Qué es','Apartamentos de dos y tres dormitorios con cocina, en el puerto deportivo. Piscinas y aparcamiento gratis. Pensados para ir en grupo.'],
+          ['Cuándo','Todavía no se puede reservar: abren la agenda de 2027 en diciembre. Tienen anotada nuestra boda.'],
+          ['Descuento','Sin descuento de boda.'],
+          ['Contacto','<a href="mailto:recepcion@lassuitesdepuertosherry.com">recepcion@lassuitesdepuertosherry.com</a> · <a href="tel:+34956862500">956 86 25 00</a>']
+        ] },
       { zona:'Jerez', nombre:'Hotel Jerez AQ35', est:'★★★★',
         dto:'15 %', reserva:'Con el hotel, dando el código', iglesia:'20 min en coche', bodega:'6 min en coche', web:'https://www.hace.es/hotel-jerez-aq35/',
         filas:[
@@ -892,10 +900,10 @@
       intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles. Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
-      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: todos los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
+      intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
     } else if (inv && inv.joven) {
       titulo.textContent = 'Os recomendamos El Puerto';
-      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. Todos los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
+      intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. Los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
     }
     grid.innerHTML = H.map(function(h, i){
       return '<article class="h-card" data-zona="' + h.zona + '">' +
@@ -908,7 +916,7 @@
           '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
           '<div><dt>' + ICO.iglesia + 'Iglesia</dt><dd>' + h.iglesia + '</dd></div>' +
           '<div><dt>' + ICO.bodega + 'Bodegas</dt><dd>' + h.bodega + '</dd></div>' +
-          (h.extra ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
+          (h.extra && inv && inv.preboda ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
         '</dl></div>' +
         '<div class="h-pie"><a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>' +
         '<button type="button" class="btn" data-h="' + i + '">Condiciones</button></div>' +
@@ -928,8 +936,12 @@
     dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
     // Zona: no se ve ningún hotel hasta pinchar en El Puerto o en Jerez (decisión de Magdalena, 14/10/2026).
     var aviso = document.getElementById('h-aviso');
-    document.getElementById('zona-n-puerto').textContent = H.filter(function(h){ return h.zona === 'El Puerto'; }).length + ' hoteles con descuento';
-    document.getElementById('zona-n-jerez').textContent = H.filter(function(h){ return h.zona === 'Jerez'; }).length + ' hoteles con descuento';
+    function cuenta(z){
+      var con = H.filter(function(h){ return h.zona === z && h.dto; }).length, sin = H.filter(function(h){ return h.zona === z && !h.dto; }).length;
+      return con + ' hoteles con descuento' + (sin ? ' y apartamentos para grupos' : '');
+    }
+    document.getElementById('zona-n-puerto').textContent = cuenta('El Puerto');
+    document.getElementById('zona-n-jerez').textContent = cuenta('Jerez');
     var recomendada = (inv && inv.padres) ? 'Jerez' : (inv && inv.joven) ? 'El Puerto' : '';
     document.querySelectorAll('.zona').forEach(function(b){
       if (b.getAttribute('data-zona') === recomendada) b.querySelector('.zona-tag').hidden = false;

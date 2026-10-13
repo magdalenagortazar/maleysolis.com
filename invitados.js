@@ -58,7 +58,7 @@ window.INVITADOS = {
   "maria-javier-5r7q": { nombre: "María y Javier", plazas: 2, genero: "p", nombres: ["María", "Javier"], titulo: "María y Javier", preboda: true, joven: true },
   "marisa-gonzalo-9ghf": { nombre: "Marisa y Gonzalo", plazas: 2, genero: "p", nombres: ["Marisa", "Gonzalo"], titulo: "Marisa y Gonzalo", preboda: true, joven: true },
   "rocio-afonso-n47v": { nombre: "Rocío y Afonso", plazas: 2, genero: "p", nombres: ["Rocío", "Afonso"], titulo: "Rocío y Afonso", preboda: true, joven: true },
-  "teresa-javier-mtmu": { nombre: "Teresa y Javier", plazas: 2, genero: "p", nombres: ["Teresa", "Javier"], titulo: "Teresa y Javier", preboda: true, joven: true },
+  "teresa-javier-mtmu": { nombre: "Teresa y Javier", saludo: "Chambea y su ilusión", plazas: 2, genero: "p", nombres: ["Teresa", "Javier"], titulo: "Teresa y Javier", preboda: true, joven: true }, // saludo cambiado el 14/10/2026 a petición de Magdalena
   "isabel-jonny-vdxv": { nombre: "Isabel y Jonny", plazas: 2, genero: "p", nombres: ["Isabel", "Jonny"], titulo: "Isabel y Jonny", preboda: true, joven: true },
   "ale-uvwj": { nombre: "Ale", plazas: 1, genero: "f", nombres: ["Ale"], titulo: "Ale", preboda: true, joven: true },
   "belen-tch3": { nombre: "Belén", plazas: 1, genero: "f", nombres: ["Belén"], titulo: "Belén", preboda: true, joven: true },
