@@ -87,6 +87,9 @@ window.INVITADOS = {
   "maria-lopez-de-haro-yrnp": { nombre: "María", plazas: 1, genero: "f", nombres: [""], titulo: "María", preboda: true, joven: true },
   // Cris Elices (amiga de la novia, "Otros amigos"), 05/10/2026: con acompañante, preboda de El Puerto; los nombres los escriben ellos.
   "cris-elices-avtk": { nombre: "Cris", plazas: 2, genero: "p", nombres: ["", ""], titulo: "Cris", etiquetas: ["", "Acompañante"], preboda: true, joven: true },
+  // Amigos de Solís (Madrid), 17/10/2026: con preboda de El Puerto.
+  "juande-carmele-tdda": { nombre: "Juande y Carmele", saludo: "Para los Largos, Juande y Carmele", plazas: 2, genero: "p", nombres: ["Juande", "Carmele"], titulo: "Juande y Carmele", preboda: true, joven: true },
+  "joaco-maca-59p3": { nombre: "Joaco y Maca", saludo: "Joacorrote y Maca", plazas: 2, genero: "p", nombres: ["Joaco", "Maca"], titulo: "Joaco y Maca", preboda: true, joven: true },
   // Familia de Solís (03/10/2026): un enlace por casa.
   "carlos-carmen-6cm3": { nombre: "Carlos y Carmen", plazas: 2, genero: "p", nombres: ["Carlos", "Carmen"], titulo: "Carlos y Carmen" },
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
