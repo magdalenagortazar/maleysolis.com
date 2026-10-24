@@ -98,25 +98,12 @@
 <header class="cab">
   <p class="eyebrow">Lista de bodas</p>
   <h1>Lo que más ilusión nos hace es que vengáis</h1>
-  <p class="lead">Si además queréis tener un detalle, aquí hay algunas ideas. Cuando alguien elige un regalo, queda marcado como cogido para todos, así que no se repite.</p>
+  <p class="lead">Si además queréis tener un detalle, aquí hay algunas ideas. Pinchad en cada una para verla en su tienda. Podéis comprar un regalo entero o participar en él con lo que queráis; cuando está completo, queda marcado como cogido para todos.</p>
 </header>
 
 <main>
   <p class="estado-carga" id="carga">Cargando la lista…</p>
-  <section class="bloque" id="bloque-regalar" hidden>
-    <div class="bloque-head">
-      <h2>Para regalar</h2>
-      <p class="lead">Pinchad en cada regalo para verlo en su tienda. Si os lo quedáis, pulsad "Lo regalo yo" para que nadie más lo compre.</p>
-    </div>
-    <div class="regalos" id="regalos" aria-live="polite"></div>
-  </section>
-  <section class="bloque" id="bloque-participar" hidden>
-    <div class="bloque-head">
-      <h2>Para participar entre varios</h2>
-      <p class="lead">Regalos más grandes a los que podéis aportar lo que queráis.</p>
-    </div>
-    <div class="regalos" id="regalos-participar" aria-live="polite"></div>
-  </section>
+  <div class="regalos" id="regalos" aria-live="polite"></div>
 </main>
 
 <footer>
@@ -166,7 +153,6 @@
   var IBAN = 'ES41 2100 0555 3401 0180 5000';
 
   var cont = document.getElementById('regalos');
-  var contP = document.getElementById('regalos-participar');
   var carga = document.getElementById('carga');
   var dlg = document.getElementById('dlg');
   var form = document.getElementById('form');
@@ -199,11 +185,7 @@
   function el(tag, cls, txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
 
   function pintar(){
-    cont.textContent = ''; contP.textContent = '';
-    var hayR = regalos.some(function(r){ return !r.compartible; });
-    var hayP = regalos.some(function(r){ return r.compartible; });
-    document.getElementById('bloque-regalar').hidden = !hayR;
-    document.getElementById('bloque-participar').hidden = !hayP;
+    cont.textContent = '';
     if(!regalos.length){ carga.hidden=false; carga.textContent='Todavía no hay regalos en la lista.'; return; }
     carga.hidden = true;
     var orden = regalos.slice().sort(function(a,b){ return (a.cogido-b.cogido); });
@@ -223,7 +205,7 @@
       if(r.precio) meta.appendChild(el('span','precio',euros(r.precio)));
       c.appendChild(meta);
 
-      if(r.compartible && r.precio && !r.cogido && r.aportado>0){
+      if(r.precio && !r.cogido && r.aportado>0){
         var b = el('div','barra'); var ii=el('i'); ii.style.width=Math.min(100,r.aportado/r.precio*100)+'%'; b.appendChild(ii); c.appendChild(b);
         c.appendChild(el('p','progreso', r.personas + (r.personas===1?' persona participa':' personas participan') + ' · faltan ' + euros(falta(r))));
       }
@@ -231,18 +213,18 @@
         c.appendChild(el('span','cogido','Ya está cogido'));
       } else {
         var acc = el('div','acciones');
-        if(!r.compartible){
-          var b1 = el('button','btn btn-solid','Lo regalo yo'); b1.type='button';
+        if(!(r.personas>0)){
+          var b1 = el('button','btn btn-solid','Quiero comprarlo'); b1.type='button';
           b1.onclick = function(){ abrir(r,'entero'); }; acc.appendChild(b1);
         }
-        if(r.compartible){
+        {
           var b2 = el('button','btn','Quiero participar'); b2.type='button';
           b2.onclick = function(){ abrir(r,'parte'); }; acc.appendChild(b2);
         }
         c.appendChild(acc);
       }
       card.appendChild(c);
-      (r.compartible ? contP : cont).appendChild(card);
+      cont.appendChild(card);
     });
   }
 
