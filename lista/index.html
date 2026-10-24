@@ -37,6 +37,14 @@
   .lead{font-size:18px;color:var(--tinta-2);max-width:56ch}
 
   main{max-width:1040px;margin:0 auto;padding:0 20px 72px}
+  .bloque{display:grid;gap:22px;padding:8px 0 48px}
+  .bloque + .bloque{border-top:1px solid var(--linea);padding-top:48px}
+  .bloque-head{display:grid;gap:8px}
+  .bloque-head h2{font-size:clamp(28px,4vw,38px);color:var(--verde)}
+  .bloque-head .lead{font-size:16px}
+  .regalo h3 a{color:inherit;text-decoration:none}
+  .regalo h3 a:hover{color:var(--fino)}
+  .regalo .img a{display:block;height:100%}
   .estado-carga{text-align:center;color:var(--tinta-2);padding:40px 0}
   .regalos{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
   .regalo{background:var(--papel);border:1px solid var(--linea);display:grid;grid-template-rows:auto 1fr;transition:opacity .2s}
@@ -90,12 +98,25 @@
 <header class="cab">
   <p class="eyebrow">Lista de bodas</p>
   <h1>Lo que más ilusión nos hace es que vengáis</h1>
-  <p class="lead">Si además queréis tener un detalle, aquí hay algunas ideas. Cuando alguien elige un regalo, queda marcado como cogido para todos, así que no se repite. Los regalos más grandes se pueden hacer entre varios.</p>
+  <p class="lead">Si además queréis tener un detalle, aquí hay algunas ideas. Cuando alguien elige un regalo, queda marcado como cogido para todos, así que no se repite.</p>
 </header>
 
 <main>
   <p class="estado-carga" id="carga">Cargando la lista…</p>
-  <div class="regalos" id="regalos" aria-live="polite"></div>
+  <section class="bloque" id="bloque-regalar" hidden>
+    <div class="bloque-head">
+      <h2>Para regalar</h2>
+      <p class="lead">Pinchad en cada regalo para verlo en su tienda. Si os lo quedáis, pulsad "Lo regalo yo" para que nadie más lo compre.</p>
+    </div>
+    <div class="regalos" id="regalos" aria-live="polite"></div>
+  </section>
+  <section class="bloque" id="bloque-participar" hidden>
+    <div class="bloque-head">
+      <h2>Para participar entre varios</h2>
+      <p class="lead">Regalos más grandes a los que podéis aportar lo que queráis.</p>
+    </div>
+    <div class="regalos" id="regalos-participar" aria-live="polite"></div>
+  </section>
 </main>
 
 <footer>
@@ -134,7 +155,7 @@
       <button type="button" class="btn" id="g-copiar">Copiar</button>
     </div>
     <p class="sub" id="g-concepto" hidden></p>
-    <div class="pie-dlg"><button type="button" class="btn btn-solid" id="g-cerrar">Cerrar</button></div>
+    <div class="pie-dlg"><button type="button" class="btn" id="g-cerrar">Cerrar</button><a class="btn btn-solid" id="g-tienda" target="_blank" rel="noopener" hidden>Ir a la tienda</a></div>
   </div>
 </dialog>
 
@@ -145,6 +166,7 @@
   var IBAN = 'ES41 2100 0555 3401 0180 5000';
 
   var cont = document.getElementById('regalos');
+  var contP = document.getElementById('regalos-participar');
   var carga = document.getElementById('carga');
   var dlg = document.getElementById('dlg');
   var form = document.getElementById('form');
@@ -177,16 +199,21 @@
   function el(tag, cls, txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
 
   function pintar(){
-    cont.textContent = '';
+    cont.textContent = ''; contP.textContent = '';
+    var hayR = regalos.some(function(r){ return !r.compartible; });
+    var hayP = regalos.some(function(r){ return r.compartible; });
+    document.getElementById('bloque-regalar').hidden = !hayR;
+    document.getElementById('bloque-participar').hidden = !hayP;
     if(!regalos.length){ carga.hidden=false; carga.textContent='Todavía no hay regalos en la lista.'; return; }
     carga.hidden = true;
     var orden = regalos.slice().sort(function(a,b){ return (a.cogido-b.cogido); });
     orden.forEach(function(r){
       var card = el('article','regalo' + (r.cogido?' esta-cogido':''));
       var img = el('div','img');
-      if(r.foto){ var i=el('img'); i.src=r.foto; i.alt=''; i.loading='lazy'; img.appendChild(i); card.appendChild(img); }
+      function enlace(hijo){ if(!r.enlace) return hijo; var a=el('a'); a.href=r.enlace; a.target='_blank'; a.rel='noopener'; a.appendChild(hijo); return a; }
+      if(r.foto){ var i=el('img'); i.src=r.foto; i.alt=r.nombre; i.loading='lazy'; img.appendChild(enlace(i)); card.appendChild(img); }
       var c = el('div','cuerpo');
-      c.appendChild(el('h3',null,r.nombre));
+      var h = el('h3'); h.appendChild(enlace(document.createTextNode(r.nombre))); c.appendChild(h);
       if(r.descripcion) c.appendChild(el('p','desc',r.descripcion));
       var meta = el('div','meta');
       var t = el('span','tienda');
@@ -204,7 +231,7 @@
         c.appendChild(el('span','cogido','Ya está cogido'));
       } else {
         var acc = el('div','acciones');
-        if(!(r.personas>0)){
+        if(!r.compartible){
           var b1 = el('button','btn btn-solid','Lo regalo yo'); b1.type='button';
           b1.onclick = function(){ abrir(r,'entero'); }; acc.appendChild(b1);
         }
@@ -215,7 +242,7 @@
         c.appendChild(acc);
       }
       card.appendChild(c);
-      cont.appendChild(card);
+      (r.compartible ? contP : cont).appendChild(card);
     });
   }
 
@@ -226,7 +253,7 @@
     var sub = document.getElementById('dlg-sub');
     var ci = document.getElementById('campo-importe');
     if(tipo==='entero'){
-      sub.textContent = 'Os lo apuntamos a vosotros y deja de estar disponible para los demás.';
+      sub.textContent = 'Os lo apuntamos y queda marcado como cogido para los demás. Después os llevamos a la tienda para comprarlo.';
       ci.hidden = true;
     } else {
       sub.textContent = r.precio ? ('Cuesta ' + euros(r.precio) + (r.aportado>0 ? ' y faltan ' + euros(falta(r)) : '') + '. Poned lo que queráis.') : 'Poned lo que queráis.';
@@ -256,13 +283,16 @@
         }
         form.hidden = true; gracias.hidden = false;
         var concepto = 'Regalo ' + r.nombre + ' – ' + nombre;
+        var gt = document.getElementById('g-tienda'), gc = document.getElementById('g-concepto');
         if(tipo==='entero'){
-          document.getElementById('g-texto').textContent = 'Os lo hemos apuntado. Podéis comprarlo en la tienda o, si lo preferís, hacernos una transferencia y lo compramos nosotros.';
+          document.getElementById('g-texto').textContent = r.enlace ? 'Ya está apuntado a vuestro nombre. Ahora podéis comprarlo en su tienda:' : 'Ya está apuntado a vuestro nombre.';
+          document.getElementById('g-iban').hidden = true; gc.hidden = true;
+          gt.hidden = !r.enlace; if(r.enlace) gt.href = r.enlace;
         } else {
           document.getElementById('g-texto').textContent = 'Os hemos apuntado con ' + euros(d.importe) + '. Podéis hacer la transferencia a esta cuenta:';
+          document.getElementById('g-iban').hidden = false; gt.hidden = true;
+          gc.textContent = 'Concepto: ' + concepto; gc.hidden = false;
         }
-        document.getElementById('g-iban').hidden = false;
-        var gc = document.getElementById('g-concepto'); gc.textContent = 'Concepto: ' + concepto; gc.hidden = false;
         fNombre.value=''; fImporte.value=''; fMensaje.value='';
       })
       .catch(function(){ fOk.disabled=false; fOk.textContent='Confirmar'; fError.textContent='No hay conexión. Probad de nuevo.'; fError.hidden=false; });
