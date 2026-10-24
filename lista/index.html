@@ -84,6 +84,7 @@
   .envio span{color:var(--tinta-2)}
   .envio b{font-weight:600;color:var(--verde)}
   .enlace-tienda{font-size:15px;font-weight:600;color:var(--fino);margin-bottom:8px}
+  .pago{display:grid;gap:6px;font-size:15px;color:var(--tinta-2)}
   .error{color:var(--fino);font-size:15px}
   .pie-dlg{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
   .iban{font-variant-numeric:tabular-nums;letter-spacing:.03em;background:var(--albariza);border:1px solid var(--linea);padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
@@ -125,6 +126,13 @@
       <span>Si queréis, lo podéis mandar a nuestra dirección:</span>
       <b>Calle Triana 63, 28016 Madrid</b>
     </div>
+    <div class="pago">
+      <span id="dlg-iban-txt"></span>
+      <div class="iban">
+        <span>ES41 2100 0555 3401 0180 5000</span>
+        <button type="button" class="btn copiar-iban">Copiar</button>
+      </div>
+    </div>
     <p class="sub" id="dlg-sub"></p>
     <div class="campo">
       <label for="f-nombre">Vuestro nombre</label>
@@ -149,7 +157,7 @@
     <p class="sub" id="g-texto"></p>
     <div class="iban" id="g-iban" hidden>
       <span>ES41 2100 0555 3401 0180 5000</span>
-      <button type="button" class="btn" id="g-copiar">Copiar</button>
+      <button type="button" class="btn copiar-iban">Copiar</button>
     </div>
     <p class="sub" id="g-concepto" hidden></p>
     <div class="envio" id="g-envio" hidden>
@@ -250,11 +258,13 @@
     var ci = document.getElementById('campo-importe');
     var env = document.getElementById('dlg-envio');
     if(tipo==='entero'){
+      document.getElementById('dlg-iban-txt').textContent = 'Si lo preferís, podéis hacernos una transferencia por su importe y lo compramos nosotros:';
       sub.textContent = 'Si lo vais a comprar, poned vuestro nombre y pulsad "Lo voy a comprar" para que salga como cogido y nadie más lo compre.';
       ci.hidden = true; env.hidden = false;
       var dt = document.getElementById('dlg-tienda'); dt.hidden = !r.enlace; if(r.enlace) dt.href = r.enlace;
     } else {
       env.hidden = true;
+      document.getElementById('dlg-iban-txt').textContent = 'Haced la transferencia a esta cuenta con lo que queráis poner:';
       sub.textContent = r.precio ? ('Cuesta ' + euros(r.precio) + (r.aportado>0 ? ' y faltan ' + euros(falta(r)) : '') + '. Poned lo que queráis.') : 'Poned lo que queráis.';
       ci.hidden = false; fImporte.value = ''; if(r.precio) fImporte.max = falta(r);
     }
@@ -299,9 +309,9 @@
 
   document.getElementById('f-cancelar').onclick = function(){ dlg.close(); };
   document.getElementById('g-cerrar').onclick = function(){ dlg.close(); };
-  document.getElementById('g-copiar').onclick = function(){
+  [].forEach.call(document.querySelectorAll('.copiar-iban'), function(btn){ btn.onclick = function(){
     var b=this; (navigator.clipboard ? navigator.clipboard.writeText(IBAN.replace(/\s/g,'')) : Promise.reject()).then(function(){ b.textContent='Copiado'; setTimeout(function(){ b.textContent='Copiar'; },2000); }, function(){});
-  };
+  }; });
 
   function cargar(){
     if(!SERVICIO){ carga.textContent='La lista estará disponible muy pronto.'; return; }
