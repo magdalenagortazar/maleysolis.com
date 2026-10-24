@@ -83,7 +83,7 @@
   .envio{display:grid;gap:2px;background:var(--albariza);border:1px solid var(--linea);padding:12px 14px;font-size:15px}
   .envio span{color:var(--tinta-2)}
   .envio b{font-weight:600;color:var(--verde)}
-  .enlace-tienda{font-size:14px;margin-top:4px}
+  .enlace-tienda{font-size:15px;font-weight:600;color:var(--fino);margin-bottom:8px}
   .error{color:var(--fino);font-size:15px}
   .pie-dlg{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
   .iban{font-variant-numeric:tabular-nums;letter-spacing:.03em;background:var(--albariza);border:1px solid var(--linea);padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
@@ -122,9 +122,9 @@
     <h2 id="dlg-titulo"></h2>
     <p class="sub" id="dlg-sub"></p>
     <div class="envio" id="dlg-envio" hidden>
-      <span>Enviadlo a esta dirección:</span>
+      <a class="enlace-tienda" id="dlg-tienda" target="_blank" rel="noopener">Haced clic aquí para que se abra la tienda en otra pestaña y lo podáis comprar directamente.</a>
+      <span>Si queréis, lo podéis mandar a nuestra dirección:</span>
       <b>Calle Triana 63, 28016 Madrid</b>
-      <a class="enlace-tienda" id="dlg-tienda" target="_blank" rel="noopener">Abrir otra vez la tienda</a>
     </div>
     <div class="campo">
       <label for="f-nombre">Vuestro nombre</label>
@@ -153,7 +153,7 @@
     </div>
     <p class="sub" id="g-concepto" hidden></p>
     <div class="envio" id="g-envio" hidden>
-      <span>Recordad enviarlo a:</span>
+      <span>Si queréis mandarlo, nuestra dirección es:</span>
       <b>Calle Triana 63, 28016 Madrid</b>
     </div>
     <div class="pie-dlg"><button type="button" class="btn" id="g-cerrar">Cerrar</button><a class="btn btn-solid" id="g-tienda" target="_blank" rel="noopener" hidden>Ir a la tienda</a></div>
@@ -229,7 +229,7 @@
         var acc = el('div','acciones');
         if(!(r.personas>0)){
           var b1 = el('button','btn btn-solid','Quiero comprarlo'); b1.type='button';
-          b1.onclick = function(){ if(r.enlace) window.open(r.enlace,'_blank','noopener'); abrir(r,'entero'); }; acc.appendChild(b1);
+          b1.onclick = function(){ abrir(r,'entero'); }; acc.appendChild(b1);
         }
         {
           var b2 = el('button','btn','Quiero participar'); b2.type='button';
@@ -250,7 +250,7 @@
     var ci = document.getElementById('campo-importe');
     var env = document.getElementById('dlg-envio');
     if(tipo==='entero'){
-      sub.textContent = (r.enlace ? 'Os hemos abierto la tienda en otra pestaña para que podáis comprarlo allí. ' : '') + 'Si lo vais a comprar, poned vuestro nombre y pulsad "Lo voy a comprar" para que salga como cogido y nadie más lo compre.';
+      sub.textContent = 'Si lo vais a comprar, poned vuestro nombre y pulsad "Lo voy a comprar" para que salga como cogido y nadie más lo compre.';
       ci.hidden = true; env.hidden = false;
       var dt = document.getElementById('dlg-tienda'); dt.hidden = !r.enlace; if(r.enlace) dt.href = r.enlace;
     } else {
