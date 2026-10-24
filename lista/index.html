@@ -80,6 +80,10 @@
   input,textarea{font:inherit;padding:11px 13px;border:1px solid var(--linea);background:#fff;color:var(--tinta);width:100%}
   textarea{min-height:72px;resize:vertical}
   input:focus,textarea:focus{outline:none;border-color:var(--verde)}
+  .envio{display:grid;gap:2px;background:var(--albariza);border:1px solid var(--linea);padding:12px 14px;font-size:15px}
+  .envio span{color:var(--tinta-2)}
+  .envio b{font-weight:600;color:var(--verde)}
+  .enlace-tienda{font-size:14px;margin-top:4px}
   .error{color:var(--fino);font-size:15px}
   .pie-dlg{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
   .iban{font-variant-numeric:tabular-nums;letter-spacing:.03em;background:var(--albariza);border:1px solid var(--linea);padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
@@ -117,6 +121,11 @@
   <form class="dlg" id="form" method="dialog" novalidate>
     <h2 id="dlg-titulo"></h2>
     <p class="sub" id="dlg-sub"></p>
+    <div class="envio" id="dlg-envio" hidden>
+      <span>Enviadlo a esta dirección:</span>
+      <b>Calle Triana 63, 28016 Madrid</b>
+      <a class="enlace-tienda" id="dlg-tienda" target="_blank" rel="noopener">Abrir otra vez la tienda</a>
+    </div>
     <div class="campo">
       <label for="f-nombre">Vuestro nombre</label>
       <input id="f-nombre" type="text" autocomplete="name" maxlength="120" placeholder="Por ejemplo: Ana y Luis Pérez" required>
@@ -143,6 +152,10 @@
       <button type="button" class="btn" id="g-copiar">Copiar</button>
     </div>
     <p class="sub" id="g-concepto" hidden></p>
+    <div class="envio" id="g-envio" hidden>
+      <span>Recordad enviarlo a:</span>
+      <b>Calle Triana 63, 28016 Madrid</b>
+    </div>
     <div class="pie-dlg"><button type="button" class="btn" id="g-cerrar">Cerrar</button><a class="btn btn-solid" id="g-tienda" target="_blank" rel="noopener" hidden>Ir a la tienda</a></div>
   </div>
 </dialog>
@@ -216,7 +229,7 @@
         var acc = el('div','acciones');
         if(!(r.personas>0)){
           var b1 = el('button','btn btn-solid','Quiero comprarlo'); b1.type='button';
-          b1.onclick = function(){ abrir(r,'entero'); }; acc.appendChild(b1);
+          b1.onclick = function(){ if(r.enlace) window.open(r.enlace,'_blank','noopener'); abrir(r,'entero'); }; acc.appendChild(b1);
         }
         {
           var b2 = el('button','btn','Quiero participar'); b2.type='button';
@@ -235,14 +248,17 @@
     document.getElementById('dlg-titulo').textContent = r.nombre;
     var sub = document.getElementById('dlg-sub');
     var ci = document.getElementById('campo-importe');
+    var env = document.getElementById('dlg-envio');
     if(tipo==='entero'){
-      sub.textContent = 'Os lo apuntamos y queda marcado como cogido para los demás. Después os llevamos a la tienda para comprarlo.';
-      ci.hidden = true;
+      sub.textContent = (r.enlace ? 'Os hemos abierto la tienda en otra pestaña para que podáis comprarlo allí. ' : '') + 'Si lo vais a comprar, poned vuestro nombre y pulsad "Lo voy a comprar" para que salga como cogido y nadie más lo compre.';
+      ci.hidden = true; env.hidden = false;
+      var dt = document.getElementById('dlg-tienda'); dt.hidden = !r.enlace; if(r.enlace) dt.href = r.enlace;
     } else {
+      env.hidden = true;
       sub.textContent = r.precio ? ('Cuesta ' + euros(r.precio) + (r.aportado>0 ? ' y faltan ' + euros(falta(r)) : '') + '. Poned lo que queráis.') : 'Poned lo que queráis.';
       ci.hidden = false; fImporte.value = ''; if(r.precio) fImporte.max = falta(r);
     }
-    fOk.disabled = false; fOk.textContent = 'Confirmar';
+    fOk.disabled = false; fOk.textContent = tipo==='entero' ? 'Lo voy a comprar' : 'Confirmar';
     dlg.showModal(); fNombre.focus();
   }
 
@@ -260,7 +276,7 @@
       .then(function(d){
         if(d.regalos){ regalos = d.regalos; pintar(); }
         if(!d.ok){
-          fOk.disabled = false; fOk.textContent = 'Confirmar';
+          fOk.disabled = false; fOk.textContent = (actual.tipo==='entero'?'Lo voy a comprar':'Confirmar');
           var m = {cogido:'Vaya, alguien acaba de coger este regalo. Mirad otro de la lista.', ya_compartido:'Alguien ya ha empezado a participar en este regalo: podéis uniros con "Quiero participar".', ocupado:'Hay mucha gente a la vez. Probad de nuevo en un momento.'}[d.error] || 'No se ha podido guardar. Probad de nuevo.';
           fError.textContent = m; fError.hidden = false; return;
         }
@@ -268,17 +284,17 @@
         var concepto = 'Regalo ' + r.nombre + ' – ' + nombre;
         var gt = document.getElementById('g-tienda'), gc = document.getElementById('g-concepto');
         if(tipo==='entero'){
-          document.getElementById('g-texto').textContent = r.enlace ? 'Ya está apuntado a vuestro nombre. Ahora podéis comprarlo en su tienda:' : 'Ya está apuntado a vuestro nombre.';
-          document.getElementById('g-iban').hidden = true; gc.hidden = true;
+          document.getElementById('g-texto').textContent = 'Ya está apuntado a vuestro nombre y sale como cogido para los demás.';
+          document.getElementById('g-iban').hidden = true; gc.hidden = true; document.getElementById('g-envio').hidden = false;
           gt.hidden = !r.enlace; if(r.enlace) gt.href = r.enlace;
         } else {
           document.getElementById('g-texto').textContent = 'Os hemos apuntado con ' + euros(d.importe) + '. Podéis hacer la transferencia a esta cuenta:';
-          document.getElementById('g-iban').hidden = false; gt.hidden = true;
+          document.getElementById('g-iban').hidden = false; gt.hidden = true; document.getElementById('g-envio').hidden = true;
           gc.textContent = 'Concepto: ' + concepto; gc.hidden = false;
         }
         fNombre.value=''; fImporte.value=''; fMensaje.value='';
       })
-      .catch(function(){ fOk.disabled=false; fOk.textContent='Confirmar'; fError.textContent='No hay conexión. Probad de nuevo.'; fError.hidden=false; });
+      .catch(function(){ fOk.disabled=false; fOk.textContent=(actual.tipo==='entero'?'Lo voy a comprar':'Confirmar'); fError.textContent='No hay conexión. Probad de nuevo.'; fError.hidden=false; });
   });
 
   document.getElementById('f-cancelar').onclick = function(){ dlg.close(); };
