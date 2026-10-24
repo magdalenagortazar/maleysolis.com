@@ -215,7 +215,7 @@
       var card = el('article','regalo' + (r.cogido?' esta-cogido':''));
       var img = el('div','img');
       function enlace(hijo){ if(!r.enlace) return hijo; var a=el('a'); a.href=r.enlace; a.target='_blank'; a.rel='noopener'; a.appendChild(hijo); return a; }
-      if(r.foto){ var i=el('img'); i.src=r.foto; i.alt=r.nombre; i.loading='lazy'; img.appendChild(enlace(i)); card.appendChild(img); }
+      if(r.foto){ var i=el('img'); i.src=r.foto.replace('kavehome.com/image/upload/v','kavehome.com/image/upload/e_trim/v'); i.alt=r.nombre; i.loading='lazy'; img.appendChild(enlace(i)); card.appendChild(img); }
       var c = el('div','cuerpo');
       var h = el('h3'); h.appendChild(enlace(document.createTextNode(r.nombre))); c.appendChild(h);
       if(r.descripcion) c.appendChild(el('p','desc',r.descripcion));
