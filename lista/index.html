@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lista de bodas · Ignacio &amp; Male</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Karla:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --albariza:#F4F2EC; --papel:#FBFAF6; --tinta:#333333; --tinta-2:#666666;
+    --verde:#3A3A3A; --verde-2:#4E4E4E; --fino:#A3262F; --linea:#CFC9BB;
+    --display:"Bodoni Moda","Didot","Playfair Display",Georgia,serif;
+    --body:"Karla","Helvetica Neue",Arial,sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html,body{margin:0}
+  body{background:var(--albariza);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--verde);text-underline-offset:3px}
+  a:hover{color:var(--fino)}
+  :focus-visible{outline:2px solid var(--fino);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+  p{margin:0}
+
+  .nav{border-bottom:1px solid var(--linea)}
+  .nav-inner{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-family:var(--display);font-size:22px;letter-spacing:.02em;text-decoration:none;color:var(--verde)}
+  .nav a.volver{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);text-decoration:none}
+
+  header.cab{max-width:720px;margin:0 auto;padding:56px 20px 36px;text-align:center;display:grid;gap:14px;justify-items:center}
+  .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--fino);font-weight:600}
+  header.cab h1{font-size:clamp(38px,6vw,56px);color:var(--verde)}
+  .lead{font-size:18px;color:var(--tinta-2);max-width:56ch}
+
+  main{max-width:1040px;margin:0 auto;padding:0 20px 72px}
+  .estado-carga{text-align:center;color:var(--tinta-2);padding:40px 0}
+  .regalos{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .regalo{background:var(--papel);border:1px solid var(--linea);display:grid;grid-template-rows:auto 1fr;transition:opacity .2s}
+  .regalo .img{aspect-ratio:4/3;background:var(--albariza);border-bottom:1px solid var(--linea);overflow:hidden}
+  .regalo .img img{width:100%;height:100%;object-fit:cover;display:block}
+  .regalo .cuerpo{padding:20px 20px 22px;display:grid;gap:10px;align-content:start}
+  .regalo h3{font-size:24px;color:var(--verde)}
+  .regalo .desc{font-size:15px;color:var(--tinta-2)}
+  .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px}
+  .meta .tienda a{color:var(--tinta-2)}
+  .meta .precio{font-family:var(--display);font-size:22px;color:var(--verde);white-space:nowrap}
+  .barra{height:6px;background:var(--albariza);border:1px solid var(--linea);overflow:hidden}
+  .barra i{display:block;height:100%;background:var(--fino);width:0}
+  .progreso{font-size:14px;color:var(--tinta-2)}
+  .acciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .btn{font:inherit;cursor:pointer;display:inline-block;padding:10px 16px;border:1px solid var(--verde);background:none;color:var(--verde);text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:background .15s,color .15s}
+  .btn:hover{background:var(--verde);color:var(--albariza)}
+  .btn-solid{background:var(--verde);color:var(--albariza)}
+  .btn-solid:hover{background:var(--verde-2)}
+  .btn[disabled]{opacity:.5;cursor:wait}
+  .cogido{display:inline-block;justify-self:start;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--fino);border:1px solid var(--fino);padding:4px 10px}
+  .regalo.esta-cogido{opacity:.62}
+  .regalo.esta-cogido .img img{filter:grayscale(1)}
+
+  dialog{border:1px solid var(--linea);border-top:2px solid var(--fino);background:var(--papel);color:var(--tinta);padding:0;width:min(460px,calc(100vw - 32px))}
+  dialog::backdrop{background:rgba(40,36,30,.45)}
+  .dlg{padding:26px 24px 22px;display:grid;gap:16px}
+  .dlg h2{font-size:28px;color:var(--verde)}
+  .dlg .sub{font-size:15px;color:var(--tinta-2)}
+  .campo{display:grid;gap:6px}
+  label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--tinta-2)}
+  input,textarea{font:inherit;padding:11px 13px;border:1px solid var(--linea);background:#fff;color:var(--tinta);width:100%}
+  textarea{min-height:72px;resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--verde)}
+  .error{color:var(--fino);font-size:15px}
+  .pie-dlg{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .iban{font-variant-numeric:tabular-nums;letter-spacing:.03em;background:var(--albariza);border:1px solid var(--linea);padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+  .iban .btn{padding:4px 10px;font-size:11px}
+
+  footer{text-align:center;padding:40px 20px 56px;border-top:1px solid var(--linea);color:var(--tinta-2);font-size:14px;display:grid;gap:4px}
+  footer .brand{font-size:28px}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="nav-inner">
+  <a class="brand" href="/">I <i>&amp;</i> M</a>
+  <a class="volver" href="/">Volver a la web</a>
+</div></div>
+
+<header class="cab">
+  <p class="eyebrow">Lista de bodas</p>
+  <h1>Lo que más ilusión nos hace es que vengáis</h1>
+  <p class="lead">Si además queréis tener un detalle, aquí hay algunas ideas. Cuando alguien elige un regalo, desaparece para los demás, así que no se repite. Los regalos más grandes se pueden hacer entre varios.</p>
+</header>
+
+<main>
+  <p class="estado-carga" id="carga">Cargando la lista…</p>
+  <div class="regalos" id="regalos" aria-live="polite"></div>
+</main>
+
+<footer>
+  <span class="brand">I <i>&amp;</i> M</span>
+  <p>29 · 05 · 2027</p>
+  <p>maleysolis.com</p>
+</footer>
+
+<dialog id="dlg">
+  <form class="dlg" id="form" method="dialog" novalidate>
+    <h2 id="dlg-titulo"></h2>
+    <p class="sub" id="dlg-sub"></p>
+    <div class="campo">
+      <label for="f-nombre">Vuestro nombre</label>
+      <input id="f-nombre" type="text" autocomplete="name" maxlength="120" placeholder="Por ejemplo: Ana y Luis Pérez" required>
+    </div>
+    <div class="campo" id="campo-importe">
+      <label for="f-importe">¿Cuánto queréis poner? (€)</label>
+      <input id="f-importe" type="number" inputmode="decimal" min="1" step="1">
+    </div>
+    <div class="campo">
+      <label for="f-mensaje">Un mensaje para los novios (opcional)</label>
+      <textarea id="f-mensaje" maxlength="500"></textarea>
+    </div>
+    <p class="error" id="f-error" hidden></p>
+    <div class="pie-dlg">
+      <button type="button" class="btn" id="f-cancelar">Cancelar</button>
+      <button type="submit" class="btn btn-solid" id="f-ok">Confirmar</button>
+    </div>
+  </form>
+  <div class="dlg" id="gracias" hidden>
+    <h2>¡Muchas gracias!</h2>
+    <p class="sub" id="g-texto"></p>
+    <div class="iban" id="g-iban" hidden>
+      <span>ES41 2100 0555 3401 0180 5000</span>
+      <button type="button" class="btn" id="g-copiar">Copiar</button>
+    </div>
+    <p class="sub" id="g-concepto" hidden></p>
+    <div class="pie-dlg"><button type="button" class="btn btn-solid" id="g-cerrar">Cerrar</button></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  // Dirección del servicio de Google (Apps Script) que guarda la lista y las reservas.
+  var SERVICIO = 'https://script.google.com/macros/s/AKfycbylT7NkXpehiqsepzikyCD-fIRe88OEmH54cWT-tSb2mBlGG0BqA8ZDjwIQbahZ6Bmd0Q/exec';
+  var IBAN = 'ES41 2100 0555 3401 0180 5000';
+
+  var cont = document.getElementById('regalos');
+  var carga = document.getElementById('carga');
+  var dlg = document.getElementById('dlg');
+  var form = document.getElementById('form');
+  var gracias = document.getElementById('gracias');
+  var fNombre = document.getElementById('f-nombre');
+  var fImporte = document.getElementById('f-importe');
+  var fMensaje = document.getElementById('f-mensaje');
+  var fError = document.getElementById('f-error');
+  var fOk = document.getElementById('f-ok');
+  var regalos = [];
+  var actual = null; // {regalo, tipo}
+
+  function euros(n){ return Number(n).toLocaleString('es-ES',{maximumFractionDigits:2}) + ' €'; }
+  function falta(r){ return Math.max(0, Math.round((r.precio - r.aportado)*100)/100); }
+
+  function jsonp(params){
+    return new Promise(function(ok, ko){
+      var cb = 'cb' + Date.now() + Math.floor(Math.random()*1e4);
+      var s = document.createElement('script');
+      var t = setTimeout(function(){ limpiar(); ko(new Error('tiempo')); }, 20000);
+      function limpiar(){ clearTimeout(t); delete window[cb]; s.remove(); }
+      window[cb] = function(d){ limpiar(); ok(d); };
+      params.callback = cb; params._ = Date.now();
+      s.src = SERVICIO + '?' + Object.keys(params).map(function(k){ return encodeURIComponent(k)+'='+encodeURIComponent(params[k]); }).join('&');
+      s.onerror = function(){ limpiar(); ko(new Error('red')); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function el(tag, cls, txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
+
+  function pintar(){
+    cont.textContent = '';
+    if(!regalos.length){ carga.hidden=false; carga.textContent='Todavía no hay regalos en la lista.'; return; }
+    carga.hidden = true;
+    var orden = regalos.slice().sort(function(a,b){ return (a.cogido-b.cogido); });
+    orden.forEach(function(r){
+      var card = el('article','regalo' + (r.cogido?' esta-cogido':''));
+      var img = el('div','img');
+      if(r.foto){ var i=el('img'); i.src=r.foto; i.alt=''; i.loading='lazy'; img.appendChild(i); card.appendChild(img); }
+      var c = el('div','cuerpo');
+      c.appendChild(el('h3',null,r.nombre));
+      if(r.descripcion) c.appendChild(el('p','desc',r.descripcion));
+      var meta = el('div','meta');
+      var t = el('span','tienda');
+      if(r.enlace){ var a=el('a',null,r.tienda||'Ver en la tienda'); a.href=r.enlace; a.target='_blank'; a.rel='noopener'; t.appendChild(a); }
+      else t.textContent = r.tienda;
+      meta.appendChild(t);
+      if(r.precio) meta.appendChild(el('span','precio',euros(r.precio)));
+      c.appendChild(meta);
+
+      if(r.compartible && r.precio && !r.cogido && r.aportado>0){
+        var b = el('div','barra'); var ii=el('i'); ii.style.width=Math.min(100,r.aportado/r.precio*100)+'%'; b.appendChild(ii); c.appendChild(b);
+        c.appendChild(el('p','progreso', r.personas + (r.personas===1?' persona participa':' personas participan') + ' · faltan ' + euros(falta(r))));
+      }
+      if(r.cogido){
+        c.appendChild(el('span','cogido','Ya está cogido'));
+      } else {
+        var acc = el('div','acciones');
+        if(!(r.personas>0)){
+          var b1 = el('button','btn btn-solid','Lo regalo yo'); b1.type='button';
+          b1.onclick = function(){ abrir(r,'entero'); }; acc.appendChild(b1);
+        }
+        if(r.compartible){
+          var b2 = el('button','btn','Quiero participar'); b2.type='button';
+          b2.onclick = function(){ abrir(r,'parte'); }; acc.appendChild(b2);
+        }
+        c.appendChild(acc);
+      }
+      card.appendChild(c);
+      cont.appendChild(card);
+    });
+  }
+
+  function abrir(r, tipo){
+    actual = {regalo:r, tipo:tipo};
+    form.hidden = false; gracias.hidden = true; fError.hidden = true;
+    document.getElementById('dlg-titulo').textContent = r.nombre;
+    var sub = document.getElementById('dlg-sub');
+    var ci = document.getElementById('campo-importe');
+    if(tipo==='entero'){
+      sub.textContent = 'Os lo apuntamos a vosotros y deja de estar disponible para los demás.';
+      ci.hidden = true;
+    } else {
+      sub.textContent = r.precio ? ('Cuesta ' + euros(r.precio) + (r.aportado>0 ? ' y faltan ' + euros(falta(r)) : '') + '. Poned lo que queráis.') : 'Poned lo que queráis.';
+      ci.hidden = false; fImporte.value = ''; if(r.precio) fImporte.max = falta(r);
+    }
+    fOk.disabled = false; fOk.textContent = 'Confirmar';
+    dlg.showModal(); fNombre.focus();
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var r = actual.regalo, tipo = actual.tipo;
+    var nombre = fNombre.value.trim();
+    var importe = Number(String(fImporte.value).replace(',','.'));
+    fError.hidden = true;
+    if(!nombre){ fError.textContent='Escribid vuestro nombre, por favor.'; fError.hidden=false; return; }
+    if(tipo==='parte' && !(importe>0)){ fError.textContent='Indicad cuánto queréis poner.'; fError.hidden=false; return; }
+    if(tipo==='parte' && r.precio && importe>falta(r)){ importe = falta(r); }
+    fOk.disabled = true; fOk.textContent = 'Guardando…';
+    jsonp({accion:'reservar', id:r.id, tipo:tipo, nombre:nombre, importe:tipo==='parte'?importe:'', mensaje:fMensaje.value.trim()})
+      .then(function(d){
+        if(d.regalos){ regalos = d.regalos; pintar(); }
+        if(!d.ok){
+          fOk.disabled = false; fOk.textContent = 'Confirmar';
+          var m = {cogido:'Vaya, alguien acaba de coger este regalo. Mirad otro de la lista.', ya_compartido:'Alguien ya ha empezado a participar en este regalo: podéis uniros con "Quiero participar".', ocupado:'Hay mucha gente a la vez. Probad de nuevo en un momento.'}[d.error] || 'No se ha podido guardar. Probad de nuevo.';
+          fError.textContent = m; fError.hidden = false; return;
+        }
+        form.hidden = true; gracias.hidden = false;
+        var concepto = 'Regalo ' + r.nombre + ' – ' + nombre;
+        if(tipo==='entero'){
+          document.getElementById('g-texto').textContent = 'Os lo hemos apuntado. Podéis comprarlo en la tienda o, si lo preferís, hacernos una transferencia y lo compramos nosotros.';
+        } else {
+          document.getElementById('g-texto').textContent = 'Os hemos apuntado con ' + euros(d.importe) + '. Podéis hacer la transferencia a esta cuenta:';
+        }
+        document.getElementById('g-iban').hidden = false;
+        var gc = document.getElementById('g-concepto'); gc.textContent = 'Concepto: ' + concepto; gc.hidden = false;
+        fNombre.value=''; fImporte.value=''; fMensaje.value='';
+      })
+      .catch(function(){ fOk.disabled=false; fOk.textContent='Confirmar'; fError.textContent='No hay conexión. Probad de nuevo.'; fError.hidden=false; });
+  });
+
+  document.getElementById('f-cancelar').onclick = function(){ dlg.close(); };
+  document.getElementById('g-cerrar').onclick = function(){ dlg.close(); };
+  document.getElementById('g-copiar').onclick = function(){
+    var b=this; (navigator.clipboard ? navigator.clipboard.writeText(IBAN.replace(/\s/g,'')) : Promise.reject()).then(function(){ b.textContent='Copiado'; setTimeout(function(){ b.textContent='Copiar'; },2000); }, function(){});
+  };
+
+  function cargar(){
+    if(!SERVICIO){ carga.textContent='La lista estará disponible muy pronto.'; return; }
+    jsonp({}).then(function(d){ regalos = d.regalos || []; pintar(); })
+      .catch(function(){ carga.textContent='No se ha podido cargar la lista. Recargad la página en un momento.'; });
+  }
+  cargar();
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden && SERVICIO && !dlg.open) cargar(); });
+})();
+</script>
+</body>
+</html>
