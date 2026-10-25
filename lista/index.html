@@ -123,8 +123,8 @@
     <h2 id="dlg-titulo"></h2>
     <div class="envio" id="dlg-envio" hidden>
       <a class="enlace-tienda" id="dlg-tienda" target="_blank" rel="noopener">Haced clic aquí para que se abra la tienda en otra pestaña y lo podáis comprar directamente.</a>
-      <span>Si queréis, lo podéis mandar a nuestra dirección:</span>
-      <b>Calle Triana 63, 28016 Madrid</b>
+      <span id="dlg-envio-txt">Si queréis, lo podéis mandar a nuestra dirección:</span>
+      <b id="dlg-envio-dir">Calle Triana 63, 28016 Madrid</b>
     </div>
     <div class="pago">
       <span id="dlg-iban-txt"></span>
@@ -153,7 +153,7 @@
     </div>
   </form>
   <div class="dlg" id="gracias" hidden>
-    <h2>¡Muchas gracias!</h2>
+    <h2 id="g-titulo">¡Muchísimas gracias!</h2>
     <p class="sub" id="g-texto"></p>
     <div class="iban" id="g-iban" hidden>
       <span>ES41 2100 0555 3401 0180 5000</span>
@@ -161,8 +161,8 @@
     </div>
     <p class="sub" id="g-concepto" hidden></p>
     <div class="envio" id="g-envio" hidden>
-      <span>Si queréis mandarlo, nuestra dirección es:</span>
-      <b>Calle Triana 63, 28016 Madrid</b>
+      <span id="g-envio-txt">Si queréis mandarlo, nuestra dirección es:</span>
+      <b id="g-envio-dir">Calle Triana 63, 28016 Madrid</b>
     </div>
     <div class="pie-dlg"><button type="button" class="btn" id="g-cerrar">Cerrar</button><a class="btn btn-solid" id="g-tienda" target="_blank" rel="noopener" hidden>Ir a la tienda</a></div>
   </div>
@@ -261,6 +261,8 @@
       document.getElementById('dlg-iban-txt').textContent = 'Si lo preferís, podéis hacernos una transferencia por su importe y lo compramos nosotros:';
       sub.textContent = 'Si lo vais a comprar, poned vuestro nombre y pulsad "Lo voy a comprar" para que salga como cogido y nadie más lo compre.';
       ci.hidden = true; env.hidden = false;
+      document.getElementById('dlg-envio-txt').textContent = r.envio || 'Si queréis, lo podéis mandar a nuestra dirección:';
+      document.getElementById('dlg-envio-dir').hidden = !!r.envio;
       var dt = document.getElementById('dlg-tienda'); dt.hidden = !r.enlace; if(r.enlace) dt.href = r.enlace;
     } else {
       env.hidden = true;
@@ -294,10 +296,14 @@
         var concepto = 'Regalo ' + r.nombre + ' – ' + nombre;
         var gt = document.getElementById('g-tienda'), gc = document.getElementById('g-concepto');
         if(tipo==='entero'){
+          document.getElementById('g-titulo').textContent = '¡Muchísimas gracias por el regalazo!';
           document.getElementById('g-texto').textContent = 'Ya está apuntado a vuestro nombre y sale como cogido para los demás.';
+          document.getElementById('g-envio-txt').textContent = r.envio || 'Si queréis mandarlo, nuestra dirección es:';
+          document.getElementById('g-envio-dir').hidden = !!r.envio;
           document.getElementById('g-iban').hidden = true; gc.hidden = true; document.getElementById('g-envio').hidden = false;
           gt.hidden = !r.enlace; if(r.enlace) gt.href = r.enlace;
         } else {
+          document.getElementById('g-titulo').textContent = '¡Muchísimas gracias por participar, menudo regalazo!';
           document.getElementById('g-texto').textContent = 'Os hemos apuntado con ' + euros(d.importe) + '. Podéis hacer la transferencia a esta cuenta:';
           document.getElementById('g-iban').hidden = false; gt.hidden = true; document.getElementById('g-envio').hidden = true;
           gc.textContent = 'Concepto: ' + concepto; gc.hidden = false;
