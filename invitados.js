@@ -104,6 +104,7 @@ window.INVITADOS = {
   "lucia-g2mz": { nombre: "Lucía", plazas: 1, genero: "f", nombres: ["Lucía"], titulo: "Lucía", preboda: true, joven: true },
   "alba-trpw": { nombre: "Alba", plazas: 1, genero: "f", nombres: ["Alba"], titulo: "Alba", preboda: true, joven: true },
   "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"], preboda: true, joven: true },
+  "jaime-tio-r4vn": { nombre: "Jaime", plazas: 1, genero: "m", nombres: ["Jaime"], titulo: "Jaime" },
   // Familia paterna de Solís (02/11/2026; parejas corregidas por Solís el mismo día; Alvarito es de la familia materna): un enlace por casa; los primos con acompañante escriben su nombre.
   "maria-0owg": { nombre: "María", plazas: 1, genero: "f", nombres: ["María"], titulo: "María" },
   "carlos-xq0v": { nombre: "Carlos", plazas: 1, genero: "m", nombres: ["Carlos"], titulo: "Carlos" },
