@@ -95,7 +95,7 @@ window.INVITADOS = {
   "fer-lola-7n4f": { nombre: "Fer y Lola", plazas: 2, genero: "p", nombres: ["Fer", "Lola"], titulo: "Fer y Lola" },
   "fer-lucia-9t59": { nombre: "Fer y Lucía", plazas: 2, genero: "p", nombres: ["Fer", "Lucía"], titulo: "Fer y Lucía" },
   "maria-freddy-fnt3": { nombre: "María y Freddy", plazas: 2, genero: "p", nombres: ["María", "Freddy"], titulo: "María y Freddy" },
-  "carlos-aq8j": { nombre: "Carlos", plazas: 1, genero: "f", nombres: ["Carlos"], titulo: "Carlos" },
+  "carlos-aq8j": { nombre: "Carlos", plazas: 1, genero: "m", nombres: ["Carlos"], titulo: "Carlos" },
   "moni-gksh": { nombre: "Moni", plazas: 1, genero: "f", nombres: ["Moni"], titulo: "Moni" },
   "bea-sve5": { nombre: "Bea", plazas: 1, genero: "f", nombres: ["Bea"], titulo: "Bea" },
   "guille-rocio-cfd6": { nombre: "Guille y Rocío", plazas: 2, genero: "p", nombres: ["Guille", "Rocío"], titulo: "Guille y Rocío" },
