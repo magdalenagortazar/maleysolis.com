@@ -159,7 +159,7 @@ window.INVITADOS = {
   "luis-y-ana-h2wt": { nombre: "Luis y Ana", plazas: 2, genero: "p", nombres: ["Luis", "Ana"], titulo: "Luis y Ana", preboda: true, joven: true },
   "pedro-y-belen-ofn9": { nombre: "Pedro y Belén", plazas: 2, genero: "p", nombres: ["Pedro", "Belén"], titulo: "Pedro y Belén", preboda: true, joven: true },
   "puki-101q": { nombre: "Puki", plazas: 1, genero: "m", nombres: ["Puki"], titulo: "Puki", preboda: true, joven: true },
-  "puy-7e10": { nombre: "Puy", plazas: 2, genero: "p", nombres: ["Puy", ""], titulo: "Puy", saludo: "¡Parseritos!", etiquetas: ["", "Acompañante"], preboda: true, joven: true },
+  "puy-7e10": { nombre: "Puy e Inés", plazas: 2, genero: "p", nombres: ["Puy", "Inés"], titulo: "Puy e Inés", saludo: "¡Parseritos!", preboda: true, joven: true },
   "alberto-y-jimena-d3xb": { nombre: "Alberto y Jimena", plazas: 2, genero: "p", nombres: ["Alberto", "Jimena"], titulo: "Alberto y Jimena", preboda: true, joven: true },
   "javier-y-sofia-wibr": { nombre: "Javier y Sofía", plazas: 2, genero: "p", nombres: ["Javier", "Sofía"], titulo: "Javier y Sofía", preboda: true, joven: true },
   // Amigos de Solís (trabajo) (02/11/2026): nombres de los acompañantes dados por Solís.
