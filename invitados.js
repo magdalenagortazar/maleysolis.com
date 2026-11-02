@@ -108,13 +108,13 @@ window.INVITADOS = {
   "maria-carlos-gi32": { nombre: "María y Carlos", plazas: 2, genero: "p", nombres: ["María", "Carlos"], titulo: "María y Carlos" },
   "carlos-carmita-ykpa": { nombre: "Carlos y Carmita", plazas: 2, genero: "p", nombres: ["Carlos", "Carmita"], titulo: "Carlos y Carmita" },
   "luis-ines-x6pc": { nombre: "Luis e Inés", plazas: 2, genero: "p", nombres: ["Luis", "Inés"], titulo: "Luis e Inés" },
-  "carlos-x8em": { nombre: "Carlos", plazas: 2, genero: "p", nombres: ["Carlos", ""], titulo: "Carlos", etiquetas: ["", "Acompañante"] },
+  "carlos-x8em": { nombre: "Carlos y María", plazas: 2, genero: "p", nombres: ["Carlos", "María"], titulo: "Carlos y María" },
   "javi-zjo6": { nombre: "Javi", plazas: 1, genero: "m", nombres: ["Javi"], titulo: "Javi" },
   "ines-tlnz": { nombre: "Inés", plazas: 1, genero: "f", nombres: ["Inés"], titulo: "Inés" },
   "maria-8ubp": { nombre: "María", plazas: 1, genero: "f", nombres: ["María"], titulo: "María" },
-  "pablo-a3qz": { nombre: "Pablo", plazas: 2, genero: "p", nombres: ["Pablo", ""], titulo: "Pablo", etiquetas: ["", "Acompañante"] },
-  "elena-6lfp": { nombre: "Elena", plazas: 2, genero: "p", nombres: ["Elena", ""], titulo: "Elena", etiquetas: ["", "Acompañante"] },
-  "teresa-vopc": { nombre: "Teresa", plazas: 2, genero: "p", nombres: ["Teresa", ""], titulo: "Teresa", etiquetas: ["", "Acompañante"] },
+  "pablo-a3qz": { nombre: "Pablo y Isabela", plazas: 2, genero: "p", nombres: ["Pablo", "Isabela"], titulo: "Pablo y Isabela" },
+  "elena-6lfp": { nombre: "Elena y Jaime", plazas: 2, genero: "p", nombres: ["Elena", "Jaime"], titulo: "Elena y Jaime" },
+  "teresa-vopc": { nombre: "Teresa y Pedro", plazas: 2, genero: "p", nombres: ["Teresa", "Pedro"], titulo: "Teresa y Pedro" },
   "daniela-srj3": { nombre: "Daniela", plazas: 1, genero: "f", nombres: ["Daniela"], titulo: "Daniela" },
   "alvarito-ope7": { nombre: "Alvarito", plazas: 1, genero: "m", nombres: ["Alvarito"], titulo: "Alvarito" }
 };
