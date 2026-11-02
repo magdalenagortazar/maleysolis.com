@@ -200,7 +200,7 @@ window.INVITADOS = {
   "emilio-st4q": { nombre: "Emilio", plazas: 1, genero: "m", nombres: ["Emilio"], titulo: "Emilio", preboda: true, joven: true },
   "emi-gt1z": { nombre: "Emi", plazas: 1, genero: "m", nombres: ["Emi"], titulo: "Emi", preboda: true, joven: true },
   "xullo-tszt": { nombre: "Xullo", plazas: 1, genero: "m", nombres: ["Xullo"], titulo: "Xullo", preboda: true, joven: true },
-  "abaurre-q3zc": { nombre: "Abaurre", plazas: 1, genero: "m", nombres: ["Abaurre"], titulo: "Abaurre", preboda: true, joven: true },
+  "abaurre-q3zc": { nombre: "Nico y María", plazas: 2, genero: "p", nombres: ["Nico", "María"], titulo: "Nico y María", preboda: true, joven: true },
   "anton-y-daniela-k7wq": { nombre: "Antón y Daniela", plazas: 2, genero: "p", nombres: ["Antón", "Daniela"], titulo: "Antón y Daniela", preboda: true, joven: true }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
