@@ -81,6 +81,8 @@ window.INVITADOS = {
   // Amigos de los padres de la novia (03/10/2026): un único enlace general para todos.
   // Dos huecos (tú y acompañante) con nombre y apellidos; preboda de adultos en Jerez y hoteles recomendando Jerez.
   "amigos-gonzalo-magdy-r8tq": { nombre: "Amigos de Gonzalo y Magdy", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true, padres: true, balon: true },
+  // Amigos de los padres de Solís (02/11/2026): enlace general, sin preboda.
+  "amigos-padres-solis-k3vd": { nombre: "Amigos de los padres de Solís", saludo: "Queridos amigos", plazas: 2, genero: "p", apellidos: true },
   // Invitado y amigas de Ana (hermana de la novia), 04/10/2026: enlaces individuales, sin acompañante, con preboda. El nombre lo escriben ellos (hueco vacío).
   "reina-m6ny": { nombre: "Reina", plazas: 1, genero: "m", nombres: [""], titulo: "Álvaro", preboda: true, joven: true },
   "cristina-gimeno-u6vd": { nombre: "Rizos", plazas: 1, genero: "f", nombres: [""], titulo: "Cristina", preboda: true, joven: true },
