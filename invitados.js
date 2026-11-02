@@ -105,7 +105,8 @@ window.INVITADOS = {
   "alba-trpw": { nombre: "Alba", plazas: 1, genero: "f", nombres: ["Alba"], titulo: "Alba" },
   "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"] },
   // Familia paterna de Solís (02/11/2026; parejas corregidas por Solís el mismo día; Alvarito es de la familia materna): un enlace por casa; los primos con acompañante escriben su nombre.
-  "maria-carlos-gi32": { nombre: "María y Carlos", plazas: 2, genero: "p", nombres: ["María", "Carlos"], titulo: "María y Carlos" },
+  "maria-0owg": { nombre: "María", plazas: 1, genero: "f", nombres: ["María"], titulo: "María" },
+  "carlos-xq0v": { nombre: "Carlos", plazas: 1, genero: "m", nombres: ["Carlos"], titulo: "Carlos" },
   "carlos-carmita-ykpa": { nombre: "Carlos y Carmita", plazas: 2, genero: "p", nombres: ["Carlos", "Carmita"], titulo: "Carlos y Carmita" },
   "luis-ines-x6pc": { nombre: "Luis e Inés", plazas: 2, genero: "p", nombres: ["Luis", "Inés"], titulo: "Luis e Inés" },
   "carlos-x8em": { nombre: "Carlos y María", plazas: 2, genero: "p", nombres: ["Carlos", "María"], titulo: "Carlos y María" },
