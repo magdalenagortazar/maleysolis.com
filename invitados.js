@@ -117,7 +117,30 @@ window.INVITADOS = {
   "elena-6lfp": { nombre: "Elena y Jaime", plazas: 2, genero: "p", nombres: ["Elena", "Jaime"], titulo: "Elena y Jaime" },
   "teresa-vopc": { nombre: "Teresa y Pedro", plazas: 2, genero: "p", nombres: ["Teresa", "Pedro"], titulo: "Teresa y Pedro" },
   "daniela-srj3": { nombre: "Daniela", plazas: 1, genero: "f", nombres: ["Daniela"], titulo: "Daniela" },
-  "alvarito-ope7": { nombre: "Alvarito", plazas: 1, genero: "m", nombres: ["Alvarito"], titulo: "Alvarito" }
+  "alvarito-ope7": { nombre: "Alvarito", plazas: 1, genero: "m", nombres: ["Alvarito"], titulo: "Alvarito" },
+  // Amigos de Solís de Sevilla (02/11/2026): con preboda de El Puerto; nombres de los acompañantes dados por Solís.
+  "carlos-y-blanca-rja7": { nombre: "Carlos y Blanca", plazas: 2, genero: "p", nombres: ["Carlos", "Blanca"], titulo: "Carlos y Blanca", preboda: true, joven: true },
+  "alfon-nhow": { nombre: "Alfon", plazas: 1, genero: "m", nombres: ["Alfon"], titulo: "Alfon", preboda: true, joven: true },
+  "alvaro-y-blanca-rpgx": { nombre: "Álvaro y Blanca", plazas: 2, genero: "p", nombres: ["Álvaro", "Blanca"], titulo: "Álvaro y Blanca", preboda: true, joven: true },
+  "rufino-vvm3": { nombre: "Rufino", plazas: 1, genero: "m", nombres: ["Rufino"], titulo: "Rufino", preboda: true, joven: true },
+  "beltran-f7jz": { nombre: "Beltrán", plazas: 1, genero: "m", nombres: ["Beltrán"], titulo: "Beltrán", preboda: true, joven: true },
+  "camilo-y-conchita-a4n3": { nombre: "Camilo y Conchita", plazas: 2, genero: "p", nombres: ["Camilo", "Conchita"], titulo: "Camilo y Conchita", preboda: true, joven: true },
+  "carlos-e-ina-qz6h": { nombre: "Carlos e Ina", plazas: 2, genero: "p", nombres: ["Carlos", "Ina"], titulo: "Carlos e Ina", preboda: true, joven: true },
+  "charly-y-adela-tfc4": { nombre: "Charly y Adela", plazas: 2, genero: "p", nombres: ["Charly", "Adela"], titulo: "Charly y Adela", preboda: true, joven: true },
+  "curro-y-guio-ljtv": { nombre: "Curro y Guio", plazas: 2, genero: "p", nombres: ["Curro", "Guio"], titulo: "Curro y Guio", preboda: true, joven: true },
+  "dani-e-ines-ray6": { nombre: "Dani e Inés", plazas: 2, genero: "p", nombres: ["Dani", "Inés"], titulo: "Dani e Inés", preboda: true, joven: true },
+  "fale-y-elena-o3lj": { nombre: "Fale y Elena", plazas: 2, genero: "p", nombres: ["Fale", "Elena"], titulo: "Fale y Elena", preboda: true, joven: true },
+  "aguilar-komo": { nombre: "Aguilar", plazas: 1, genero: "m", nombres: ["Aguilar"], titulo: "Aguilar", preboda: true, joven: true },
+  "loring-9kfl": { nombre: "Loring", plazas: 1, genero: "m", nombres: ["Loring"], titulo: "Loring", preboda: true, joven: true },
+  "arimon-c51w": { nombre: "Arimon", plazas: 1, genero: "m", nombres: ["Arimon"], titulo: "Arimon", preboda: true, joven: true },
+  "jaime-y-carla-u3jl": { nombre: "Jaime y Carla", plazas: 2, genero: "p", nombres: ["Jaime", "Carla"], titulo: "Jaime y Carla", preboda: true, joven: true },
+  "juan-y-natalia-5cx0": { nombre: "Juan y Natalia", plazas: 2, genero: "p", nombres: ["Juan", "Natalia"], titulo: "Juan y Natalia", preboda: true, joven: true },
+  "juanri-tnyw": { nombre: "Juanri", plazas: 1, genero: "m", nombres: ["Juanri"], titulo: "Juanri", preboda: true, joven: true },
+  "manu-y-carmen-8cab": { nombre: "Manu y Carmen", plazas: 2, genero: "p", nombres: ["Manu", "Carmen"], titulo: "Manu y Carmen", preboda: true, joven: true },
+  "pablo-y-sara-b6vb": { nombre: "Pablo y Sara", plazas: 2, genero: "p", nombres: ["Pablo", "Sara"], titulo: "Pablo y Sara", preboda: true, joven: true },
+  "richi-tk1h": { nombre: "Richi", plazas: 1, genero: "m", nombres: ["Richi"], titulo: "Richi", preboda: true, joven: true },
+  "gon-y-daniela-pjcj": { nombre: "Gon y Daniela", plazas: 2, genero: "p", nombres: ["Gon", "Daniela"], titulo: "Gon y Daniela", preboda: true, joven: true },
+  "antonio-y-rochi-s9hi": { nombre: "Antonio y Rochi", plazas: 2, genero: "p", nombres: ["Antonio", "Rochi"], titulo: "Antonio y Rochi", preboda: true, joven: true }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
