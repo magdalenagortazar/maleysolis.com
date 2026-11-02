@@ -101,9 +101,22 @@ window.INVITADOS = {
   "guille-rocio-cfd6": { nombre: "Guille y Rocío", plazas: 2, genero: "p", nombres: ["Guille", "Rocío"], titulo: "Guille y Rocío" },
   "beita-jaime-myfr": { nombre: "Beita y Jaime", plazas: 5, genero: "p", nombres: ["Beita", "Jaime", "Jaimete", "Javi", "Armadito"], titulo: "Beita y Jaime", ninos: [2, 3, 4] },
   "manolo-monica-ysca": { nombre: "Manolo y Mónica", plazas: 2, genero: "p", nombres: ["Manolo", "Mónica"], titulo: "Manolo y Mónica" },
-  "lucia-g2mz": { nombre: "Lucía", plazas: 2, genero: "p", nombres: ["Lucía", ""], titulo: "Lucía", etiquetas: ["", "Acompañante"] },
+  "lucia-g2mz": { nombre: "Lucía", plazas: 1, genero: "f", nombres: ["Lucía"], titulo: "Lucía" },
   "alba-trpw": { nombre: "Alba", plazas: 1, genero: "f", nombres: ["Alba"], titulo: "Alba" },
-  "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"] }
+  "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"] },
+  // Familia paterna de Solís (02/11/2026): un enlace por casa; los primos con acompañante escriben su nombre.
+  "maria-luis-f40c": { nombre: "María y Luis", plazas: 2, genero: "p", nombres: ["María", "Luis"], titulo: "María y Luis" },
+  "carlos-carmita-ykpa": { nombre: "Carlos y Carmita", plazas: 2, genero: "p", nombres: ["Carlos", "Carmita"], titulo: "Carlos y Carmita" },
+  "carlos-ines-7cla": { nombre: "Carlos e Inés", plazas: 2, genero: "p", nombres: ["Carlos", "Inés"], titulo: "Carlos e Inés" },
+  "carlos-x8em": { nombre: "Carlos", plazas: 2, genero: "p", nombres: ["Carlos", ""], titulo: "Carlos", etiquetas: ["", "Acompañante"] },
+  "javi-zjo6": { nombre: "Javi", plazas: 1, genero: "m", nombres: ["Javi"], titulo: "Javi" },
+  "ines-tlnz": { nombre: "Inés", plazas: 1, genero: "f", nombres: ["Inés"], titulo: "Inés" },
+  "maria-8ubp": { nombre: "María", plazas: 1, genero: "f", nombres: ["María"], titulo: "María" },
+  "pablo-a3qz": { nombre: "Pablo", plazas: 2, genero: "p", nombres: ["Pablo", ""], titulo: "Pablo", etiquetas: ["", "Acompañante"] },
+  "elena-6lfp": { nombre: "Elena", plazas: 2, genero: "p", nombres: ["Elena", ""], titulo: "Elena", etiquetas: ["", "Acompañante"] },
+  "teresa-vopc": { nombre: "Teresa", plazas: 2, genero: "p", nombres: ["Teresa", ""], titulo: "Teresa", etiquetas: ["", "Acompañante"] },
+  "daniela-srj3": { nombre: "Daniela", plazas: 1, genero: "f", nombres: ["Daniela"], titulo: "Daniela" },
+  "alvarito-ope7": { nombre: "Alvarito", plazas: 1, genero: "m", nombres: ["Alvarito"], titulo: "Alvarito" }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
