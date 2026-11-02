@@ -104,10 +104,10 @@ window.INVITADOS = {
   "lucia-g2mz": { nombre: "Lucía", plazas: 1, genero: "f", nombres: ["Lucía"], titulo: "Lucía" },
   "alba-trpw": { nombre: "Alba", plazas: 1, genero: "f", nombres: ["Alba"], titulo: "Alba" },
   "cris-h9e8": { nombre: "Cris", plazas: 3, genero: "p", nombres: ["Cris", "", ""], titulo: "Cris", etiquetas: ["", "Amiga de Cris", "Amiga de Cris"] },
-  // Familia paterna de Solís (02/11/2026): un enlace por casa; los primos con acompañante escriben su nombre.
-  "maria-luis-f40c": { nombre: "María y Luis", plazas: 2, genero: "p", nombres: ["María", "Luis"], titulo: "María y Luis" },
+  // Familia paterna de Solís (02/11/2026; parejas corregidas por Solís el mismo día; Alvarito es de la familia materna): un enlace por casa; los primos con acompañante escriben su nombre.
+  "maria-carlos-gi32": { nombre: "María y Carlos", plazas: 2, genero: "p", nombres: ["María", "Carlos"], titulo: "María y Carlos" },
   "carlos-carmita-ykpa": { nombre: "Carlos y Carmita", plazas: 2, genero: "p", nombres: ["Carlos", "Carmita"], titulo: "Carlos y Carmita" },
-  "carlos-ines-7cla": { nombre: "Carlos e Inés", plazas: 2, genero: "p", nombres: ["Carlos", "Inés"], titulo: "Carlos e Inés" },
+  "luis-ines-x6pc": { nombre: "Luis e Inés", plazas: 2, genero: "p", nombres: ["Luis", "Inés"], titulo: "Luis e Inés" },
   "carlos-x8em": { nombre: "Carlos", plazas: 2, genero: "p", nombres: ["Carlos", ""], titulo: "Carlos", etiquetas: ["", "Acompañante"] },
   "javi-zjo6": { nombre: "Javi", plazas: 1, genero: "m", nombres: ["Javi"], titulo: "Javi" },
   "ines-tlnz": { nombre: "Inés", plazas: 1, genero: "f", nombres: ["Inés"], titulo: "Inés" },
