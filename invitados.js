@@ -190,7 +190,6 @@ window.INVITADOS = {
   "elvira-y-miguel-iwhz": { nombre: "Elvira y Miguel", plazas: 2, genero: "p", nombres: ["Elvira", "Miguel"], titulo: "Elvira y Miguel" },
   "pepe-y-francina-y3im": { nombre: "Pepe y Francina", plazas: 2, genero: "p", nombres: ["Pepe", "Francina"], titulo: "Pepe y Francina" },
   "patri-y-pedro-9f3z": { nombre: "Patri y Pedro", plazas: 2, genero: "p", nombres: ["Patri", "Pedro"], titulo: "Patri y Pedro" },
-  "padre-de-coqui-cn2b": { nombre: "Padre de Coqui", plazas: 1, genero: "m", nombres: [""], titulo: "Padre de Coqui" },
   "juan-4f0m": { nombre: "Juan", plazas: 1, genero: "m", nombres: ["Juan"], titulo: "Juan" },
   // Reservas de Solís (sin mandar) (02/11/2026): nombres de los acompañantes dados por Solís.
   "alvaro-0hy0": { nombre: "Álvaro", plazas: 1, genero: "m", nombres: ["Álvaro"], titulo: "Álvaro", preboda: true, joven: true },
