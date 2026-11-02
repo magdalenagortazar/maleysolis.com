@@ -203,7 +203,28 @@ window.INVITADOS = {
   "emi-gt1z": { nombre: "Emi", plazas: 1, genero: "m", nombres: ["Emi"], titulo: "Emi", preboda: true, joven: true },
   "xullo-tszt": { nombre: "Xullo", plazas: 1, genero: "m", nombres: ["Xullo"], titulo: "Xullo", preboda: true, joven: true },
   "abaurre-q3zc": { nombre: "Nico y María", plazas: 2, genero: "p", nombres: ["Nico", "María"], titulo: "Nico y María", preboda: true, joven: true },
-  "anton-y-daniela-k7wq": { nombre: "Antón y Daniela", plazas: 2, genero: "p", nombres: ["Antón", "Daniela"], titulo: "Antón y Daniela", preboda: true, joven: true }
+  "anton-y-daniela-k7wq": { nombre: "Antón y Daniela", plazas: 2, genero: "p", nombres: ["Antón", "Daniela"], titulo: "Antón y Daniela", preboda: true, joven: true },
+  // Hospital, trabajo y adjuntos de la novia (02/11/2026): saludos que dio Magdalena. Algunos acompañantes ya dijeron que no vienen, pero se les deja la plaza en la invitación (en el Excel siguen con No).
+  "chema-y-sergio-bpoo": { nombre: "Chema y Sergio", plazas: 2, genero: "p", nombres: ["Chema", "Sergio"], titulo: "Chema y Sergio" },
+  "jose-y-paula-sjsj": { nombre: "José y Paula", plazas: 2, genero: "p", nombres: ["José", "Paula"], titulo: "José y Paula" },
+  "alvaro-y-jesus-agng": { nombre: "Álvaro y Jesús", plazas: 2, genero: "p", nombres: ["Álvaro", "Jesús"], titulo: "Álvaro y Jesús" },
+  "maca-y-jaime-swhj": { nombre: "Maca y Jaime", plazas: 2, genero: "p", nombres: ["Maca", "Jaime"], titulo: "Maca y Jaime" },
+  "jaime-wd32": { nombre: "Jaime", plazas: 1, genero: "m", nombres: ["Jaime"], titulo: "Jaime" },
+  "pedro-i1p2": { nombre: "Pedro", plazas: 1, genero: "m", nombres: ["Pedro"], titulo: "Pedro" },
+  "monchi-y-mar-xrc7": { nombre: "Monchi y Mar", plazas: 2, genero: "p", nombres: ["Monchi", "Mar"], titulo: "Monchi y Mar" },
+  "juan-y-celia-lnx9": { nombre: "Juan y Celia", plazas: 2, genero: "p", nombres: ["Juan", "Celia"], titulo: "Juan y Celia" },
+  "tony-y-lidia-fy8s": { nombre: "Tony y Lidia", plazas: 2, genero: "p", nombres: ["Tony", "Lidia"], titulo: "Tony y Lidia" },
+  "lara-y-diego-ygt3": { nombre: "Lara y Diego", plazas: 2, genero: "p", nombres: ["Lara", "Diego"], titulo: "Lara y Diego" },
+  "jorge-y-anabella-urf1": { nombre: "Jorge y Anabella", plazas: 2, genero: "p", nombres: ["Jorge", "Anabella"], titulo: "Jorge y Anabella" },
+  "dani-te2k": { nombre: "Dani", plazas: 2, genero: "p", nombres: ["Dani", ""], titulo: "Dani", etiquetas: ["", "Novia de Dani"] },
+  "miren-y-alvaro-zfbh": { nombre: "Miren y Álvaro", plazas: 2, genero: "p", nombres: ["Miren", "Álvaro"], titulo: "Miren y Álvaro" },
+  "pablo-y-marta-a026": { nombre: "Pablo y Marta", plazas: 2, genero: "p", nombres: ["Pablo", "Marta"], titulo: "Pablo y Marta" },
+  "javier-z424": { nombre: "Javier", plazas: 1, genero: "m", nombres: ["Javier"], titulo: "Javier" },
+  "zach-1ggg": { nombre: "Zach", plazas: 1, genero: "m", nombres: ["Zach"], titulo: "Zach" },
+  "carlos-y-barbara-b67h": { nombre: "Carlos y Bárbara", plazas: 2, genero: "p", nombres: ["Carlos", "Bárbara"], titulo: "Carlos y Bárbara" },
+  "andrea-y-juan-rf9n": { nombre: "Andrea y Juan", plazas: 2, genero: "p", nombres: ["Andrea", "Juan"], titulo: "Andrea y Juan" },
+  "monica-y-nacho-1u0r": { nombre: "Mónica y Nacho", plazas: 2, genero: "p", nombres: ["Mónica", "Nacho"], titulo: "Mónica y Nacho" },
+  "carla-y-jaime-zhry": { nombre: "Carla y Jaime", plazas: 2, genero: "p", nombres: ["Carla", "Jaime"], titulo: "Carla y Jaime" }
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
