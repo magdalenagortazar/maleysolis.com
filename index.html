@@ -856,6 +856,17 @@
           ['Pago','Se paga al reservar.'],
           ['Cancelación','Gratis hasta 5 días antes.']
         ] },
+      { zona:'El Puerto', nombre:'Punta Bermeja', est:'★★★★',
+        dto:'15 %', reserva:'En su web, con el código IGNACIOYMALE', extra:'Cerca del Club Las Redes', extraPrimero:true, iglesia:'15 min en coche', bodega:'30 min en coche', web:'https://www.puntabermeja.com/es/',
+        filas:[
+          ['Descuento','<b>15 %</b> sobre cualquier tipo de habitación y cualquier tarifa. Si además os registráis en su programa de puntos, tenéis otro descuento.'],
+          ['Código','<span class="codigo">IGNACIOYMALE</span>'],
+          ['Cómo reservar','En la web del hotel: elegid las fechas y escribid el código en «Código promocional», justo debajo de la fecha.'],
+          ['Fechas','Vale para las noches del 28 y el 29 de mayo. Se puede reservar con el código hasta el 13 de mayo de 2027.'],
+          ['Ojo','Hay un máximo de 20 habitaciones con el código para toda la boda: si os interesa, reservad pronto.'],
+          ['El hotel','Hotel con vistas al mar, piscina infinita y aparcamiento, en la zona de Fuentebravía.'],
+          ['Contacto','<a href="mailto:puntabermeja@puntabermeja.com">puntabermeja@puntabermeja.com</a> · <a href="tel:+34956200222">956 20 02 22</a>']
+        ] },
       { zona:'El Puerto', nombre:'Las Suites de Puerto Sherry', est:'Apartamentos',
         dto:'', reserva:'Con el hotel; abren la disponibilidad entre finales de noviembre y diciembre', iglesia:'10 min en coche', bodega:'25 min en coche', extra:'Al lado del Club Las Redes', web:'https://www.lassuitesdepuertosherry.com',
         filas:[
@@ -935,9 +946,10 @@
         '</div>' +
         '<dl class="h-datos">' +
           '<div><dt>Reserva</dt><dd>' + h.reserva + '</dd></div>' +
+          (h.extra && h.extraPrimero && inv && inv.preboda ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
           '<div><dt>' + ICO.iglesia + 'Iglesia</dt><dd>' + h.iglesia + '</dd></div>' +
           '<div><dt>' + ICO.bodega + 'Bodegas</dt><dd>' + h.bodega + '</dd></div>' +
-          (h.extra && inv && inv.preboda ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
+          (h.extra && !h.extraPrimero && inv && inv.preboda ? '<div><dt>' + ICO.fiesta + 'Preboda</dt><dd>' + h.extra + '</dd></div>' : '') +
         '</dl></div>' +
         '<div class="h-pie"><a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>' +
         '<button type="button" class="btn" data-h="' + i + '">Condiciones</button></div>' +
