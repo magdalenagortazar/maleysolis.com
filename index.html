@@ -273,9 +273,13 @@
   .h-aviso{font-size:14px;color:var(--tinta-2);max-width:70ch}
 
   dialog.h-dlg{border:0;padding:0;max-width:560px;width:calc(100% - 32px);background:var(--albariza);color:var(--tinta);
-    max-height:calc(100dvh - 48px);overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  dialog.h-dlg[open]{display:flex;flex-direction:column}
+  dialog.h-dlg .dlg-body{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    padding-bottom:calc(32px + env(safe-area-inset-bottom))}
+  body.dlg-abierto{overflow:hidden}
   dialog.h-dlg::backdrop{background:rgba(40,36,30,.45)}
-  .dlg-head{position:sticky;top:0;background:var(--albariza);padding:22px 24px 16px;border-bottom:1px solid var(--linea);
+  .dlg-head{flex:0 0 auto;position:sticky;top:0;background:var(--albariza);padding:22px 24px 16px;border-bottom:1px solid var(--linea);
     border-top:3px solid var(--fino);display:grid;gap:4px}
   .dlg-head h3{font-size:30px;color:var(--verde);padding-right:40px}
   .dlg-cerrar{position:absolute;top:14px;right:12px;width:44px;height:44px;border:0;background:none;font-size:28px;line-height:1;color:var(--tinta-2);cursor:pointer}
@@ -289,7 +293,7 @@
   .codigo{display:inline-flex;align-items:center;gap:10px;border:1px dashed var(--fino);padding:6px 12px;font-weight:600;letter-spacing:.06em}
   .dlg-acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
   @media (max-width:560px){
-    dialog.h-dlg{width:100%;max-width:none;margin:auto 0 0;max-height:88dvh}
+    dialog.h-dlg{width:100%;max-width:none;margin:auto 0 0;max-height:85vh;max-height:85dvh}
     .dlg-body .fila{grid-template-columns:1fr;gap:4px}
   }
 </style>
@@ -859,9 +863,9 @@
       { zona:'El Puerto', nombre:'Punta Bermeja', est:'★★★★',
         dto:'15 %', reserva:'En su web, con el código IGNACIOYMALE', extra:'Cerca del Club Las Redes', extraPrimero:true, iglesia:'15 min en coche', bodega:'30 min en coche', web:'https://www.puntabermeja.com/es/',
         filas:[
-          ['Descuento','<b>15 %</b> sobre cualquier tipo de habitación y cualquier tarifa. Si además os registráis en su programa de puntos, tenéis otro descuento.'],
+          ['Descuento','<b>15 %</b> sobre cualquier tipo de habitación y cualquier tarifa.'],
           ['Código','<span class="codigo">IGNACIOYMALE</span>'],
-          ['Cómo reservar','En la web del hotel: elegid las fechas y escribid el código en «Código promocional», justo debajo de la fecha.'],
+          ['Cómo reservar','Directamente en la web del hotel: elegid las fechas y escribid el código en «Código promocional», justo debajo de la fecha.'],
           ['Fechas','Vale para las noches del 28 y el 29 de mayo. Se puede reservar con el código hasta el 13 de mayo de 2027.'],
           ['Ojo','Hay un máximo de 20 habitaciones con el código para toda la boda: si os interesa, reservad pronto.'],
           ['El hotel','Hotel con vistas al mar, piscina infinita y aparcamiento, en la zona de Fuentebravía.'],
@@ -963,10 +967,12 @@
       document.getElementById('dlg-filas').innerHTML = h.filas.map(function(f){
         return '<div class="fila"><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'; }).join('');
       document.getElementById('dlg-acciones').innerHTML = '<a class="btn btn-solid" href="' + h.web + '" target="_blank" rel="noopener">Web del hotel</a>';
+      dlg.querySelector('.dlg-body').scrollTop = 0; document.body.classList.add('dlg-abierto');
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
     });
     document.getElementById('dlg-cerrar').addEventListener('click', function(){ dlg.close(); });
     dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function(){ document.body.classList.remove('dlg-abierto'); });
     // Zona: no se ve ningún hotel hasta pinchar en El Puerto o en Jerez (decisión de Magdalena, 14/10/2026).
     var aviso = document.getElementById('h-aviso');
     function cuenta(z){
