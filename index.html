@@ -936,7 +936,11 @@
     var inv = (window.INVITADOS && window.INVITADOS[codigoInv]) || null, titulo = document.getElementById('hoteles-titulo'), intro = document.getElementById('hoteles-intro');
     if (inv && inv.familia) {
       titulo.textContent = 'Vuestro hotel';
-      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles.' + (inv.preboda ? ' La preboda del viernes es en El Puerto, a veinte minutos en coche.' : '') + ' Por si os sirve para alguien que venga por su cuenta, aquí tenéis también el resto de hoteles de la zona.';
+      intro.textContent = 'Vuestro hotel os lo reservamos nosotros: el Hotel Jerez AQ35, las noches del viernes 28 y el sábado 29. No tenéis que hacer nada; os iremos contando los detalles.' + (inv.preboda ? ' La preboda del viernes es en El Puerto, a veinte minutos en coche.' : '');
+      // Familia (15/11/2026): ya tienen el AQ35, así que no se enseña el resto de hoteles.
+      document.querySelector('#hoteles .zonas').hidden = true;
+      document.getElementById('h-aviso').style.display = 'none';
+      document.getElementById('h-grid').style.display = 'none';
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
       intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
