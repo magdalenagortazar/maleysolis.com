@@ -238,8 +238,7 @@ window.INVITADOS["miriam-edu-szu5"] = window.INVITADOS["miry-edu-szu5"];
 // 15/11/2026: sin preboda; se les recomienda dormir en Jerez (jerez: true). Julián y Meme, con hotel pagado por los novios (familia: true, hab. 39 del AQ35).
 window.INVITADOS["julian-meme-k8vb"] = { nombre: "Julián y Meme", plazas: 2, genero: "p", nombres: ["Julián", "Meme"], titulo: "Julián y Meme", familia: true };
 window.INVITADOS["rafa-marta-q2nw"] = { nombre: "Rafa y Marta", plazas: 2, genero: "p", nombres: ["Rafa", "Marta"], titulo: "Rafa y Marta", jerez: true };
-window.INVITADOS["loreto-h6tz"] = { nombre: "Loreto", plazas: 1, genero: "f", nombres: ["Loreto"], titulo: "Loreto", jerez: true };
-window.INVITADOS["vicente-m3cy"] = { nombre: "Vicente", plazas: 1, genero: "m", nombres: ["Vicente"], titulo: "Vicente", jerez: true };
+window.INVITADOS["loreto-vicente-h6tz"] = { nombre: "Loreto y Vicente", plazas: 2, genero: "p", nombres: ["Loreto", "Vicente"], titulo: "Loreto y Vicente", jerez: true };
 // Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
 window.INVITADOS["prueba-padres"] = window.INVITADOS["amigos-gonzalo-magdy-r8tq"];
 // Enlace antiguo de Rizos con el apellido mal escrito (por si ya se mandó): misma invitación.
