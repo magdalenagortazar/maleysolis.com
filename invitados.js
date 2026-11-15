@@ -225,8 +225,8 @@ window.INVITADOS = {
   "carlos-y-barbara-b67h": { nombre: "Carlos y Bárbara", plazas: 2, genero: "p", nombres: ["Carlos", "Bárbara"], titulo: "Carlos y Bárbara", preboda: true, joven: true },
   "andrea-y-juan-rf9n": { nombre: "Andrea y Juan", plazas: 2, genero: "p", nombres: ["Andrea", "Juan"], titulo: "Andrea y Juan", preboda: true, joven: true },
   "monica-y-nacho-1u0r": { nombre: "Mónica y Nacho", plazas: 2, genero: "p", nombres: ["Mónica", "Nacho"], titulo: "Mónica y Nacho", preboda: true, joven: true },
-  "carla-y-jaime-zhry": { nombre: "Carla y Jaime", plazas: 2, genero: "p", nombres: ["Carla", "Jaime"], titulo: "Carla y Jaime", preboda: true, joven: true }
-  "oscar-y-vanesa-t5kd": { nombre: "Óscar y Vanesa", plazas: 2, genero: "p", nombres: ["Óscar", "Vanesa"], titulo: "Óscar y Vanesa", preboda: true, joven: true }, // adjunto del hospital (15/11/2026)
+  "carla-y-jaime-zhry": { nombre: "Carla y Jaime", plazas: 2, genero: "p", nombres: ["Carla", "Jaime"], titulo: "Carla y Jaime", preboda: true, joven: true },
+  "oscar-y-vanesa-t5kd": { nombre: "Óscar y Vanesa", plazas: 2, genero: "p", nombres: ["Óscar", "Vanesa"], titulo: "Óscar y Vanesa", preboda: true, joven: true } // adjunto del hospital (15/11/2026)
 };
 // Enlace antiguo de Isabel y Jonny (por si ya se mandó): apunta a la misma invitación.
 window.INVITADOS["isabel-johnny-vdxv"] = window.INVITADOS["isabel-jonny-vdxv"];
