@@ -223,6 +223,7 @@ window.INVITADOS = {
   "javier-z424": { nombre: "Javier", plazas: 1, genero: "m", nombres: ["Javier"], titulo: "Javier", preboda: true, joven: true },
   "zach-1ggg": { nombre: "Zach", plazas: 1, genero: "m", nombres: ["Zach"], titulo: "Zach", preboda: true, joven: true },
   "carlos-y-barbara-b67h": { nombre: "Carlos y Bárbara", plazas: 2, genero: "p", nombres: ["Carlos", "Bárbara"], titulo: "Carlos y Bárbara", preboda: true, joven: true },
+  "mikel-r4zq": { nombre: "Mikel", plazas: 1, genero: "m", nombres: ["Mikel"], titulo: "Mikel", preboda: true, joven: true }, // Mikel Taibo, hospital (15/11/2026)
   "andrea-y-juan-rf9n": { nombre: "Andrea y Juan", plazas: 2, genero: "p", nombres: ["Andrea", "Juan"], titulo: "Andrea y Juan", preboda: true, joven: true },
   "monica-y-nacho-1u0r": { nombre: "Mónica y Nacho", plazas: 2, genero: "p", nombres: ["Mónica", "Nacho"], titulo: "Mónica y Nacho", preboda: true, joven: true },
   "carla-y-jaime-zhry": { nombre: "Carla y Jaime", plazas: 2, genero: "p", nombres: ["Carla", "Jaime"], titulo: "Carla y Jaime", preboda: true, joven: true },
