@@ -243,6 +243,10 @@ window.INVITADOS["rafa-marta-q2nw"] = { nombre: "Rafa y Marta", plazas: 2, gener
 window.INVITADOS["loreto-vicente-h6tz"] = { nombre: "Loreto y Vicente", plazas: 2, genero: "p", nombres: ["Loreto", "Vicente"], titulo: "Loreto y Vicente", jerez: true };
 // Enlace antiguo de Toni escrito "tony" (por si ya se mandó): misma invitación.
 window.INVITADOS["tony-y-lidia-fy8s"] = window.INVITADOS["toni-y-lidia-fy8s"];
+// 15/11/2026: estaban en duda; invitados sin preboda.
+window.INVITADOS["pedro-maria-x7jd"] = { nombre: "Pedro y María", plazas: 2, genero: "p", nombres: ["Pedro", "María"], titulo: "Pedro y María" };
+window.INVITADOS["curro-pilar-w2ns"] = { nombre: "Curro y Pilar", plazas: 2, genero: "p", nombres: ["Curro", "Pilar"], titulo: "Curro y Pilar" };
+window.INVITADOS["javi-artacho-c9fm"] = { nombre: "Javi", plazas: 1, genero: "m", nombres: ["Javi"], titulo: "Javi" };
 // Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
 window.INVITADOS["prueba-padres"] = window.INVITADOS["amigos-gonzalo-magdy-r8tq"];
 // Enlace antiguo de Rizos con el apellido mal escrito (por si ya se mandó): misma invitación.
