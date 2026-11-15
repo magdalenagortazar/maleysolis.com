@@ -214,7 +214,7 @@ window.INVITADOS = {
   "pedro-i1p2": { nombre: "Pedro", plazas: 1, genero: "m", nombres: ["Pedro"], titulo: "Pedro", preboda: true, joven: true },
   "monchi-y-mar-xrc7": { nombre: "Monchi y Mar", plazas: 2, genero: "p", nombres: ["Monchi", "Mar"], titulo: "Monchi y Mar", preboda: true, joven: true },
   "juan-y-celia-lnx9": { nombre: "Juan y Celia", plazas: 2, genero: "p", nombres: ["Juan", "Celia"], titulo: "Juan y Celia", preboda: true, joven: true },
-  "tony-y-lidia-fy8s": { nombre: "Tony y Lidia", plazas: 2, genero: "p", nombres: ["Tony", "Lidia"], titulo: "Tony y Lidia", preboda: true, joven: true },
+  "toni-y-lidia-fy8s": { nombre: "Toni y Lidia", plazas: 2, genero: "p", nombres: ["Toni", "Lidia"], titulo: "Toni y Lidia", preboda: true, joven: true },
   "lara-y-diego-ygt3": { nombre: "Lara y Diego", plazas: 2, genero: "p", nombres: ["Lara", "Diego"], titulo: "Lara y Diego", preboda: true, joven: true },
   "jorge-y-anabella-urf1": { nombre: "Jorge y Anabella", plazas: 2, genero: "p", nombres: ["Jorge", "Anabella"], titulo: "Jorge y Anabella", preboda: true, joven: true },
   "dani-te2k": { nombre: "Dani y Laura", plazas: 2, genero: "p", nombres: ["Dani", "Laura"], titulo: "Dani y Laura", preboda: true, joven: true },
@@ -239,6 +239,8 @@ window.INVITADOS["miriam-edu-szu5"] = window.INVITADOS["miry-edu-szu5"];
 window.INVITADOS["julian-meme-k8vb"] = { nombre: "Julián y Meme", plazas: 2, genero: "p", nombres: ["Julián", "Meme"], titulo: "Julián y Meme", familia: true, prebodaPadres: true }; // hotel pagado (hab. 39 del AQ35) y preboda de Gonzalo y Magdy en Jerez
 window.INVITADOS["rafa-marta-q2nw"] = { nombre: "Rafa y Marta", plazas: 2, genero: "p", nombres: ["Rafa", "Marta"], titulo: "Rafa y Marta", jerez: true };
 window.INVITADOS["loreto-vicente-h6tz"] = { nombre: "Loreto y Vicente", plazas: 2, genero: "p", nombres: ["Loreto", "Vicente"], titulo: "Loreto y Vicente", jerez: true };
+// Enlace antiguo de Toni escrito "tony" (por si ya se mandó): misma invitación.
+window.INVITADOS["tony-y-lidia-fy8s"] = window.INVITADOS["toni-y-lidia-fy8s"];
 // Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
 window.INVITADOS["prueba-padres"] = window.INVITADOS["amigos-gonzalo-magdy-r8tq"];
 // Enlace antiguo de Rizos con el apellido mal escrito (por si ya se mandó): misma invitación.
