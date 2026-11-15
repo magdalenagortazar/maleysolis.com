@@ -7,6 +7,7 @@
 // ninos (opcional): posiciones (desde 0) de los niños; se les pide la edad.
 // titulo: cómo se llama a la casa en el formulario ("Luis y Reyes, ¿quiénes venís?").
 // familia: true en la familia de la novia (sin la información general de hoteles) · zaragoza: true muestra cómo llegar desde Zaragoza.
+// abierta: true: enlace general de una familia; huecos de nombre y apellidos, botón para añadir personas y casilla de quién no puede venir.
 // jerez: true recomienda dormir en Jerez sin preboda (15/11/2026).
 // joven: true muestra la recomendación de dormir en El Puerto (amigas y jóvenes).
 // preboda: true si están invitados a la preboda del viernes (solo ellos ven esa sección).
@@ -247,6 +248,9 @@ window.INVITADOS["tony-y-lidia-fy8s"] = window.INVITADOS["toni-y-lidia-fy8s"];
 window.INVITADOS["pedro-maria-x7jd"] = { nombre: "Pedro y María", plazas: 2, genero: "p", nombres: ["", ""], titulo: "Pedro y María" };
 window.INVITADOS["curro-pilar-w2ns"] = { nombre: "Curro y Pilar", plazas: 2, genero: "p", nombres: ["", ""], titulo: "Curro y Pilar" };
 window.INVITADOS["javi-artacho-c9fm"] = { nombre: "Javi", plazas: 1, genero: "m", nombres: [""], titulo: "Javi" };
+// 15/11/2026: enlace general de la familia paterna de Solís (lo manda su padre). Sin preboda. Huecos abiertos con "añadir otra persona"
+// y casilla para decir quién de la familia no puede venir (abierta: true).
+window.INVITADOS["familia-solis-p7ga"] = { nombre: "Familia paterna de Solís", saludo: "Querida familia", plazas: 2, genero: "p", abierta: true };
 // Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
 window.INVITADOS["prueba-padres"] = window.INVITADOS["amigos-gonzalo-magdy-r8tq"];
 // Enlace antiguo de Rizos con el apellido mal escrito (por si ya se mandó): misma invitación.

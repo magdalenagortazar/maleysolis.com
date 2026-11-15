@@ -240,6 +240,7 @@
   .zona-nombre{font-family:var(--display);font-size:28px;line-height:1.1;color:var(--verde)}
   .zona-n{font-size:14px;color:var(--tinta-2)}
   .zona-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .btn-mas{justify-self:start;background:none;border:1px dashed var(--fino);color:var(--fino);padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
   .zona-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fino);border:1px dashed var(--fino);padding:2px 8px}
   .zona::after{content:"Ver hoteles";margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--verde);text-decoration:underline;text-underline-offset:3px}
   .zona[aria-pressed=true]::after{content:"Viendo estos hoteles";text-decoration:none;color:var(--fino)}
@@ -523,6 +524,11 @@
           <p class="aviso" id="aviso-plazas"></p>
         </div>
 
+        <div class="campo" id="bloque-nopueden" hidden>
+          <label for="no-pueden">¿Hay alguien de la familia que no pueda venir?</label>
+          <input type="text" id="no-pueden" name="no-pueden" placeholder="Si es así, decidnos su nombre">
+        </div>
+
         <div class="campo" id="bloque-preboda" hidden>
           <label for="preboda-si">Preboda del viernes</label>
           <div class="opciones">
@@ -738,6 +744,8 @@
         rot.textContent = i === 0 ? 'Tú' : 'Acompañante (déjalo en blanco si vienes solo)';
         wrap.appendChild(rot);
         input.placeholder = 'Nombre y apellidos';
+      } else if (inv && inv.abierta) {
+        input.placeholder = 'Nombre y apellidos';
       } else {
         input.placeholder = i === 0 ? 'Nombre' : 'Acompañante: nombre (en blanco si no viene)';
       }
@@ -746,6 +754,23 @@
     }
     if (esNino) fila.appendChild(campoEdad(i));
     wrap.appendChild(fila); cont.appendChild(wrap);
+  }
+  // Enlace abierto de una familia (15/11/2026): cada uno escribe quién viene, puede añadir más personas
+  // y decir quién de la familia no puede venir (llega en Personas, detrás de "No vienen:").
+  if (inv && inv.abierta) {
+    document.getElementById('nombres-titulo').textContent = '¿Quiénes venís? Nombre y dos apellidos de cada uno';
+    var masBtn = document.createElement('button');
+    masBtn.type = 'button'; masBtn.className = 'btn-mas'; masBtn.textContent = '+ Añadir otra persona';
+    masBtn.addEventListener('click', function(){
+      plazas++;
+      var w = document.createElement('div'); w.className = 'hueco';
+      var f = document.createElement('div'); f.className = 'fila';
+      var inp = document.createElement('input'); inp.type = 'text'; inp.id = 'persona-' + plazas; inp.name = 'persona' + plazas;
+      inp.placeholder = 'Nombre y apellidos'; inp.setAttribute('aria-label', 'Nombre y apellidos');
+      f.appendChild(inp); w.appendChild(f); cont.appendChild(w); inp.focus();
+    });
+    cont.parentNode.insertBefore(masBtn, cont.nextSibling);
+    document.getElementById('bloque-nopueden').hidden = false;
   }
   // Invitación de una sola persona: la casilla ya viene marcada; el hueco sirve para los apellidos.
   if (modoCasillas && plazas === 1) { document.getElementById('viene-1').checked = true; document.getElementById('nombres-titulo').textContent = 'Tu nombre'; }
@@ -812,6 +837,8 @@
       } else if (v) datos.personas.push(v);
     }
     if (asis.value === 'si' && !datos.personas.length) { err.textContent = 'Marcad quién viene.'; err.hidden = false; return; }
+    var np = document.getElementById('no-pueden');
+    if (inv && inv.abierta && np && np.value.trim()) noVienen.push(np.value.trim());
     if (noVienen.length) datos.noVienen = noVienen;
     if (window.enviarRespuesta) { window.enviarRespuesta(datos); }
 
