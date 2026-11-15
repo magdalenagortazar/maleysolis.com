@@ -236,7 +236,7 @@ window.INVITADOS["andy-cobaleda-76kp"] = window.INVITADOS["andy-cobi-76kp"];
 // Enlace antiguo de Miry y Edu (por si ya se mandó).
 window.INVITADOS["miriam-edu-szu5"] = window.INVITADOS["miry-edu-szu5"];
 // 15/11/2026: sin preboda; se les recomienda dormir en Jerez (jerez: true). 
-window.INVITADOS["julian-meme-k8vb"] = { nombre: "Julián y Meme", plazas: 2, genero: "p", nombres: ["Julián", "Meme"], titulo: "Julián y Meme", jerez: true };
+window.INVITADOS["julian-meme-k8vb"] = { nombre: "Julián y Meme", plazas: 2, genero: "p", nombres: ["Julián", "Meme"], titulo: "Julián y Meme", familia: true, prebodaPadres: true }; // hotel pagado (hab. 39 del AQ35) y preboda de Gonzalo y Magdy en Jerez
 window.INVITADOS["rafa-marta-q2nw"] = { nombre: "Rafa y Marta", plazas: 2, genero: "p", nombres: ["Rafa", "Marta"], titulo: "Rafa y Marta", jerez: true };
 window.INVITADOS["loreto-vicente-h6tz"] = { nombre: "Loreto y Vicente", plazas: 2, genero: "p", nombres: ["Loreto", "Vicente"], titulo: "Loreto y Vicente", jerez: true };
 // Enlace de prueba de los amigos de los padres (por si ya se mandó): misma invitación que el enlace general.
