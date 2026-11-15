@@ -940,6 +940,9 @@
     } else if (inv && inv.padres) {
       titulo.textContent = 'Os recomendamos Jerez';
       intro.textContent = 'En Jerez es la preboda del viernes, en Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
+    } else if (inv && inv.jerez) {
+      titulo.textContent = 'Os recomendamos Jerez';
+      intro.textContent = 'En Jerez celebramos la boda y de Jerez salen los autobuses a la iglesia. Durmiendo allí, todo os queda a un paso. Ese fin de semana hay mucho movimiento, así que conviene reservar pronto: los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones. Si preferís El Puerto, también tenéis opciones.';
     } else if (inv && inv.joven) {
       titulo.textContent = 'Os recomendamos El Puerto';
       intro.textContent = (inv.preboda ? 'En El Puerto es la preboda del viernes y allí terminan los autobuses la noche de la boda' : 'En El Puerto terminan los autobuses la noche de la boda') + ', así que os ahorráis viajes. Los hoteles de aquí nos hacen descuento por ser de la boda, pero ninguno nos guarda habitaciones: reservad pronto, que ese fin de semana hay mucho movimiento. Si preferís Jerez, también tenéis opciones.';
@@ -984,7 +987,7 @@
     }
     document.getElementById('zona-n-puerto').textContent = cuenta('El Puerto');
     document.getElementById('zona-n-jerez').textContent = cuenta('Jerez');
-    var recomendada = (inv && inv.padres) ? 'Jerez' : (inv && inv.joven) ? 'El Puerto' : '';
+    var recomendada = (inv && (inv.padres || inv.jerez)) ? 'Jerez' : (inv && inv.joven) ? 'El Puerto' : '';
     document.querySelectorAll('.zona').forEach(function(b){
       if (b.getAttribute('data-zona') === recomendada) b.querySelector('.zona-tag').hidden = false;
       b.addEventListener('click', function(){
