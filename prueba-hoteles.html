@@ -576,7 +576,7 @@
         <h2>Lo que más ilusión nos hace es que vengáis</h2>
         <p class="lead">Si además queréis tener un detalle con nosotros, este es nuestro número de cuenta:</p>
         <div class="iban">
-          <span id="iban-num">ES41 2100 0555 3401 0180 5000</span>
+          <span id="iban-num">ES14 2100 2908 9002 0026 0857</span>
           <button type="button" class="btn" id="iban-copiar">Copiar</button>
         </div>
       </div>
@@ -988,7 +988,7 @@
     var b = document.getElementById('iban-copiar');
     if (!b) return;
     b.addEventListener('click', function(){
-      var t = 'ES4121000555340101805000';
+      var t = 'ES1421002908900200260857';
       function hecho(){ b.textContent = 'Copiado'; setTimeout(function(){ b.textContent = 'Copiar'; }, 2000); }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(t).then(hecho, function(){ seleccionar(); });
